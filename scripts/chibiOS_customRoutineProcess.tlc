@@ -1,0 +1,255 @@
+%%
+%% CUSTOM_ROUTINE_PROCESS generates required files beyond the 
+%% default RTW generated files.
+%%
+%% $ custom_routine_process.tlc 2009-05-14 dlange $
+%% Main creation example :
+%% Create MAIN (harness) for singlerate PIL system:
+%selectfile NULL_FILE
+%%Create sysTick_handler for Real Time appli. 
+%<LibSetCodeTemplateComplianceLevel(1)>
+
+%assign CodeFormat = "Embedded-C"
+
+%%Get simulation type. 1= PIL or 0= not PIL
+%assign  simMode = FEVAL("getpref","STM32F4xx","stm32f4PilMode")
+%warning simMode value is %<simMode> 
+
+
+%if (ISEQUAL(simMode, 1))	
+%%Create main.c for PIL
+%warning Create main.c for PIL
+	%assign cFile = LibCreateSourceFile("Source", "Custom", "main")
+		
+	%% Add corresponding System-Includes to the Includes-Section:
+    %openfile main_Buf
+        #include <stdio.h>
+		#include "pil_interface_lib.h"
+        #include "rtwtypes.h"
+		#include "stm32f4xx.h"
+
+		/* Clock configuration function provided as example */
+		extern void RCC_Configuration(void);
+		/* Profiling timer configuration */
+		extern void profileTimerInit( void );
+
+    %closefile main_Buf
+    %<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
+
+	%% Create calling syntax for the model initialization and step routine:
+    %openfile main_Buf	
+	
+        int main (void)
+        {
+			/* avoid warnings about infinite loops */
+			volatile int loop = 1;
+			PIL_INTERFACE_LIB_ERROR_CODE errorCode = PIL_INTERFACE_LIB_SUCCESS;
+			
+			/* Clock has to be configured first*/
+			RCC_Configuration();
+			
+			/* Systick configuration for Timer Profiling */
+			if (SysTick_Config((uint32_t)(SystemCoreClock * 90e-3)))
+			{  
+				/* Capture error */ 
+				while (1);
+			}	
+			/*Set reload timer to max value 0x00FFFFFF */
+			profileTimerInit();
+
+			
+			errorCode = pilInit(0,0);   
+			if (errorCode != PIL_INTERFACE_LIB_SUCCESS) {
+				/* trap error with infinite loop */
+				while (loop) {
+				}
+			}			
+            /* ***************************************************
+             MODEL ALGORITHM AND DRIVER ROUTINES
+            *****************************************************/
+   
+            while(loop) {
+ 			errorCode = pilRun();
+			if ( (errorCode != PIL_INTERFACE_LIB_SUCCESS) && 
+			(errorCode != PIL_INTERFACE_LIB_TERMINATE) ) {
+				/* trap error with infinite loop */
+				while (loop) {
+				}
+			}
+            }
+            /****************************************************
+            TERMINATION CODE
+            *****************************************************/
+        }        
+    %closefile main_Buf 
+    %<LibSetSourceFileSection(cFile, "Functions", main_Buf)>
+%else
+%%Create main.c for real time
+%warning Create real-time application main.c
+	%assign modelName = LibGetModelName()
+    %assign SrcBaseName = LibGetMdlSrcBaseName()
+	%assign cFile = LibCreateSourceFile("Source", "Custom", "main")
+	%assign NbOfTasks = LibGetNumSyncPeriodicTasks()
+%%	%assign NbOfTasks = LibGetNumTasks()
+	
+	%% Add corresponding System-Includes to the Includes-Section:
+    %openfile main_Buf
+        #include <stdio.h>
+		#include "%<LibGetMdlSrcBaseName()>.h" /* Model's header file */
+        #include "rtwtypes.h"                  /* MathWorks types */
+		#include "stm32f4xx.h"
+
+        /* RCC_Configuration defined in RCC_Configuration.c file */
+		/* Clock configuration function provided as example */
+		extern void RCC_Configuration(void);
+		
+		/* Real-time model */
+		extern RT_MODEL_%<LibGetMdlSrcBaseName()> *const %<LibGetMdlSrcBaseName()>_M;
+
+		/* Set which subrates need to run this base step (base rate always runs).*/
+		/* Defined in %<LibGetMdlSrcBaseName()>.c file */
+		extern void %<LibGetMdlSrcBaseName()>_SetEventsForThisBaseStep(boolean_T*);
+		
+		/* Flags for taskOverrun */
+		static boolean_T OverrunFlags[%<NbOfTasks>];
+		
+		/* Number of auto reload timer rotation computed */
+		static uint32_t autoReloadTimerLoopVal_S = 1;
+		
+		/* Remaining number of auto reload timer rotation to do */
+		static uint32_t remainAutoReloadTimerLoopVal_S = 1;
+		
+		
+    %closefile main_Buf
+    %<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
+
+	%% Create calling syntax for the model initialization and step routine:
+    %openfile main_Buf		
+
+	
+        /****************************************************
+                     SysTick_Handler function
+		This handler is called every tick and schedules tasks
+        *****************************************************/
+	    void SysTick_Handler(void)
+		{
+			%if (%<NbOfTasks> > 1)
+			int_T i;
+			boolean_T eventFlags[%<NbOfTasks>];    /* Model has %<NbOfTasks> rates */
+			%endif
+			
+			/* Manage nb of loop before interrupt has to be processed */
+			remainAutoReloadTimerLoopVal_S--;
+			if( remainAutoReloadTimerLoopVal_S) {
+				return;
+			} 
+			remainAutoReloadTimerLoopVal_S = autoReloadTimerLoopVal_S;
+			
+			/* Check base rate for overrun */
+			if (OverrunFlags[0]) {
+				rtmSetErrorStatus(%<LibGetMdlSrcBaseName()>_M, "Overrun");
+				return;
+			}
+			OverrunFlags[0] = TRUE;
+			%if (%<NbOfTasks> > 1)
+			/*
+			* For a bare-board target (i.e., no operating system), the rates
+			* that execute this base step are buffered locally to allow for
+			* overlapping preemption.  The generated code includes function
+			* writeCodeInfoFcn() which sets the rates
+			* that need to run this time step.  The return values are 1 and 0
+			* for true and false, respectively.
+			*/
+			%<LibGetMdlSrcBaseName()>_SetEventsForThisBaseStep(eventFlags);
+			%endif
+			
+			/* Step the model for base rate */
+			%<LibCallModelStep(0)>			
+			/* Indicate task for base rate complete */
+			OverrunFlags[0] = FALSE;
+
+			%if (%<NbOfTasks> > 1)
+			/* Step the model for any subrate */
+			for (i = 1; i < %<NbOfTasks>; i++) {
+				if (eventFlags[i]) {
+					if (OverrunFlags[i]) {
+						rtmSetErrorStatus(%<LibGetMdlSrcBaseName()>_M, "Overrun");
+						return;
+					}
+					OverrunFlags[i] = TRUE;
+					/* Step the model for subrate "i" */
+					%<LibGetMdlSrcBaseName()>_step(i);
+					/* Indicate task complete for sample time "i" */
+					OverrunFlags[i] = FALSE;
+				}
+			}
+			%endif			
+		}			
+	
+	
+        /****************************************************
+                     main function
+		Example of main : 
+			- Clock configuration
+			- call Initialize 
+			- Wait for systick (infinite loop)
+        *****************************************************/
+        int main (void)
+        {
+			/* Data initialization */
+			int_T i;
+			for(i=0;i<%<NbOfTasks>;i++) {
+				OverrunFlags[i] = 0;
+			}
+			
+			/* Clock has to be configured first*/
+			RCC_Configuration();
+			
+			/* Model initialization call */
+			%<SLibModelInitFcnName()>(%<SLibModelFcnArgs("Initialize",TLC_TRUE,"")>);
+			
+			/* Systick configuration and enable SysTickHandler interrupt */
+			%assign FixedStep = FEVAL("getFixedStep","%<modelName>")
+			%if (ISEQUAL("%<FixedStep>", "auto"))
+			%assign FixedStep = 0.001
+			%endif
+			
+			if (SysTick_Config((uint32_t)(SystemCoreClock * %<FixedStep>)))
+			{  
+				autoReloadTimerLoopVal_S = 1;
+				do {
+					autoReloadTimerLoopVal_S++;
+				} while((uint32_t)(SystemCoreClock * %<FixedStep>)/autoReloadTimerLoopVal_S > SysTick_LOAD_RELOAD_Msk);
+				SysTick_Config((uint32_t)(SystemCoreClock * %<FixedStep>)/autoReloadTimerLoopVal_S);
+			}	
+			remainAutoReloadTimerLoopVal_S = autoReloadTimerLoopVal_S; //Set nb of loop to do
+			
+			/* Infinite loop */
+			/* Real time from systickHandler */
+			while(1) {
+			/* Add code here */
+			}
+        }        
+    %closefile main_Buf 
+    %<LibSetSourceFileSection(cFile, "Functions", main_Buf)>
+%endif
+
+%% EOF: custom_routine_process.tlc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

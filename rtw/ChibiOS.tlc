@@ -1,0 +1,95 @@
+%% SYSTLC: ChibiOS/RT (Embedded RTOS Target) \\
+%% TMF: ChibiOS.tmf  \\
+%% MAKE: make_rtw \\
+%% EXTMODE: ext_comm
+
+%selectfile NULL_FILE
+
+%%
+%% System Target File for ChibiOS
+%%
+%% $ chibiOS.tlc 2009-05-14 dlange $
+%%
+
+%assign CodeFormat = "Embedded-C"
+%assign TargetType = "RT"
+%assign Language   = "C"
+
+/%
+  BEGIN_RTW_OPTIONS
+
+  oIdx = 1;
+
+  rtwoptions(oIdx).prompt        = 'ChibiOS Options';
+  rtwoptions(oIdx).type          = 'Category';
+  rtwoptions(oIdx).enable        = 'on';  
+  rtwoptions(oIdx).default       = 5;
+  rtwoptions(oIdx).popupstrings  = '';
+  rtwoptions(oIdx).tlcvariable   = '';
+  rtwoptions(oIdx).tooltip       = '';
+  rtwoptions(oIdx).callback      = '';
+  rtwoptions(oIdx).makevariable  = '';
+
+  oIdx = oIdx + 1;
+
+  rtwoptions(oIdx).prompt        = 'ChibiOS Options';
+  rtwoptions(oIdx).type          = 'Category';
+  rtwoptions(oIdx).enable        = 'on';  
+  rtwoptions(oIdx).default       = 4;
+  rtwoptions(oIdx).popupstrings  = '';
+  rtwoptions(oIdx).tlcvariable   = '';
+  rtwoptions(oIdx).tooltip       = '';
+  rtwoptions(oIdx).callback      = '';
+  rtwoptions(oIdx).makevariable  = '';
+
+  oIdx = oIdx + 1;
+
+  rtwoptions(oIdx).prompt         = 'ChibiOS TargetBoard';
+  rtwoptions(oIdx).type           = 'Popup';
+  rtwoptions(oIdx).popupstrings   = 'ST_STM32F4_DISCOVERY';
+  rtwoptions(oIdx).default        = 'ST_STM32F4_DISCOVERY';
+  rtwoptions(oIdx).tlcvariable    = 'ChibiOS_Target';
+  rtwoptions(oIdx).makevariable   = 'CHIBIOS_TARGET';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback      = '';
+
+  oIdx = oIdx + 1;
+
+  rtwoptions(oIdx).prompt         = 'Get ToolPath automatically';
+  rtwoptions(oIdx).type           = 'Checkbox';
+  rtwoptions(oIdx).default        = 'off';
+  rtwoptions(oIdx).tlcvariable    = 'ToolPathFromRegistry';
+  rtwoptions(oIdx).makevariable   = 'TOOLPATHFROMREGISTRY';
+  rtwoptions(oIdx).tooltip        = ...
+    ['Get ToolChain path directly from registry. Uncheck to modify ToolChain path.'];
+  rtwoptions(oIdx).callback       = 'autopath_callback(hDlg, hSrc, ''ToolPathFromRegistry'')';
+
+   
+  rtwoptions(oIdx).prompt         = 'ToolPath Installation Directory: ';
+  rtwoptions(oIdx).type           = 'Edit';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'CompilerPath';
+  rtwoptions(oIdx).makevariable   = 'COMPILERPATH';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = ...
+    ['Path for installed tool. Used if not taken directly from registry. Use format C:\..\..'];
+  rtwoptions(oIdx).callback      = '';
+
+  
+  %----------------------------------------%
+  % Configure RTW code generation settings %
+  %----------------------------------------%
+    
+  rtwgensettings.DerivedFrom = 'ert.tlc';
+  rtwgensettings.BuildDirSuffix = '_chibiOS';
+  rtwgensettings.Version = '1';
+  rtwgensettings.SelectCallback = ['chibiOS_SelectCallback(hDlg, hSrc)'];
+  rtwgensettings.ActivateCallback = ['chibiOS_ActivateCallback(hDlg, hSrc)'];
+  rtwgensettings.PostApplyCallback = ['chibiOS_PostApplyCallback(hDlg, hSrc)'];
+ 
+
+  END_RTW_OPTIONS 
+ %/
+
+%% [EOF]: chibiOS.tlc
