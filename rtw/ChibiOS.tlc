@@ -1,7 +1,5 @@
-%% SYSTLC: ChibiOS/RT (Embedded RTOS Target) \\
-%% TMF: ChibiOS.tmf  \\
-%% MAKE: make_rtw \\
-%% EXTMODE: ext_comm
+%% SYSTLC: ChibiOS/RT (Embedded RTOS Target) TMF: ChibiOS.tmf MAKE: make_rtw \
+%%    EXTMODE: ext_comm
 
 %selectfile NULL_FILE
 
@@ -15,15 +13,17 @@
 %assign TargetType = "RT"
 %assign Language   = "C"
 
+%include "codegenentry.tlc"
+
 /%
   BEGIN_RTW_OPTIONS
 
   oIdx = 1;
-
   rtwoptions(oIdx).prompt        = 'ChibiOS Options';
   rtwoptions(oIdx).type          = 'Category';
   rtwoptions(oIdx).enable        = 'on';  
-  rtwoptions(oIdx).default       = 5;
+  rtwoptions(oIdx).default       = 3; % number of items under this category 
+                                      % excluding this one. 
   rtwoptions(oIdx).popupstrings  = '';
   rtwoptions(oIdx).tlcvariable   = '';
   rtwoptions(oIdx).tooltip       = '';
@@ -31,52 +31,48 @@
   rtwoptions(oIdx).makevariable  = '';
 
   oIdx = oIdx + 1;
-
-  rtwoptions(oIdx).prompt        = 'ChibiOS Options';
-  rtwoptions(oIdx).type          = 'Category';
-  rtwoptions(oIdx).enable        = 'on';  
-  rtwoptions(oIdx).default       = 4;
-  rtwoptions(oIdx).popupstrings  = '';
-  rtwoptions(oIdx).tlcvariable   = '';
-  rtwoptions(oIdx).tooltip       = '';
-  rtwoptions(oIdx).callback      = '';
-  rtwoptions(oIdx).makevariable  = '';
-
-  oIdx = oIdx + 1;
-
-  rtwoptions(oIdx).prompt         = 'ChibiOS TargetBoard';
-  rtwoptions(oIdx).type           = 'Popup';
-  rtwoptions(oIdx).popupstrings   = 'ST_STM32F4_DISCOVERY';
-  rtwoptions(oIdx).default        = 'ST_STM32F4_DISCOVERY';
-  rtwoptions(oIdx).tlcvariable    = 'ChibiOS_Target';
-  rtwoptions(oIdx).makevariable   = 'CHIBIOS_TARGET';
+  rtwoptions(oIdx).prompt         = 'Select ChibiOS/RT Root Directory';
+  rtwoptions(oIdx).type           = 'Pushbutton';
+  rtwoptions(oIdx).default        = '';
   rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tlcvariable    = '';
+  rtwoptions(oIdx).makevariable   = '';
   rtwoptions(oIdx).tooltip        = '';
-  rtwoptions(oIdx).callback      = '';
+  rtwoptions(oIdx).callback       = 'chibiOS_selectRoot(hDlg, hSrc)';
 
   oIdx = oIdx + 1;
-
-  rtwoptions(oIdx).prompt         = 'Get ToolPath automatically';
-  rtwoptions(oIdx).type           = 'Checkbox';
-  rtwoptions(oIdx).default        = 'off';
-  rtwoptions(oIdx).tlcvariable    = 'ToolPathFromRegistry';
-  rtwoptions(oIdx).makevariable   = 'TOOLPATHFROMREGISTRY';
-  rtwoptions(oIdx).tooltip        = ...
-    ['Get ToolChain path directly from registry. Uncheck to modify ToolChain path.'];
-  rtwoptions(oIdx).callback       = 'autopath_callback(hDlg, hSrc, ''ToolPathFromRegistry'')';
-
-   
-  rtwoptions(oIdx).prompt         = 'ToolPath Installation Directory: ';
+  rtwoptions(oIdx).prompt         = '';
   rtwoptions(oIdx).type           = 'Edit';
   rtwoptions(oIdx).default        = '';
-  rtwoptions(oIdx).tlcvariable    = 'CompilerPath';
-  rtwoptions(oIdx).makevariable   = 'COMPILERPATH';
-  rtwoptions(oIdx).enable         = 'on';
-  rtwoptions(oIdx).tooltip        = ...
-    ['Path for installed tool. Used if not taken directly from registry. Use format C:\..\..'];
-  rtwoptions(oIdx).callback      = '';
+  rtwoptions(oIdx).tlcvariable    = 'ChibiOS_Root';
+  rtwoptions(oIdx).makevariable   = 'CHIBIOS_ROOT';
+  rtwoptions(oIdx).enable         = 'off';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
 
-  
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Select ChibiOS/RT Target Board';
+  rtwoptions(oIdx).type           = 'Pushbutton';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tlcvariable    = 'ChibiOS_Target_Select';
+  rtwoptions(oIdx).makevariable   = '';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = 'chibiOS_selectTarget(hDlg, hSrc)';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'ChibiOS TargetBoard:';
+  rtwoptions(oIdx).type           = 'Edit';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'ChibiOS_Target';
+  rtwoptions(oIdx).makevariable   = 'CHIBIOS_TARGET';
+  rtwoptions(oIdx).enable         = 'off';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+ 
+
   %----------------------------------------%
   % Configure RTW code generation settings %
   %----------------------------------------%
@@ -92,4 +88,4 @@
   END_RTW_OPTIONS 
  %/
 
-%% [EOF]: chibiOS.tlc
+%% [EOF]: ChibiOS.tlc

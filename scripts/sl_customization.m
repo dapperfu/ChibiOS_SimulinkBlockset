@@ -1,5 +1,5 @@
 function sl_customization(cm)
-% sl_customization for PIL connectivity config: STM32F4xx.ConnectivityConfig
+% sl_customization for PIL connectivity config: ChibiOS.ConnectivityConfig
 
 % Copyright 2008 The MathWorks, Inc.
 % $Revision: 1.1.6.2 $
@@ -13,15 +13,15 @@ end
 function config = loc_createConfig
 
 config = rtw.connectivity.ConfigRegistry;
-config.ConfigName = 'STM32F4xx PIL';
-config.ConfigClass = 'stm32F4xxpil.ConnectivityConfig';
+config.ConfigName = 'ChibiOS';
+config.ConfigClass = 'chibiOS.ConnectivityConfig';
 
 % match only STM32 dedicated tlc
 config.SystemTargetFile = {'ChibiOS.tlc'};
 % match the STM32 TMF's
 config.TemplateMakefile = {'ChibiOS.tmf'};
 % match STM32F4xx  32-bit Cortex-M4
-config.TargetHWDeviceType = {'ChibiOS'};
+config.TargetHWDeviceType = {'ChibiOS','ChibiOS 2'};
 end
 
 function thisDev = loc_register_device

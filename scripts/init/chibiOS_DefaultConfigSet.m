@@ -6,10 +6,10 @@ function chibiOS_DefaultConfigSet(hDlg, hSrc)
 % $ chibiOS_DefaultConfigSet.m 2013-11-3 freyjed $
 
 %% Set default RTW parameters for ChibiOS target:
-tabs={'SolverTab','HardwareImplementationTab','CodeGenerationTab','ReportTab','TemplatesTab'};
+tabs={'CodeStyleTab','SolverTab','HardwareImplementationTab','CodeGenerationTab','ReportTab','TemplatesTab','ChibiOSTab'};
 n=numel(tabs);
 for i=1:n
-    waitbar(i/n);
+    waitbar(i/(2*n));
     feval(tabs{i},hDlg,hSrc)
 end
 
@@ -43,15 +43,15 @@ slConfigUISetEnabled(hDlg, hSrc, 'TemplateMakefile', true);
 
 %% Report tab **************************************************************
 function ReportTab(hDlg, hSrc)
-slConfigUISetVal(hDlg, hSrc,     'GenerateReport','on')
+slConfigUISetVal(hDlg, hSrc,     'GenerateReport','off')
 slConfigUISetEnabled(hDlg, hSrc, 'GenerateReport', true);
 
-slConfigUISetVal(hDlg, hSrc,     'LaunchReport','on')
+slConfigUISetVal(hDlg, hSrc,     'LaunchReport','off')
 slConfigUISetEnabled(hDlg, hSrc, 'LaunchReport', true);
 
 %% Interface tab ***********************************************************
 function InterfaceTab(hDlg, hSrc)
-slConfigUISetVal(hDlg, hSrc,     'SupportContinuousTime','on')
+slConfigUISetVal(hDlg, hSrc,     'SupportContinuousTime','off')
 slConfigUISetEnabled(hDlg, hSrc, 'SupportContinuousTime', true);
 
 % Templates tab ***********************************************************
@@ -77,6 +77,29 @@ slConfigUISetEnabled(hDlg, hSrc, 'GenerateSampleERTMain', false);
 slConfigUISetVal(hDlg, hSrc,     'IncludeMdlTerminateFcn','off')
 slConfigUISetEnabled(hDlg, hSrc, 'IncludeMdlTerminateFcn', true);
 
+% CodeStyle tab ***********************************************************
+function CodeStyleTab(hDlg,hSrc)
+slConfigUISetVal(hDlg, hSrc,     'ParenthesesLevel','Maximum')
+slConfigUISetEnabled(hDlg, hSrc, 'ParenthesesLevel', true);
 
+slConfigUISetVal(hDlg, hSrc,     'PreserveExpressionOrder','on')
+slConfigUISetEnabled(hDlg, hSrc, 'PreserveExpressionOrder', true);
+
+slConfigUISetVal(hDlg, hSrc,     'PreserveIfCondition','on')
+slConfigUISetEnabled(hDlg, hSrc, 'PreserveIfCondition', true);
+
+slConfigUISetVal(hDlg, hSrc,     'ConvertIfToSwitch','on')
+slConfigUISetEnabled(hDlg, hSrc, 'ConvertIfToSwitch', true);
+
+% ChibiOS Tab
+function ChibiOSTab(hDlg,hSrc)
+if ispref('ChibiOS','ChibiOS_Root')
+    chibiOS_root=getpref('ChibiOS','ChibiOS_Root');
+    if isdir(chibiOS_root)
+        slConfigUISetEnabled(hDlg, hSrc, 'ChibiOS_Root', true);
+        slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',chibiOS_root);
+        slConfigUISetEnabled(hDlg, hSrc, 'ChibiOS_Root', false);
+    end
+end
 % [EOF] stm32F4xxDefaultConfigSet.m
 
