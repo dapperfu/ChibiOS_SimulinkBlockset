@@ -4,7 +4,7 @@ function chibiOS_SelectCallback(hDlg, hSrc)
 %
     assignin('base','hDlg',hDlg);
     assignin('base','hSrc',hSrc);
-    h = waitbar(0,'Set configuration. Please wait...','Name','ChibiOS Initial Setup');
+    h = waitbar(0,'Setting configuration. Please wait...','Name','ChibiOS Setup');
 	chibiOS_DefaultConfigSet(hDlg, hSrc);
     waitbar(2/2);
 	close(h);

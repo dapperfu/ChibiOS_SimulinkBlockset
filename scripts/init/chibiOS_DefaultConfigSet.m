@@ -94,11 +94,15 @@ slConfigUISetEnabled(hDlg, hSrc, 'ConvertIfToSwitch', true);
 % ChibiOS Tab
 function ChibiOSTab(hDlg,hSrc)
 if ispref('ChibiOS','ChibiOS_Root')
-    chibiOS_root=getpref('ChibiOS','ChibiOS_Root');
-    if isdir(chibiOS_root)
-        slConfigUISetEnabled(hDlg, hSrc, 'ChibiOS_Root', true);
-        slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',chibiOS_root);
-        slConfigUISetEnabled(hDlg, hSrc, 'ChibiOS_Root', false);
+    ChibiOS_Root=getpref('ChibiOS','ChibiOS_Root');
+    if isdir(ChibiOS_Root)
+        slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',ChibiOS_Root);
+        slConfigUISetVal(hDlg, hSrc,'Alt_ChibiOS_Root',chibiOS_getShortName(ChibiOS_Root));
+    end
+    ChibiOS_CompilerRoot=getpref('ChibiOS','ChibiOS_CompilerRoot');
+    if isdir(ChibiOS_CompilerRoot)
+        slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',ChibiOS_CompilerRoot);
+        slConfigUISetVal(hDlg, hSrc,'Alt_ChibiOS_CompilerRoot',chibiOS_getShortName(ChibiOS_CompilerRoot));
     end
 end
 % [EOF] stm32F4xxDefaultConfigSet.m
