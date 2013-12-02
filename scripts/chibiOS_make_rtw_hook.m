@@ -146,12 +146,24 @@ switch hookMethod
 		% Called after code generation is complete for PIL processing
 		% All arguments are valid at this stage.
 		fprintf('### before_makefilebuilder_make\n');
-
+        
     case 'before_make'
         % Called after code generation is complete, and just prior to kicking
         % off make process (assuming code generation only is not selected.)  All
         % arguments are valid at this stage.
-        fprintf('\n### Code Format : %s\n',buildOpts.codeFormat); 
+        fprintf('\n### Code Format : %s\n',buildOpts.codeFormat);
+        
+        %Set environement variable to know windows version 32/64 bits
+        winVersion = getenv('MATLAB_WIN_VER');
+        ext = mexext;
+        if (isempty(winVersion))
+            switch ext
+                case 'mexw32'
+                    setenv('MATLAB_WIN_VER','win32');
+                case 'mexw64'
+                    setenv('MATLAB_WIN_VER','win64');
+            end
+        end
         
     case 'after_make'
         % Called after make process is complete. All arguments are valid at

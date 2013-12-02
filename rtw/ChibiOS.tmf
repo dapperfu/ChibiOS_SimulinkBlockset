@@ -1,46 +1,3 @@
-# 
-# File    : ChibiOS.tmf
-#
-# $ ChibiOS.tmf 2013-11-02 freyjed $
-#
-#
-# Abstract:
-#       Real-Time Workshop template makefile for building a 
-#       stand-alone embedded real-time version of Simulink model using
-#       generated C code and IAR (EWARM) Compiler for ARM
-
-#------------------------- Path Information -------------------------------
-
-# Project and application specific tools and directories:
-#Target is STM32F4xx ARM M4_Core based 
-TARGET      = STM32F4XX
-
-#Use mex extention to know if 32 or 64bit installed
-MEXEXT = |>MEXEXT<|
-
-#TARGET_PATH is PATH of ChibiOS distrib repository. 
-#All path are based on it.
-TARGET_PATH = "|>TARGET_INST_PATH<|"
-
-#Path for PIL sources, includes, STM32 and CMSIS libraries
-SRC         = $(TARGET_PATH)\src
-CMSISINC    = $(TARGET_PATH)\lib\CMSIS\Device\ST\STM32F4xx\Include
-CMSISDSPINC = $(TARGET_PATH)\lib\CMSIS\Include
-LIBINC      = $(TARGET_PATH)\lib\$(TARGET)_StdPeriph_Driver\inc
-LIBSRC      = $(TARGET_PATH)\lib\$(TARGET)_StdPeriph_Driver\src
-PATHSETUP   = $(TARGET_PATH)\lib\CMSIS\Device\ST\STM32F4xx\Source\Templates
-PIL_RTIO	= $(TARGET_PATH)\pil\stm32F4xxSerialRtiostream
-CMSISDSPSRC = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\BasicMathFunctions
-CMSISDSPSRC1 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\CommonTables
-CMSISDSPSRC2 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\ControllerFunctions
-CMSISDSPSRC3 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\FastMathFunctions
-CMSISDSPSRC4 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\FilteringFunctions
-CMSISDSPSRC5 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\MatrixFunctions
-CMSISDSPSRC6 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\StatisticsFunctions
-CMSISDSPSRC7 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\SupportFunctions
-CMSISDSPSRC8 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\TransformFunctions
-
-
 #------------------------ Macros read by make_rtw ------------------------------
 #
 # The following macros are read by the Real-Time Workshop build procedure:
@@ -52,155 +9,13 @@ CMSISDSPSRC8 = $(TARGET_PATH)\lib\CMSIS\DSP_Lib\Source\TransformFunctions
 #                    (yes/no)?
 #  SYS_TARGET_FILE - Name of system target file.
 
-
-MAKECMD         = "%MATLAB%\bin\%MATLAB_WIN_VER%\gmake"
+MAKECMD         = "%MATLAB%\bin\win32\gmake"
 
 SHELL           = cmd
 HOST            = PC
 BUILD           = yes
 SYS_TARGET_FILE = ChibiOS.tlc
 MAKEFILE_FILESEP = /
-
-#source file extension
-SRC_FILE_EXT = .c
-#object file extension
-OBJ_EXT = .o
-#File extention is .out for IAR exec file
-PROGRAM_FILE_EXT = .out
-#File extension is .lib for library file
-BINARY_FILE_EXT = .lib
-#File extension is .s for IAR assembler file (startup)
-ASM_FILE_EXT = .s
-#---------------------- Tokens expanded by make_rtw ----------------------------
-#
-# The following tokens, when wrapped with "|>" and "<|" are expanded by the
-# Real-Time Workshop build procedure.
-#
-#  TOOL_CHAIN          - Name of toolchain used. Can be IAR or ATOLLIC.
-#  BOOT_MODE           - From FLASH or boot from RAM (Usually FLASH)
-#  COMPILER_TOOL_CHAIN - Toolchain used (IAR, ATOLLIC) from system target file
-#  MODEL_NAME          - Name of the Simulink block diagram
-#  MODEL_MODULES       - Any additional generated source modules
-#  MAKEFILE_NAME       - Name of makefile created from template makefile <model>.mk
-#  MATLAB_ROOT         - Path to were MATLAB is installed.
-#  MATLAB_BIN          - Path to MATLAB executable.
-#  S_FUNCTIONS         - List of additional S-function modules.
-#  S_FUNCTIONS_LIB     - List of S-functions libraries to link. 
-#  NUMST               - Number of sample times
-#  NCSTATES            - Number of continuous states
-#  BUILDARGS           - Options passed in at the command line.
-#  MULTITASKING        - yes (1) or no (0): Is solver mode multitasking
-#  INTEGER_CODE        - yes (1) or no (0): Is generated code purely integer
-#  MAT_FILE            - yes (1) or no (0): Should mat file logging be done,
-#                        if 0, the generated code runs indefinitely
-#  EXT_MODE            - yes (1) or no (0): Build for external mode
-#  TMW_EXTMODE_TESTING - yes (1) or no (0): Build ext_test.c for external mode
-#                        testing.
-#  EXTMODE_TRANSPORT   - Index of transport mechanism (e.g. tcpip, serial) for extmode
-#  EXTMODE_STATIC      - yes (1) or no (0): Use static instead of dynamic mem alloc.
-#  EXTMODE_STATIC_SIZE - Size of static memory allocation buffer.
-#  MULTI_INSTANCE_CODE - Is the generated code multi instantiable (1/0)?
-#  PORTABLE_WORDSIZES  - Is this build intented for SIL simulation with portable word sizes (1/0)?
-#  SHRLIBTARGET        - Is this build intended for generation of a shared library instead 
-#                        of executable (1/0)?
-TOOL_CHAIN           = |>TOOLCHAIN<|
-BOOT_MODE            = |>FLASH_RAM<|
-COMPILER_TOOL_CHAIN  = |>TOOLCHAIN<|
-MODEL                = |>MODEL_NAME<|
-MODULES              = |>MODEL_MODULES<|
-MODULES_OBJ          = |>MODEL_MODULES_OBJ<|
-MAKEFILE             = |>MAKEFILE_NAME<|
-TOOLPATH             = "|>COMPILERPATH<|"
-MATLAB_ROOT          = "|>MATLAB_ROOT<|"
-ALT_MATLAB_ROOT      = "|>ALT_MATLAB_ROOT<|"
-MATLAB_BIN           = "|>MATLAB_BIN<|"
-ALT_MATLAB_BIN       = "|>ALT_MATLAB_BIN<|"
-S_FUNCTIONS          = |>S_FUNCTIONS<|
-S_FUNCTIONS_LIB      = |>S_FUNCTIONS_LIB<|
-NUMST                = |>NUMST<|
-NCSTATES             = |>NCSTATES<|
-BUILDARGS            = |>BUILDARGS<|
-MULTITASKING         = |>MULTITASKING<|
-INTEGER_CODE         = |>INTEGER_CODE<|
-MAT_FILE             = |>MAT_FILE<|
-ONESTEPFCN           = |>COMBINE_OUTPUT_UPDATE_FCNS<|
-TERMFCN              = |>INCLUDE_MDL_TERMINATE_FCN<|
-B_ERTSFCN            = |>GENERATE_ERT_S_FUNCTION<|
-#MEXEXT               = |>MEXEXT<|
-EXT_MODE             = |>EXT_MODE<|
-TMW_EXTMODE_TESTING  = |>TMW_EXTMODE_TESTING<|
-EXTMODE_TRANSPORT    = |>EXTMODE_TRANSPORT<|
-EXTMODE_STATIC       = |>EXTMODE_STATIC_ALLOC<|
-EXTMODE_STATIC_SIZE  = |>EXTMODE_STATIC_ALLOC_SIZE<|
-MULTI_INSTANCE_CODE  = |>MULTI_INSTANCE_CODE<|
-MODELREFS            = |>MODELREFS<|
-TARGET_LANG_EXT      = |>TARGET_LANG_EXT<|
-SHARED_SRC           = |>SHARED_SRC<|
-SHARED_SRC_DIR       = |>SHARED_SRC_DIR<|
-SHARED_BIN_DIR       = |>SHARED_BIN_DIR<|
-SHARED_LIB           = |>SHARED_LIB<|
-MEX_OPT_FILE         = |>MEX_OPT_FILE<|
-PORTABLE_WORDSIZES   = |>PORTABLE_WORDSIZES<|
-SHRLIBTARGET         = |>SHRLIBTARGET<|
-OPTIMIZATION_FLAGS   = |>OPTIMIZATION_FLAGS<|
-ADDITIONAL_LDFLAGS   = |>ADDITIONAL_LDFLAGS<|
-MAKEFILEBUILDER_TGT  = |>MAKEFILEBUILDER_TGT<|
-STANDALONE_SUPPRESS_EXE = |>STANDALONE_SUPPRESS_EXE<|
-
-#--------------------------- Model and reference models -----------------------
-MODELLIB             = |>MODELLIB<|
-MODELREF_LINK_LIBS   = |>MODELREF_LINK_LIBS<|
-MODELREF_LINK_RSPFILE     = |>MODELREF_LINK_RSPFILE_NAME<|
-MODELREF_INC_PATH         = |>START_MDLREFINC_EXPAND_INCLUDES<| -I |>MODELREF_INC_PATH<| |>END_MDLREFINC_EXPAND_INCLUDES<| 
-RELATIVE_PATH_TO_ANCHOR   = |>RELATIVE_PATH_TO_ANCHOR<|
-MODELREF_TARGET_TYPE      = |>MODELREF_TARGET_TYPE<|
-
-#Matlab Path checking
-ifneq ($(MATLAB_ROOT),$(ALT_MATLAB_ROOT))
-MATLAB_ROOT = $(ALT_MATLAB_ROOT)
-endif
-MATLAB_ROOT := $(subst \,/,$(MATLAB_ROOT))
-MATLAB_ROOT := $(subst Program Files,Program\ Files,$(MATLAB_ROOT))
-ifneq ($(MATLAB_BIN),$(ALT_MATLAB_BIN))
-MATLAB_BIN = $(ALT_MATLAB_BIN)
-endif
-MATLAB_BIN := $(subst Program Files,Program\ Files,$(MATLAB_BIN))
-MATLAB_BIN := $(subst ~,\~,$(MATLAB_BIN))
-
-##############################################################################
-# Build global options
-# NOTE: Can be overridden externally.
-#
-
-# Compiler options here.
-ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
-endif
-
-# C specific options here (added to USE_OPT).
-ifeq ($(USE_COPT),)
-  USE_COPT = 
-endif
-
-# C++ specific options here (added to USE_OPT).
-ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
-endif
-
-# Enable this if you want the linker to remove unused code and data
-ifeq ($(USE_LINK_GC),)
-  USE_LINK_GC = yes
-endif
-
-# If enabled, this option allows to compile the application in THUMB mode.
-ifeq ($(USE_THUMB),)
-  USE_THUMB = yes
-endif
-
-# Enable this if you want to see the full log while compiling.
-ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
-endif
 
 #
 # Build global options
@@ -230,16 +45,17 @@ endif
 #
 
 # Define project name here
-PROJECT = ch
+PROJECT  = TestModel
+BUILDDIR = C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
 
 # Imported source files and paths
-CHIBIOS      = "|>ALT_CHIBIOS_ROOT<|"
-BOARD        = "|>CHIBIOS_BOARD<|"
-PLATFORM     = "|>CHIBIOS_PLATFORM<|"
-COMPILER     = "|>CHIBIOS_COMPILER<|"
-COMPILER_ROOT= "|>ALT_CHIBIOS_COMPILERROOT<|"
-INSTRUCTION  = "|>CHIBIOS_INSTRUCTIONSET<|"
-CHIP         = "|>CHIBIOS_CHIP<|"
+CHIBIOS      = |>ALT_CHIBIOS_ROOT<|
+BOARD        = |>CHIBIOS_BOARD<|
+PLATFORM     = |>CHIBIOS_PLATFORM<|
+COMPILER     = |>CHIBIOS_COMPILER<|
+COMPILER_ROOT= |>ALT_CHIBIOS_COMPILERROOT<|
+INSTRUCTION  = |>CHIBIOS_INSTRUCTIONSET<|
+CHIP         = |>CHIBIOS_CHIP<|
 
 include $(CHIBIOS)/boards/$(BOARD)/board.mk
 include $(CHIBIOS)/os/hal/platforms/$(PLATFORM)/platform.mk
@@ -306,7 +122,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
 MCU  = cortex-m4
 
 #TRGT = arm-elf-
-TRGT = $(ALT_COMPILER_ROOT)/arm-none-eabi-
+TRGT = arm-none-eabi-
 CC   = $(TRGT)gcc
 CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.

@@ -1,2 +1,4 @@
 *.asv
 *.log
+TestModel_chibiOS/*
+*.autosave
