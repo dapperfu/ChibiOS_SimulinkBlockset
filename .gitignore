@@ -2,3 +2,7 @@
 *.log
 TestModel_chibiOS/*
 *.autosave
+slprj/*
+*_rtw
+slprj/*
+*.mat

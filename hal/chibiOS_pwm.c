@@ -26,7 +26,7 @@
   *  -------------------------------------------------------------------------
   * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
   *  ------------------------------------------------------------------------- 
- * Created: Fri Nov 22 09:54:51 2013
+ * Created: Mon Dec  2 18:26:54 2013
  * 
  *
  */
@@ -35,9 +35,9 @@
 #define S_FUNCTION_NAME chibiOS_pwm
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /* %%%-SFUNWIZ_defines_Changes_BEGIN --- EDIT HERE TO _END */
-#define NUM_INPUTS          4
+#define NUM_INPUTS          1
 /* Input Port  0 */
-#define IN_PORT_0_NAME      PWM1
+#define IN_PORT_0_NAME      Input
 #define INPUT_0_WIDTH       1
 #define INPUT_DIMS_0_COL    1
 #define INPUT_0_DTYPE       real32_T
@@ -53,57 +53,6 @@
 #define IN_0_FRACTIONLENGTH  9
 #define IN_0_BIAS            0
 #define IN_0_SLOPE           0.125
-/* Input Port  1 */
-#define IN_PORT_1_NAME      PWM2
-#define INPUT_1_WIDTH       1
-#define INPUT_DIMS_1_COL    1
-#define INPUT_1_DTYPE       real_T
-#define INPUT_1_COMPLEX     COMPLEX_NO
-#define IN_1_FRAME_BASED    FRAME_NO
-#define IN_1_BUS_BASED      0
-#define IN_1_BUS_NAME       
-#define IN_1_DIMS           1-D
-#define INPUT_1_FEEDTHROUGH 1
-#define IN_1_ISSIGNED        0
-#define IN_1_WORDLENGTH      8
-#define IN_1_FIXPOINTSCALING 1
-#define IN_1_FRACTIONLENGTH  9
-#define IN_1_BIAS            0
-#define IN_1_SLOPE           0.125
-/* Input Port  2 */
-#define IN_PORT_2_NAME      PWM3
-#define INPUT_2_WIDTH       1
-#define INPUT_DIMS_2_COL    1
-#define INPUT_2_DTYPE       real_T
-#define INPUT_2_COMPLEX     COMPLEX_NO
-#define IN_2_FRAME_BASED    FRAME_NO
-#define IN_2_BUS_BASED      0
-#define IN_2_BUS_NAME       
-#define IN_2_DIMS           1-D
-#define INPUT_2_FEEDTHROUGH 1
-#define IN_2_ISSIGNED        0
-#define IN_2_WORDLENGTH      8
-#define IN_2_FIXPOINTSCALING 1
-#define IN_2_FRACTIONLENGTH  9
-#define IN_2_BIAS            0
-#define IN_2_SLOPE           0.125
-/* Input Port  3 */
-#define IN_PORT_3_NAME      PWM4
-#define INPUT_3_WIDTH       1
-#define INPUT_DIMS_3_COL    1
-#define INPUT_3_DTYPE       real_T
-#define INPUT_3_COMPLEX     COMPLEX_NO
-#define IN_3_FRAME_BASED    FRAME_NO
-#define IN_3_BUS_BASED      0
-#define IN_3_BUS_NAME       
-#define IN_3_DIMS           1-D
-#define INPUT_3_FEEDTHROUGH 1
-#define IN_3_ISSIGNED        0
-#define IN_3_WORDLENGTH      8
-#define IN_3_FIXPOINTSCALING 1
-#define IN_3_FRACTIONLENGTH  9
-#define IN_3_BIAS            0
-#define IN_3_SLOPE           0.125
 
 #define NUM_OUTPUTS           0
 
@@ -127,7 +76,7 @@
 #define SOURCEFILES "__SFB__"
 #define PANELINDEX           6
 #define USE_SIMSTRUCT        0
-#define SHOW_COMPILE_STEPS   0                   
+#define SHOW_COMPILE_STEPS   1                   
 #define CREATE_DEBUG_MEXFILE 0
 #define SAVE_CODE_ONLY       0
 #define SFUNWIZ_REVISION     3.0
@@ -140,10 +89,7 @@
 #define IS_PARAM_INT16(pVal) (mxIsNumeric(pVal) && !mxIsLogical(pVal) &&\
 !mxIsEmpty(pVal) && !mxIsSparse(pVal) && !mxIsComplex(pVal) && mxIsInt16(pVal))
 
-extern void chibiOS_pwm_Outputs_wrapper(const real32_T *PWM1,
-                          const real_T *PWM2,
-                          const real_T *PWM3,
-                          const real_T *PWM4,
+extern void chibiOS_pwm_Outputs_wrapper(const real32_T *Input,
                              
                           const int16_T  *clockFrequency, const int_T  p_width0, 
                           const int16_T  *clockPeriod,  const int_T p_width1);
@@ -219,34 +165,11 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumDiscStates(S, NUM_DISC_STATES);
 
     if (!ssSetNumInputPorts(S, NUM_INPUTS)) return;
-    /*Input Port 0 */
-    ssSetInputPortWidth(S,  0, INPUT_0_WIDTH); /* */
+    ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
     ssSetInputPortDataType(S, 0, SS_SINGLE);
-    ssSetInputPortComplexSignal(S,  0, INPUT_0_COMPLEX);
+    ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
     ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
     ssSetInputPortRequiredContiguous(S, 0, 1); /*direct input signal access*/
-
-    /*Input Port 1 */
-    ssSetInputPortWidth(S,  1, INPUT_1_WIDTH); /* */
-    ssSetInputPortDataType(S, 1, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S,  1, INPUT_1_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 1, 1); /*direct input signal access*/
-
-    /*Input Port 2 */
-    ssSetInputPortWidth(S,  2, INPUT_2_WIDTH); /* */
-    ssSetInputPortDataType(S, 2, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S,  2, INPUT_2_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 2, INPUT_2_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 2, 1); /*direct input signal access*/
-
-    /*Input Port 3 */
-    ssSetInputPortWidth(S,  3, INPUT_3_WIDTH); /* */
-    ssSetInputPortDataType(S, 3, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S,  3, INPUT_3_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 3, INPUT_3_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 3, 1); /*direct input signal access*/
-
 
     if (!ssSetNumOutputPorts(S, NUM_OUTPUTS)) return;
 
@@ -280,20 +203,6 @@ static void mdlInitializeSampleTimes(SimStruct *S)
     ssSetOffsetTime(S, 0, 0.0);
 }
 
-
-#define MDL_START  /* Change to #undef to remove function */
-#if defined(MDL_START) 
-  /* Function: mdlStart =======================================================
-   * Abstract:
-   *    This function is called once at start of model execution. If you
-   *    have states that should be initialized once, this is the place
-   *    to do it.
-   */
-  static void mdlStart(SimStruct *S)
-  {
-  }
-#endif /*  MDL_START */
-
 #define MDL_SET_INPUT_PORT_DATA_TYPE
 static void mdlSetInputPortDataType(SimStruct *S, int port, DTypeId dType)
 {
@@ -316,16 +225,13 @@ static void mdlSetDefaultPortDataTypes(SimStruct *S)
 */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    const real32_T   *PWM1  = (const real32_T*) ssGetInputPortSignal(S,0);
-    const real_T   *PWM2  = (const real_T*) ssGetInputPortSignal(S,1);
-    const real_T   *PWM3  = (const real_T*) ssGetInputPortSignal(S,2);
-    const real_T   *PWM4  = (const real_T*) ssGetInputPortSignal(S,3);
+    const real32_T   *Input  = (const real32_T*) ssGetInputPortSignal(S,0);
     const int_T   p_width0  = mxGetNumberOfElements(PARAM_DEF0(S));
     const int_T   p_width1  = mxGetNumberOfElements(PARAM_DEF1(S));
     const int16_T  *clockFrequency  = (const int16_T *)mxGetData(PARAM_DEF0(S));
     const int16_T  *clockPeriod  = (const int16_T *)mxGetData(PARAM_DEF1(S));
 
-    chibiOS_pwm_Outputs_wrapper(PWM1, PWM2, PWM3, PWM4, clockFrequency, p_width0, clockPeriod, p_width1);
+    chibiOS_pwm_Outputs_wrapper(Input, clockFrequency, p_width0, clockPeriod, p_width1);
 }
 
 

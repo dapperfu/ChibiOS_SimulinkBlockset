@@ -18,7 +18,7 @@
   *   in the Simulink Coder User's Manual in the Chapter titled,
   *   "Wrapper S-functions".
   *
-  *   Created: Fri Nov 22 09:54:51 2013
+  *   Created: Mon Dec  2 18:26:54 2013
   */
 
 
@@ -43,28 +43,20 @@
  *
  */
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
-/* extern double func(double a); */
+ 
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
 /*
  * Output functions
  *
  */
-void chibiOS_pwm_Outputs_wrapper(const real32_T *PWM1,
-                          const real_T *PWM2,
-                          const real_T *PWM3,
-                          const real_T *PWM4,
+void chibiOS_pwm_Outputs_wrapper(const real32_T *Input,
                              
                           const int16_T  *clockFrequency, const int_T  p_width0, 
                           const int16_T  *clockPeriod,  const int_T p_width1)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-/* This sample sets the output equal to the input
-      y0[0] = u0[0]; 
- For complex signals use: y0[0].re = u0[0].re; 
-      y0[0].im = u0[0].im;
-      y1[0].re = u1[0].re;
-      y1[0].im = u1[0].im;
-*/
+// # Specified in S-Function Builder
+//chibiOS_pwm_Outputs();
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
