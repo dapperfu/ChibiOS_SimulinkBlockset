@@ -51,7 +51,6 @@
  *
  */
 void chibiOS_pwm_Outputs_wrapper(const real32_T *Input,
-                             
                           const int16_T  *clockFrequency, const int_T  p_width0, 
                           const int16_T  *clockPeriod,  const int_T p_width1)
 {

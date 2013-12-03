@@ -24,21 +24,20 @@
 %function BlockTypeSetup(block, system) Output
   %<LibAddToCommonIncludes("hal.h")>
   %<LibAddToModelSources("hal.c")>
-
   %openfile buffer
     #define BlockTypeSetup_PWM 1
   %closefile buffer
   %<LibCacheDefine(buffer)>
 
-  %openfile buffer
+  %openfile buffer2
     #include "BlockTypeSetup_pwm.h"
-  %closefile buffer
-  %<LibCacheIncludes(buffer)>
+  %closefile buffer2
+  %<LibCacheIncludes(buffer2)>
 
-  %openfile buffer
+  %openfile buffer3
     extern void BlockTypeSetup_PWM();
-  %closefile buffer
-  %<LibCacheExtern(externs)>
+  %closefile buffer3
+  %<LibCacheExtern(buffer3)>
   %%
 %endfunction
 
@@ -56,6 +55,12 @@
 %%
 %function Outputs(block, system) Output
    /* %<Type> Block: %<Name> */
+
+    %assign u = LibBlockInputSignal(0, "", "", 0)
+    %assign pu0 = LibBlockInputSignalAddr(0, "", "", 0)
+
+    // Input Signal: %<u>
+    // Input Signal Ptr: %<pu0>
 	outputs();
 %endfunction
 
@@ -71,7 +76,7 @@
 %%
 %function Terminate(block, system) Output
    /* %<Type> Block: %<Name> */
-	rminate();
+	terminate();
 %endfunction
 
 %% [EOF] chibiOS_pwm.tlc
