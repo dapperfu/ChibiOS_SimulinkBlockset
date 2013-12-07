@@ -1,23 +1,73 @@
-%implements  chibiOS_Config "C"
+/**************************************************************************
+   Code generated for Simulink model: chibiOS_Config_Model.
+   Model version                    : 1.105
+   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
+   TLC version                      : 8.3 (Jul 21 2012)
+   C/C++ source code generated on   : Fri Dec 06 23:10:49 2013
+ ***************************************************************************
+ *
+ * Target selection: ChibiOS.tlc
+ * Embedded hardware selection: STMicroelectronics->STM32F4xx 32-bit Cortex-M4
+ * Code generation objectives: Unspecified
+ * Validation result: Not run
 
-%function BlockInstanceSetup(block, system) Output
-    %assign chconf = LibCreateSourceFile("Header", "Custom", "chconf")
-    %openfile tmpBuf
+ ***************************************************************************
+   ChibiOS/RT Simulink Blockset - Copyright (c) 2013, Jedediah Frey
+   All rights reserved.
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+   - Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+   - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+   - Neither the name of Jedediah Frey nor the names of its contributors may
+   be used to endorse or promote products derived from this software
+   without specific prior written permission.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGE.
+ ***************************************************************************
+   ChibiOS/RT - Copyright (C) 2006-2013 Giovanni Di Sirio
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+   http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ **************************************************************************/
+/* Includes */
+#ifndef RTW_HEADER_chconf_h_
+#define RTW_HEADER_chconf_h_
+
+/* Defines */
+
 /*
-    ChibiOS/RT - Copyright (C) 2006-2013 Giovanni Di Sirio
+   ChibiOS/RT - Copyright (C) 2006-2013 Giovanni Di Sirio
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
+   http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 
 /**
  * @file    templates/chconf.h
@@ -43,7 +93,7 @@
  *          setting also defines the system tick time unit.
  */
 #if !defined(CH_FREQUENCY) || defined(__DOXYGEN__)
-#define CH_FREQUENCY                    %<block.ParamSettings.CH_FREQUENCY>
+#define CH_FREQUENCY                   5
 #endif
 
 /**
@@ -58,7 +108,7 @@
  *          and generally faster.
  */
 #if !defined(CH_TIME_QUANTUM) || defined(__DOXYGEN__)
-#define CH_TIME_QUANTUM                 %<block.ParamSettings.CH_TIME_QUANTUM>
+#define CH_TIME_QUANTUM                20
 #endif
 
 /**
@@ -73,7 +123,7 @@
  * @note    Requires @p CH_USE_MEMCORE.
  */
 #if !defined(CH_MEMCORE_SIZE) || defined(__DOXYGEN__)
-#define CH_MEMCORE_SIZE                 %<block.ParamSettings.CH_MEMCORE_SIZE>
+#define CH_MEMCORE_SIZE                0
 #endif
 
 /**
@@ -90,7 +140,7 @@
  *          enter a sleep state.
  */
 #if !defined(CH_NO_IDLE_THREAD) || defined(__DOXYGEN__)
-#define CH_NO_IDLE_THREAD               %<block.ParamSettings.CH_NO_IDLE_THREAD>
+#define CH_NO_IDLE_THREAD              FALSE
 #endif
 
 /** @} */
@@ -111,7 +161,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_OPTIMIZE_SPEED) || defined(__DOXYGEN__)
-#define CH_OPTIMIZE_SPEED               %<block.ParamSettings.CH_OPTIMIZE_SPEED>
+#define CH_OPTIMIZE_SPEED              FALSE
 #endif
 
 /** @} */
@@ -130,7 +180,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_REGISTRY) || defined(__DOXYGEN__)
-#define CH_USE_REGISTRY                 %<block.ParamSettings.CH_USE_REGISTRY>
+#define CH_USE_REGISTRY                TRUE
 #endif
 
 /**
@@ -141,7 +191,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_WAITEXIT) || defined(__DOXYGEN__)
-#define CH_USE_WAITEXIT                 %<block.ParamSettings.CH_USE_WAITEXIT>
+#define CH_USE_WAITEXIT                TRUE
 #endif
 
 /**
@@ -151,7 +201,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_SEMAPHORES) || defined(__DOXYGEN__)
-#define CH_USE_SEMAPHORES               %<block.ParamSettings.CH_USE_SEMAPHORES>
+#define CH_USE_SEMAPHORES              TRUE
 #endif
 
 /**
@@ -163,7 +213,7 @@
  * @note    Requires @p CH_USE_SEMAPHORES.
  */
 #if !defined(CH_USE_SEMAPHORES_PRIORITY) || defined(__DOXYGEN__)
-#define CH_USE_SEMAPHORES_PRIORITY      %<block.ParamSettings.CH_USE_SEMAPHORES_PRIORITY>
+#define CH_USE_SEMAPHORES_PRIORITY     FALSE
 #endif
 
 /**
@@ -175,7 +225,7 @@
  * @note    Requires @p CH_USE_SEMAPHORES.
  */
 #if !defined(CH_USE_SEMSW) || defined(__DOXYGEN__)
-#define CH_USE_SEMSW                    %<block.ParamSettings.CH_USE_SEMSW>
+#define CH_USE_SEMSW                   TRUE
 #endif
 
 /**
@@ -185,7 +235,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_MUTEXES) || defined(__DOXYGEN__)
-#define CH_USE_MUTEXES                  %<block.ParamSettings.CH_USE_MUTEXES>
+#define CH_USE_MUTEXES                 FALSE
 #endif
 
 /**
@@ -197,7 +247,7 @@
  * @note    Requires @p CH_USE_MUTEXES.
  */
 #if !defined(CH_USE_CONDVARS) || defined(__DOXYGEN__)
-#define CH_USE_CONDVARS                 %<block.ParamSettings.CH_USE_CONDVARS>
+#define CH_USE_CONDVARS                TRUE
 #endif
 
 /**
@@ -209,7 +259,7 @@
  * @note    Requires @p CH_USE_CONDVARS.
  */
 #if !defined(CH_USE_CONDVARS_TIMEOUT) || defined(__DOXYGEN__)
-#define CH_USE_CONDVARS_TIMEOUT         %<block.ParamSettings.CH_USE_CONDVARS_TIMEOUT>
+#define CH_USE_CONDVARS_TIMEOUT        TRUE
 #endif
 
 /**
@@ -219,7 +269,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_EVENTS) || defined(__DOXYGEN__)
-#define CH_USE_EVENTS                   %<block.ParamSettings.CH_USE_EVENTS>
+#define CH_USE_EVENTS                  TRUE
 #endif
 
 /**
@@ -231,7 +281,7 @@
  * @note    Requires @p CH_USE_EVENTS.
  */
 #if !defined(CH_USE_EVENTS_TIMEOUT) || defined(__DOXYGEN__)
-#define CH_USE_EVENTS_TIMEOUT           %<block.ParamSettings.CH_USE_EVENTS_TIMEOUT>
+#define CH_USE_EVENTS_TIMEOUT          TRUE
 #endif
 
 /**
@@ -242,7 +292,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_MESSAGES) || defined(__DOXYGEN__)
-#define CH_USE_MESSAGES                 %<block.ParamSettings.CH_USE_MESSAGES>
+#define CH_USE_MESSAGES                TRUE
 #endif
 
 /**
@@ -254,7 +304,7 @@
  * @note    Requires @p CH_USE_MESSAGES.
  */
 #if !defined(CH_USE_MESSAGES_PRIORITY) || defined(__DOXYGEN__)
-#define CH_USE_MESSAGES_PRIORITY        %<block.ParamSettings.CH_USE_MESSAGES_PRIORITY>
+#define CH_USE_MESSAGES_PRIORITY       FALSE
 #endif
 
 /**
@@ -266,7 +316,7 @@
  * @note    Requires @p CH_USE_SEMAPHORES.
  */
 #if !defined(CH_USE_MAILBOXES) || defined(__DOXYGEN__)
-#define CH_USE_MAILBOXES                %<block.ParamSettings.CH_USE_MAILBOXES>
+#define CH_USE_MAILBOXES               TRUE
 #endif
 
 /**
@@ -276,7 +326,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_QUEUES) || defined(__DOXYGEN__)
-#define CH_USE_QUEUES                   %<block.ParamSettings.CH_USE_QUEUES>
+#define CH_USE_QUEUES                  TRUE
 #endif
 
 /**
@@ -287,7 +337,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_MEMCORE) || defined(__DOXYGEN__)
-#define CH_USE_MEMCORE                  %<block.ParamSettings.CH_USE_MEMCORE>
+#define CH_USE_MEMCORE                 TRUE
 #endif
 
 /**
@@ -301,7 +351,7 @@
  * @note    Mutexes are recommended.
  */
 #if !defined(CH_USE_HEAP) || defined(__DOXYGEN__)
-#define CH_USE_HEAP                     %<block.ParamSettings.CH_USE_HEAP>
+#define CH_USE_HEAP                    TRUE
 #endif
 
 /**
@@ -315,7 +365,7 @@
  *          appropriate documentation.
  */
 #if !defined(CH_USE_MALLOC_HEAP) || defined(__DOXYGEN__)
-#define CH_USE_MALLOC_HEAP              %<block.ParamSettings.CH_USE_MALLOC_HEAP>
+#define CH_USE_MALLOC_HEAP             FALSE
 #endif
 
 /**
@@ -326,7 +376,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_MEMPOOLS) || defined(__DOXYGEN__)
-#define CH_USE_MEMPOOLS                 %<block.ParamSettings.CH_USE_MEMPOOLS>
+#define CH_USE_MEMPOOLS                TRUE
 #endif
 
 /**
@@ -339,7 +389,7 @@
  * @note    Requires @p CH_USE_HEAP and/or @p CH_USE_MEMPOOLS.
  */
 #if !defined(CH_USE_DYNAMIC) || defined(__DOXYGEN__)
-#define CH_USE_DYNAMIC                  %<block.ParamSettings.CH_USE_DYNAMIC>
+#define CH_USE_DYNAMIC                 TRUE
 #endif
 
 /** @} */
@@ -359,7 +409,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_SYSTEM_STATE_CHECK) || defined(__DOXYGEN__)
-#define CH_DBG_SYSTEM_STATE_CHECK       %<block.ParamSettings.CH_DBG_SYSTEM_STATE_CHECK>
+#define CH_DBG_SYSTEM_STATE_CHECK      TRUE
 #endif
 
 /**
@@ -370,7 +420,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_CHECKS) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_CHECKS            %<block.ParamSettings.CH_DBG_ENABLE_CHECKS>
+#define CH_DBG_ENABLE_CHECKS           TRUE
 #endif
 
 /**
@@ -382,7 +432,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_ASSERTS) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_ASSERTS           %<block.ParamSettings.CH_DBG_ENABLE_ASSERTS>
+#define CH_DBG_ENABLE_ASSERTS          TRUE
 #endif
 
 /**
@@ -393,7 +443,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_TRACE) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_TRACE             %<block.ParamSettings.CH_DBG_ENABLE_TRACE>
+#define CH_DBG_ENABLE_TRACE            TRUE
 #endif
 
 /**
@@ -407,7 +457,7 @@
  *          @p panic_msg variable set to @p NULL.
  */
 #if !defined(CH_DBG_ENABLE_STACK_CHECK) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_STACK_CHECK       %<block.ParamSettings.CH_DBG_ENABLE_STACK_CHECK>
+#define CH_DBG_ENABLE_STACK_CHECK      TRUE
 #endif
 
 /**
@@ -419,7 +469,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_FILL_THREADS) || defined(__DOXYGEN__)
-#define CH_DBG_FILL_THREADS             %<block.ParamSettings.CH_DBG_FILL_THREADS>
+#define CH_DBG_FILL_THREADS            TRUE
 #endif
 
 /**
@@ -432,7 +482,7 @@
  *          some test cases into the test suite.
  */
 #if !defined(CH_DBG_THREADS_PROFILING) || defined(__DOXYGEN__)
-#define CH_DBG_THREADS_PROFILING        %<block.ParamSettings.CH_DBG_THREADS_PROFILING>
+#define CH_DBG_THREADS_PROFILING       TRUE
 #endif
 
 /** @} */
@@ -449,8 +499,7 @@
  * @details User fields added to the end of the @p Thread structure.
  */
 #if !defined(THREAD_EXT_FIELDS) || defined(__DOXYGEN__)
-#define THREAD_EXT_FIELDS                                                   \
-  /* Add threads custom fields here.*/
+#define THREAD_EXT_FIELDS                                        /* Add threads custom fields here.*/
 #endif
 
 /**
@@ -461,9 +510,7 @@
  *          the threads creation APIs.
  */
 #if !defined(THREAD_EXT_INIT_HOOK) || defined(__DOXYGEN__)
-#define THREAD_EXT_INIT_HOOK(tp) {                                          \
-  /* Add threads initialization code here.*/                                \
-}
+#define THREAD_EXT_INIT_HOOK(tp)       {                         /* Add threads initialization code here.*/}
 #endif
 
 /**
@@ -475,9 +522,7 @@
  *          terminate.
  */
 #if !defined(THREAD_EXT_EXIT_HOOK) || defined(__DOXYGEN__)
-#define THREAD_EXT_EXIT_HOOK(tp) {                                          \
-  /* Add threads finalization code here.*/                                  \
-}
+#define THREAD_EXT_EXIT_HOOK(tp)       {                         /* Add threads finalization code here.*/}
 #endif
 
 /**
@@ -485,9 +530,7 @@
  * @details This hook is invoked just before switching between threads.
  */
 #if !defined(THREAD_CONTEXT_SWITCH_HOOK) || defined(__DOXYGEN__)
-#define THREAD_CONTEXT_SWITCH_HOOK(ntp, otp) {                              \
-  /* System halt code here.*/                                               \
-}
+#define THREAD_CONTEXT_SWITCH_HOOK(ntp, otp) {                   /* System halt code here.*/}
 #endif
 
 /**
@@ -495,9 +538,7 @@
  * @details This hook is continuously invoked by the idle thread loop.
  */
 #if !defined(IDLE_LOOP_HOOK) || defined(__DOXYGEN__)
-#define IDLE_LOOP_HOOK() {                                                  \
-  /* Idle loop code here.*/                                                 \
-}
+#define IDLE_LOOP_HOOK()               {                         /* Idle loop code here.*/}
 #endif
 
 /**
@@ -506,9 +547,7 @@
  *          after processing the virtual timers queue.
  */
 #if !defined(SYSTEM_TICK_EVENT_HOOK) || defined(__DOXYGEN__)
-#define SYSTEM_TICK_EVENT_HOOK() {                                          \
-  /* System tick event code here.*/                                         \
-}
+#define SYSTEM_TICK_EVENT_HOOK()       {                         /* System tick event code here.*/}
 #endif
 
 /**
@@ -517,12 +556,20 @@
  *          the system is halted.
  */
 #if !defined(SYSTEM_HALT_HOOK) || defined(__DOXYGEN__)
-#define SYSTEM_HALT_HOOK() {                                                \
-  /* System halt code here.*/                                               \
-}
+#define SYSTEM_HALT_HOOK()             {                         /* System halt code here.*/}
 #endif
 
 /** @} */
-    %closefile tmpBuf
-    %<LibSetSourceFileSection(chconf,"Defines",tmpBuf)>
-%endfunction
+
+/* Types */
+
+/* Enums */
+
+/* Definitions */
+
+/* Declarations */
+
+/* Functions */
+#endif                                 /* RTW_HEADER_chconf_h_ */
+
+/* [EOF] chconf.h */

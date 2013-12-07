@@ -6,3 +6,4 @@ slprj/*
 *_rtw
 slprj/*
 *.mat
+.~lock.*
