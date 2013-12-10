@@ -14,7 +14,7 @@
 %%     "Writing Block Target Files to Inline S-Functions",
 %%        "Function-Based or Wrappered Code".
 %%
-%implements  level2 "C"
+%implements  pwm_Config "C"
 
 %% Function: BlockInstanceSetup ===================================================
 %%
@@ -176,6 +176,7 @@
 %% Function: Start =============================================================
 %%
 %function Start(block, system) Output
+    %<block>
     /* Start Block: %<Name> */
     %openfile buffer
     /* Header Custom Code: %<Name> */
@@ -201,26 +202,30 @@
 %%      Code generation rules for mdlOutputs function.
 %%
 %function Outputs(block, system) Output
-    /* %<Type> Output Block: %<Name> */
+    /* %<Type> Block: %<Name> */
+	outputs();
 %endfunction
 
 %% Function: Update =============================================================
 %%
 %function Update(block, system) Output
-    /* %<Type> Update Block: %<Name> */
+    /* %<Type> Block: %<Name> */
+    Update();
 %endfunction
 
 
 %% Function: Terminate =============================================================
 %%
 %function Derivatives(block, system) Output
-    /* %<Type> Derivatives Block: %<Name> */
+    /* %<Type> Block: %<Name> */
+	Derivatives();
 %endfunction
 
 %% Function: Terminate =============================================================
 %%
 %function Terminate(block, system) Output
-    /* %<Type> Terminate Block: %<Name> */
+    /* %<Type> Block: %<Name> */
+	Terminate();
 %endfunction
 
 %% [EOF] level2.tlc

@@ -1,0 +1,304 @@
+%implements  hal_Config "C"
+
+%function BlockInstanceSetup(block, system) Output
+	%assign halconf = LibCreateSourceFile("Header", "Custom", "halconf")
+	%openfile tmpBuf
+/**
+ * @file    templates/halconf.h
+ * @brief   HAL configuration header.
+ * @details HAL configuration file, this file allows to enable or disable the
+ *          various device drivers from your application. You may also use
+ *          this file in order to override the device drivers default settings.
+ *
+ * @addtogroup HAL_CONF
+ * @{
+ */
+
+#ifndef _HALCONF_H_
+#define _HALCONF_H_
+
+#include "mcuconf.h"
+
+/**
+ * @brief   Enables the TM subsystem.
+ */
+#if !defined(HAL_USE_TM) || defined(__DOXYGEN__)
+#define HAL_USE_TM                  %<block.ParamSettings.HAL_USE_TM>
+#endif
+
+/**
+ * @brief   Enables the PAL subsystem.
+ */
+#if !defined(HAL_USE_PAL) || defined(__DOXYGEN__)
+#define HAL_USE_PAL                 %<block.ParamSettings.HAL_USE_PAL>
+#endif
+
+/**
+ * @brief   Enables the ADC subsystem.
+ */
+#if !defined(HAL_USE_ADC) || defined(__DOXYGEN__)
+#define HAL_USE_ADC                 %<block.ParamSettings.HAL_USE_ADC>
+#endif
+
+/**
+ * @brief   Enables the CAN subsystem.
+ */
+#if !defined(HAL_USE_CAN) || defined(__DOXYGEN__)
+#define HAL_USE_CAN                 %<block.ParamSettings.HAL_USE_CAN>
+#endif
+
+/**
+ * @brief   Enables the EXT subsystem.
+ */
+#if !defined(HAL_USE_EXT) || defined(__DOXYGEN__)
+#define HAL_USE_EXT                 %<block.ParamSettings.HAL_USE_EXT>
+#endif
+
+/**
+ * @brief   Enables the GPT subsystem.
+ */
+#if !defined(HAL_USE_GPT) || defined(__DOXYGEN__)
+#define HAL_USE_GPT                 %<block.ParamSettings.HAL_USE_GPT>
+#endif
+
+/**
+ * @brief   Enables the I2C subsystem.
+ */
+#if !defined(HAL_USE_I2C) || defined(__DOXYGEN__)
+#define HAL_USE_I2C                 %<block.ParamSettings.HAL_USE_I2C>
+#endif
+
+/**
+ * @brief   Enables the ICU subsystem.
+ */
+#if !defined(HAL_USE_ICU) || defined(__DOXYGEN__)
+#define HAL_USE_ICU                 %<block.ParamSettings.HAL_USE_ICU>
+#endif
+
+/**
+ * @brief   Enables the MAC subsystem.
+ */
+#if !defined(HAL_USE_MAC) || defined(__DOXYGEN__)
+#define HAL_USE_MAC                 %<block.ParamSettings.HAL_USE_MAC>
+#endif
+
+/**
+ * @brief   Enables the MMC_SPI subsystem.
+ */
+#if !defined(HAL_USE_MMC_SPI) || defined(__DOXYGEN__)
+#define HAL_USE_MMC_SPI             %<block.ParamSettings.HAL_USE_MMC_SPI>
+#endif
+
+/**
+ * @brief   Enables the PWM subsystem.
+ */
+#if !defined(HAL_USE_PWM) || defined(__DOXYGEN__)
+#define HAL_USE_PWM                 %<block.ParamSettings.HAL_USE_PWM>
+#endif
+
+/**
+ * @brief   Enables the RTC subsystem.
+ */
+#if !defined(HAL_USE_RTC) || defined(__DOXYGEN__)
+#define HAL_USE_RTC                 %<block.ParamSettings.HAL_USE_RTC>
+#endif
+
+/**
+ * @brief   Enables the SDC subsystem.
+ */
+#if !defined(HAL_USE_SDC) || defined(__DOXYGEN__)
+#define HAL_USE_SDC                 %<block.ParamSettings.HAL_USE_SDC>
+#endif
+
+/**
+ * @brief   Enables the SERIAL subsystem.
+ */
+#if !defined(HAL_USE_SERIAL) || defined(__DOXYGEN__)
+#define HAL_USE_SERIAL              %<block.ParamSettings.HAL_USE_SERIAL>
+#endif
+
+/**
+ * @brief   Enables the SERIAL over USB subsystem.
+ */
+#if !defined(HAL_USE_SERIAL_USB) || defined(__DOXYGEN__)
+#define HAL_USE_SERIAL_USB          %<block.ParamSettings.HAL_USE_SERIAL_USB>
+#endif
+
+/**
+ * @brief   Enables the SPI subsystem.
+ */
+#if !defined(HAL_USE_SPI) || defined(__DOXYGEN__)
+#define HAL_USE_SPI                 %<block.ParamSettings.HAL_USE_SPI>
+#endif
+
+/**
+ * @brief   Enables the UART subsystem.
+ */
+#if !defined(HAL_USE_UART) || defined(__DOXYGEN__)
+#define HAL_USE_UART                %<block.ParamSettings.HAL_USE_UART>
+#endif
+
+/**
+ * @brief   Enables the USB subsystem.
+ */
+#if !defined(HAL_USE_USB) || defined(__DOXYGEN__)
+#define HAL_USE_USB                 %<block.ParamSettings.HAL_USE_USB>
+#endif
+
+/*===========================================================================*/
+/* ADC driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Enables synchronous APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(ADC_USE_WAIT) || defined(__DOXYGEN__)
+#define ADC_USE_WAIT                %<block.ParamSettings.ADC_USE_WAIT>
+#endif
+
+/**
+ * @brief   Enables the @p adcAcquireBus() and @p adcReleaseBus() APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(ADC_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
+#define ADC_USE_MUTUAL_EXCLUSION    %<block.ParamSettings.ADC_USE_MUTUAL_EXCLUSION>
+#endif
+
+/*===========================================================================*/
+/* CAN driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Sleep mode related APIs inclusion switch.
+ */
+#if !defined(CAN_USE_SLEEP_MODE) || defined(__DOXYGEN__)
+#define CAN_USE_SLEEP_MODE          %<block.ParamSettings.CAN_USE_SLEEP_MODE>
+#endif
+
+/*===========================================================================*/
+/* I2C driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Enables the mutual exclusion APIs on the I2C bus.
+ */
+#if !defined(I2C_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
+#define I2C_USE_MUTUAL_EXCLUSION    %<block.ParamSettings.I2C_USE_MUTUAL_EXCLUSION>
+#endif
+
+/*===========================================================================*/
+/* MAC driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Enables an event sources for incoming packets.
+ */
+#if !defined(MAC_USE_ZERO_COPY) || defined(__DOXYGEN__)
+#define MAC_USE_ZERO_COPY           %<block.ParamSettings.MAC_USE_ZERO_COPY>
+#endif
+
+/**
+ * @brief   Enables an event sources for incoming packets.
+ */
+#if !defined(MAC_USE_EVENTS) || defined(__DOXYGEN__)
+#define MAC_USE_EVENTS              %<block.ParamSettings.MAC_USE_EVENTS>
+#endif
+
+/*===========================================================================*/
+/* MMC_SPI driver related settings.                                          */
+/*===========================================================================*/
+
+/**
+ * @brief   Delays insertions.
+ * @details If enabled this options inserts delays into the MMC waiting
+ *          routines releasing some extra CPU time for the threads with
+ *          lower priority, this may slow down the driver a bit however.
+ *          This option is recommended also if the SPI driver does not
+ *          use a DMA channel and heavily loads the CPU.
+ */
+#if !defined(MMC_NICE_WAITING) || defined(__DOXYGEN__)
+#define MMC_NICE_WAITING            %<block.ParamSettings.MMC_NICE_WAITING>
+#endif
+
+/*===========================================================================*/
+/* SDC driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Number of initialization attempts before rejecting the card.
+ * @note    Attempts are performed at 10mS intervals.
+ */
+#if !defined(SDC_INIT_RETRY) || defined(__DOXYGEN__)
+#define SDC_INIT_RETRY              %<block.ParamSettings.SDC_INIT_RETRY>
+#endif
+
+/**
+ * @brief   Include support for MMC cards.
+ * @note    MMC support is not yet implemented so this option must be kept
+ *          at @p FALSE.
+ */
+#if !defined(SDC_MMC_SUPPORT) || defined(__DOXYGEN__)
+#define SDC_MMC_SUPPORT             %<block.ParamSettings.SDC_MMC_SUPPORT>
+#endif
+
+/**
+ * @brief   Delays insertions.
+ * @details If enabled this options inserts delays into the MMC waiting
+ *          routines releasing some extra CPU time for the threads with
+ *          lower priority, this may slow down the driver a bit however.
+ */
+#if !defined(SDC_NICE_WAITING) || defined(__DOXYGEN__)
+#define SDC_NICE_WAITING            %<block.ParamSettings.SDC_NICE_WAITING>
+#endif
+
+/*===========================================================================*/
+/* SERIAL driver related settings.                                           */
+/*===========================================================================*/
+
+/**
+ * @brief   Default bit rate.
+ * @details Configuration parameter, this is the baud rate selected for the
+ *          default configuration.
+ */
+#if !defined(SERIAL_DEFAULT_BITRATE) || defined(__DOXYGEN__)
+#define SERIAL_DEFAULT_BITRATE      %<block.ParamSettings.SERIAL_DEFAULT_BITRATE>
+#endif
+
+/**
+ * @brief   Serial buffers size.
+ * @details Configuration parameter, you can change the depth of the queue
+ *          buffers depending on the requirements of your application.
+ * @note    The default is 64 bytes for both the transmission and receive
+ *          buffers.
+ */
+#if !defined(SERIAL_BUFFERS_SIZE) || defined(__DOXYGEN__)
+#define SERIAL_BUFFERS_SIZE         %<block.ParamSettings.SERIAL_BUFFERS_SIZE>
+#endif
+
+/*===========================================================================*/
+/* SPI driver related settings.                                              */
+/*===========================================================================*/
+
+/**
+ * @brief   Enables synchronous APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(SPI_USE_WAIT) || defined(__DOXYGEN__)
+#define SPI_USE_WAIT                %<block.ParamSettings.SPI_USE_WAIT>
+#endif
+
+/**
+ * @brief   Enables the @p spiAcquireBus() and @p spiReleaseBus() APIs.
+ * @note    Disabling this option saves both code and data space.
+ */
+#if !defined(SPI_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
+#define SPI_USE_MUTUAL_EXCLUSION    %<block.ParamSettings.SPI_USE_MUTUAL_EXCLUSION>
+#endif
+
+#endif /* _HALCONF_H_ */
+
+/** @} */
+	%closefile tmpBuf
+%<LibSetSourceFileSection(halconf,"Defines",tmpBuf)>
+%endfunction

@@ -16,7 +16,7 @@ ParameterPrompts={Parameters.Prompt};
 ParameterName={Parameters.Name};
 ParameterTabName={Parameters.TabName};
 %%
-fid=fopen('WriteRTW.tmp','a');
+fid=fopen('WriteRTW.tmp','w');
 fprintf(fid,'function WriteRTW(block)\n');
 for i=1:numel(ParameterType)
     fprintf(fid,'%% %s\n',ParameterPrompts{i});
