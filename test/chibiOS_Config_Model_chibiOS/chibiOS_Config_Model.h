@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.105
+   Model version                    : 1.129
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Fri Dec 06 23:10:49 2013
+   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -52,8 +52,9 @@
 #define RTW_HEADER_chibiOS_Config_Model_h_
 #ifndef chibiOS_Config_Model_COMMON_INCLUDES_
 # define chibiOS_Config_Model_COMMON_INCLUDES_
-#include <stddef.h>
+#include <string.h>
 #include "rtwtypes.h"
+#include "BlockTypeSetup_Common.h"
 #include "rt_nonfinite.h"
 #endif                                 /* chibiOS_Config_Model_COMMON_INCLUDES_ */
 
@@ -70,8 +71,16 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
+#ifndef rtmStepTask
+# define rtmStepTask(rtm, idx)         ((rtm)->Timing.TaskCounters.TID[(idx)] == 0)
+#endif
+
 #ifndef rtmGetStopRequested
 # define rtmGetStopRequested(rtm)      ((void*) 0)
+#endif
+
+#ifndef rtmTaskCounter
+# define rtmTaskCounter(rtm, idx)      ((rtm)->Timing.TaskCounters.TID[(idx)])
 #endif
 
 /* Types */
@@ -171,11 +180,25 @@ struct Parameters_chibiOS_Config_Model_ {
   real_T chibiOS_Config_MSFcnParameter31;/* Expression: CH_DBG_THREADS_PROFILING
                                           * Referenced by: '<Root>/chibiOS_Config'
                                           */
+  real32_T Constant_Value;             /* Computed Parameter: Constant_Value
+                                        * Referenced by: '<Root>/Constant'
+                                        */
 };
 
 /* Real-time Model Data Structure */
 struct tag_RTM_chibiOS_Config_Model {
   const char_T *errorStatus;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    struct {
+      uint8_T TID[3];
+    } TaskCounters;
+  } Timing;
 };
 
 /* Enums */
@@ -187,9 +210,13 @@ struct tag_RTM_chibiOS_Config_Model {
 /* Block parameters (auto storage) */
 extern Parameters_chibiOS_Config_Model chibiOS_Config_Model_P;
 
+/* External function called from main */
+extern void chibiOS_Config_Model_SetEventsForThisBaseStep(boolean_T *eventFlags);
+
 /* Model entry point functions */
+extern void chibiOS_Config_Model_SetEventsForThisBaseStep(boolean_T *eventFlags);
 extern void chibiOS_Config_Model_initialize(void);
-extern void chibiOS_Config_Model_step(void);
+extern void chibiOS_Config_Model_step(int_T tid);
 
 /* Real-time Model object */
 extern RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M;
@@ -216,6 +243,9 @@ extern RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M;
 /*-
  * Requirements for '<Root>': chibiOS_Config_Model
  */
+
+/* UserBottom - BlockInstanceSetup .c */
+/* UserBottom - BlockInstanceSetup .c */
 #endif                                 /* RTW_HEADER_chibiOS_Config_Model_h_ */
 
 /* [EOF] chibiOS_Config_Model.h */

@@ -30,27 +30,75 @@
 %<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
 %% Create calling syntax for the model initialization and step routine:
 %openfile main_Buf
-VirtualTimer vt;
 
-/* Step the model for base rate */
-void baseRateClock(void *p) {
-     /* Restarts the timer.*/
-     chSysLockFromIsr();
-     chVTSetI(&vt, S2ST(%<FixedStep>), baseRateClock, p);
-     chSysUnlockFromIsr();
-     %<LibGetMdlSrcBaseName()>_step();
+/* Model has %<FcnNumST()> rates */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+msg_t periodicThread%<tidIdx>(void *param) {
+    systime_t time;
+    setName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
+    chThdSleepSeconds(%<SampleTime[tidIdx].PeriodAndOffset[1]>);
+    while (TRUE) {
+        time = chTimeNow() + S2ST(%<SampleTime[tidIdx].PeriodAndOffset[0]>);            // Next deadline
+  %if !SLibConcurrentTasks() || !(FixedStepOpts.TID01EQ && tidIdx>0)
+    %assign rootSystem.CurrentTID = tidIdx
+    %<SLibModelStepFcnName(tidIdx)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx)>);
+  %else
+    %assign rootSystem.CurrentTID = tidIdx + 1
+    %<SLibModelStepFcnName(tidIdx+1)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx+1)>);
+  %endif
+        chThdSleepUntil(time);
+    }
 }
+%endforeach
+/* Create a Thread Working Area */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+static WORKING_AREA(periodicWorkingArea%<tidIdx>, 128);
+%endforeach
+%closefile main_Buf
+%<LibSetSourceFileSection(cFile, "Defines", main_Buf)>
 
+%openfile main_Buf
 int main (void) {
+    /* Create Static Threads */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+    Thread *tp%<tidIdx>;
+%endforeach
     /* ChibiOS Init */
     halInit();
     chSysInit();
 
-    /* Periodic Function Initi */
-    chSysLock();
-    /* Starts the timer.*/
-    chVTSetI(&vt, S2ST(%<FixedStep>), baseRateClock, NULL);
-    chSysUnlock();
+    /* Start Static Threads */
+%foreach tidIdx = NumSynchronousSampleTimes
+    %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+        %continue
+    %endif
+    *tp%<tidIdx> = chThdCreateStatic(periodicWorkingArea%<tidIdx>,
+        sizeof(periodicWorkingArea%<tidIdx>),
+        NORMALPRIO,
+        periodic_thread%<tidIdx>,
+        NULL);
+%endforeach
+
+    /* Reduce priority of main thread */
+    chThdSetPriority(NORMALPRIO-10);
+
     /* Infinite loop */
     while(1) {
         /* Add code here */

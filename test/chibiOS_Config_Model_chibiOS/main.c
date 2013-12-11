@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.105
+   Model version                    : 1.129
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Fri Dec 06 23:10:49 2013
+   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -54,6 +54,48 @@
 
 /* Defines */
 
+/* Model has 3 rates */
+msg_t periodicThread0(void *param)
+{
+  systime_t time;
+  setName("thread_0.01s");
+  chThdSleepSeconds(0.0);
+  while (TRUE) {
+    time = chTimeNow() + S2ST(0.01);   // Next deadline
+    chibiOS_Config_Model_step0();
+    chThdSleepUntil(time);
+  }
+}
+
+msg_t periodicThread1(void *param)
+{
+  systime_t time;
+  setName("thread_0.1s");
+  chThdSleepSeconds(0.0);
+  while (TRUE) {
+    time = chTimeNow() + S2ST(0.1);    // Next deadline
+    chibiOS_Config_Model_step1();
+    chThdSleepUntil(time);
+  }
+}
+
+msg_t periodicThread2(void *param)
+{
+  systime_t time;
+  setName("thread_0.5s");
+  chThdSleepSeconds(0.0);
+  while (TRUE) {
+    time = chTimeNow() + S2ST(0.5);    // Next deadline
+    chibiOS_Config_Model_step2();
+    chThdSleepUntil(time);
+  }
+}
+
+/* Create a Thread Working Area */
+static WORKING_AREA(periodicWorkingArea0, 128);
+static WORKING_AREA(periodicWorkingArea1, 128);
+static WORKING_AREA(periodicWorkingArea2, 128);
+
 /* Types */
 
 /* Enums */
@@ -63,30 +105,36 @@
 /* Declarations */
 
 /* Functions */
-VirtualTimer vt;
-
-/* Step the model for base rate */
-void baseRateClock(void *p)
-{
-  /* Restarts the timer.*/
-  chSysLockFromIsr();
-  chVTSetI(&vt, S2ST(0.01), baseRateClock, p);
-  chSysUnlockFromIsr();
-  chibiOS_Config_Model_step();
-}
-
 int main (void)
 {
+  /* Create Static Threads */
+  Thread *tp0;
+  Thread *tp1;
+  Thread *tp2;
+
   /* ChibiOS Init */
   halInit();
   chSysInit();
 
-  /* Periodic Function Initi */
-  chSysLock();
+  /* Start Static Threads */
+  *tp0 = chThdCreateStatic(periodicWorkingArea0,
+    sizeof(periodicWorkingArea0),
+    NORMALPRIO,
+    periodic_thread0,
+    NULL);
+  *tp1 = chThdCreateStatic(periodicWorkingArea1,
+    sizeof(periodicWorkingArea1),
+    NORMALPRIO,
+    periodic_thread1,
+    NULL);
+  *tp2 = chThdCreateStatic(periodicWorkingArea2,
+    sizeof(periodicWorkingArea2),
+    NORMALPRIO,
+    periodic_thread2,
+    NULL);
 
-  /* Starts the timer.*/
-  chVTSetI(&vt, S2ST(0.01), baseRateClock, NULL);
-  chSysUnlock();
+  /* Reduce priority of main thread */
+  chThdSetPriority(NORMALPRIO-10);
 
   /* Infinite loop */
   while (1) {

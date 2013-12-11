@@ -25,7 +25,7 @@
 %function BlockInstanceSetup(block, system) Output
     %assign modelH      = LibGetModelDotHFile()
     %assign modelC      = LibGetModelDotCFile()
-    %<LibAddToCommonIncludes("BlockTypeSetup_Common.h")>
+    %<LibAddToCommonIncludes("BlockTypeSetup_CommonInclude.h")>
     %<LibAddToModelSources("BlockTypeSetup_Sources.c")>
     %openfile buffer
         /* LibCacheDefine - BlockInstanceSetup */
@@ -39,7 +39,6 @@
 
     %openfile buffer3
         /* LibCacheExtern - BlockInstanceSetup */
-        extern void BlockTypeSetup;
     %closefile buffer3
     %<LibCacheExtern(buffer3)>
 
@@ -115,7 +114,7 @@
     %<LibSetSourceFileSection(modelC,"Documentation",buffer)>
 
     %openfile buffer
-        /* UserBottom - BlockInstanceSetup .c */
+        /* UserBottom - BlockInstanceSetup */
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"UserBottom",buffer)>
     %<LibSetSourceFileSection(modelH,"UserBottom",buffer)>
@@ -155,22 +154,19 @@
 %% Function: Enable =============================================================
 %%
 %function Enable(block, system) Output
-    /* %<Type> Block: %<Name> */
-	Enable();
+    /* Enable Block: %<Name> */
 %endfunction
 
 %% Function: Disable =============================================================
 %%
 %function Disable(block, system) Output
-    /* %<Type> Block: %<Name> */
-	Disable();
+    /* Disable Block: %<Name> */
 %endfunction
 
 %% InitializeConditions: Start =============================================================
 %%
 %function InitializeConditions(block, system) Output
-    /* %<Type> Block: %<Name> */
-	InitializeConditions();
+    /* Initialize Conditions Block: %<Name> */
 %endfunction
 
 %% Function: Start =============================================================
@@ -180,19 +176,20 @@
     %openfile buffer
     /* Header Custom Code: %<Name> */
     %closefile buffer
-	%<LibMdlStartCustomCode(buffer,"header")>;
-    %openfile buffer2
-    /* Declaration Custom Code: %<Name> */
-    %closefile buffer2
-	%<LibMdlStartCustomCode(buffer2,"declaration")>;
+	%<LibMdlStartCustomCode(buffer,"header")>
+    %% Header and Declaration are synonymous.
+    %%openfile buffer2
+    %%/* Declaration Custom Code: %<Name> */
+    %%closefile buffer2
+	%%<LibMdlStartCustomCode(buffer2,"declaration")>
     %openfile buffer3
     /* Execution Custom Code: %<Name> */
     %closefile buffer3
-	%<LibMdlStartCustomCode(buffer3,"execution")>;
+	%<LibMdlStartCustomCode(buffer3,"execution")>
     %openfile buffer4
     /* Trailer Custom Code: %<Name> */
     %closefile buffer4
-	%<LibMdlStartCustomCode(buffer4,"trailer")>;
+	%<LibMdlStartCustomCode(buffer4,"trailer")>
 %endfunction
 
 %% Function: Outputs ==========================================================
@@ -201,26 +198,26 @@
 %%      Code generation rules for mdlOutputs function.
 %%
 %function Outputs(block, system) Output
-    /* %<Type> Output Block: %<Name> */
+    /* Output Block: %<Name> */
 %endfunction
 
 %% Function: Update =============================================================
 %%
 %function Update(block, system) Output
-    /* %<Type> Update Block: %<Name> */
+    /* Update Block: %<Name> */
 %endfunction
 
 
 %% Function: Terminate =============================================================
 %%
 %function Derivatives(block, system) Output
-    /* %<Type> Derivatives Block: %<Name> */
+    /* Derivatives Block: %<Name> */
 %endfunction
 
 %% Function: Terminate =============================================================
 %%
 %function Terminate(block, system) Output
-    /* %<Type> Terminate Block: %<Name> */
+    /* Terminate Block: %<Name> */
 %endfunction
 
 %% [EOF] level2.tlc

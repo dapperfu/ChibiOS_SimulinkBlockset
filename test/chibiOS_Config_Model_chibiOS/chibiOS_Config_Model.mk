@@ -49,13 +49,13 @@ PROJECT  = TestModel
 BUILDDIR = C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
 
 # Imported source files and paths
-CHIBIOS      = 
-BOARD        = 
-PLATFORM     = 
-COMPILER     = 
-COMPILER_ROOT= 
-INSTRUCTION  = 
-CHIP         = 
+CHIBIOS      = C:\CHIBIS~1\chibios
+BOARD        = ST_STM32F4_DISCOVERY
+PLATFORM     = STM32F4xx
+COMPILER     = GCC
+COMPILER_ROOT= C:\CHIBIS~1\tools\GNUTOO~1\43F2B~1.720
+INSTRUCTION  = ARMCMx
+CHIP         = STM32F4xx
 
 include $(CHIBIOS)/boards/$(BOARD)/board.mk
 include $(CHIBIOS)/os/hal/platforms/$(PLATFORM)/platform.mk

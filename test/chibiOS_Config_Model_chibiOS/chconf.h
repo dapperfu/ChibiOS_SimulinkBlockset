@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.105
+   Model version                    : 1.129
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Fri Dec 06 23:10:49 2013
+   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -52,22 +52,6 @@
 #define RTW_HEADER_chconf_h_
 
 /* Defines */
-
-/*
-   ChibiOS/RT - Copyright (C) 2006-2013 Giovanni Di Sirio
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
- */
 
 /**
  * @file    templates/chconf.h
