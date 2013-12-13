@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -48,35 +48,36 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-/* Includes - BlockInstanceSetup */
-/* Includes - BlockInstanceSetup */
-
+/* Includes - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Includes - BlockInstanceSetup (<Root>/pwm_Config1)*/
+#include "ch.h"
+#include "hal.h"
 #include "chibiOS_Config_Model.h"
 #include "chibiOS_Config_Model_private.h"
 
 /* Defines */
 
-/* Defines - BlockInstanceSetup */
-/* Defines - BlockInstanceSetup */
+/* Defines - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Defines - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
 /* Types */
 
-/* IntrinsicTypes - BlockInstanceSetup */
-/* IntrinsicTypes - BlockInstanceSetup */
+/* IntrinsicTypes - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* IntrinsicTypes - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* PrimitiveTypedefs - BlockInstanceSetup */
-/* PrimitiveTypedefs - BlockInstanceSetup */
+/* PrimitiveTypedefs - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* PrimitiveTypedefs - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* UserTop - BlockInstanceSetup */
-/* UserTop - BlockInstanceSetup */
+/* UserTop - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* UserTop - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* Typedefs - BlockInstanceSetup */
-/* Typedefs - BlockInstanceSetup */
+/* Typedefs - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Typedefs - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
 /* Enums */
 
-/* Enums - BlockInstanceSetup */
-/* Enums - BlockInstanceSetup */
+/* Enums - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Enums - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
 /* Definitions */
 
@@ -88,13 +89,51 @@ RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M =
 /* Declarations */
 static void rate_monotonic_scheduler(void);
 
-/* Declarations - BlockInstanceSetup */
-/* Declarations - BlockInstanceSetup */
+/* Declarations - BlockInstanceSetup (<Root>/pwm_Config)*/
+static PWMConfig pwmcfg3 = {
+  100000,
+  128,
+  NULL,
+
+  {
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL }
+  },
+
+  /* HW dependent part.*/
+  0,
+  0
+};
+
+static PWMConfig pwmcfg4 = {
+  10000,
+  10000,
+  NULL,
+
+  {
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
+
+    { PWM_OUTPUT_ACTIVE_HIGH, NULL }
+  },
+
+  /* HW dependent part.*/
+  0,
+  0
+};
 
 /* Functions */
 
-/* Functions - BlockInstanceSetup */
-/* Functions - BlockInstanceSetup */
+/* Functions - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Functions - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
 /*
  * Set which subrates need to run this base step (base rate always runs).
@@ -106,7 +145,6 @@ void chibiOS_Config_Model_SetEventsForThisBaseStep(boolean_T *eventFlags)
 {
   /* Task runs when its counter is zero, computed via rtmStepTask macro */
   eventFlags[1] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 1));
-  eventFlags[2] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 2));
 }
 
 /*
@@ -124,13 +162,8 @@ static void rate_monotonic_scheduler(void)
    * counter is reset when it reaches its limit (zero means run).
    */
   (chibiOS_Config_Model_M->Timing.TaskCounters.TID[1])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 9) {/* Sample time: [0.1s, 0.0s] */
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 49) {/* Sample time: [0.5s, 0.0s] */
     chibiOS_Config_Model_M->Timing.TaskCounters.TID[1] = 0;
-  }
-
-  (chibiOS_Config_Model_M->Timing.TaskCounters.TID[2])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[2]) > 49) {/* Sample time: [0.5s, 0.0s] */
-    chibiOS_Config_Model_M->Timing.TaskCounters.TID[2] = 0;
   }
 }
 
@@ -143,23 +176,27 @@ void chibiOS_Config_Model_step0(void)  /* Sample time: [0.01s, 0.0s] */
 }
 
 /* Model step function for TID1 */
-void chibiOS_Config_Model_step1(void)  /* Sample time: [0.1s, 0.0s] */
+void chibiOS_Config_Model_step1(void)  /* Sample time: [0.5s, 0.0s] */
 {
-  /* local block i/o variables */
-  real32_T rtb_Constant;
+  /* Output Block: <Root>/pwm_Config */
 
-  /* Constant: '<Root>/Constant' */
-  rtb_Constant = chibiOS_Config_Model_P.Constant_Value;
+  /* Output Block: <Root>/pwm_Config1 */
 
-  /* M-S-Function Block: <Root>/pwm_Config1 */
-  outputs();
-}
+  /* Update Block: <Root>/pwm_Config */
+  pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
+    chibiOS_Config_Model_P.Constant1_Value));
+  pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
+    chibiOS_Config_Model_P.Constant2_Value));
+  pwmEnableChannel(&PWMD3, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
+    chibiOS_Config_Model_P.Constant3_Value));
+  pwmEnableChannel(&PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
+    chibiOS_Config_Model_P.Constant4_Value));
 
-/* Model step function for TID2 */
-void chibiOS_Config_Model_step2(void)  /* Sample time: [0.5s, 0.0s] */
-{
-  /* M-S-Function Block: <Root>/pwm_Config */
-  outputs();
+  /* Update Block: <Root>/pwm_Config1 */
+  pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 100));
+  pwmEnableChannel(&PWMD4, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 2500));
+  pwmEnableChannel(&PWMD4, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 5000));
+  pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4, 7500));
 }
 
 /* Model step wrapper function for compatibility with a static main program */
@@ -174,10 +211,6 @@ void chibiOS_Config_Model_step(int_T tid)
     chibiOS_Config_Model_step1();
     break;
 
-   case 2 :
-    chibiOS_Config_Model_step2();
-    break;
-
    default :
     break;
   }
@@ -186,26 +219,36 @@ void chibiOS_Config_Model_step(int_T tid)
 /* Model initialize function */
 void chibiOS_Config_Model_initialize(void)
 {
-  /* Registration code */
+  /* Start Block: <Root>/pwm_Config */
 
-  /* initialize non-finites */
-  rt_InitInfAndNaN(sizeof(real_T));
+  /* Start Block: <Root>/pwm_Config1 */
 
-  /* initialize real-time model */
-  (void) memset((void *)chibiOS_Config_Model_M, 0,
-                sizeof(RT_MODEL_chibiOS_Config_Model));
+  /* InitializeConditions Block: <Root>/pwm_Config */
+  pwmStart(&PWMD3, &pwmcfg3);
+  palSetPadMode(GPIOC, 6, PAL_MODE_ALTERNATE(2));
+  palSetPadMode(GPIOC, 7, PAL_MODE_ALTERNATE(2));
+  palSetPadMode(GPIOC, 8, PAL_MODE_ALTERNATE(2));
+  palSetPadMode(GPIOC, 9, PAL_MODE_ALTERNATE(2));
+
+  /* InitializeConditions Block: <Root>/pwm_Config1 */
+  pwmStart(&PWMD4, &pwmcfg4);
+  palSetPadMode(GPIOD, GPIOD_LED4, PAL_MODE_ALTERNATE(2));      /* Green.   */
+  palSetPadMode(GPIOD, GPIOD_LED3, PAL_MODE_ALTERNATE(2));      /* Orange.  */
+  palSetPadMode(GPIOD, GPIOD_LED5, PAL_MODE_ALTERNATE(2));      /* Red.     */
+  palSetPadMode(GPIOD, GPIOD_LED6, PAL_MODE_ALTERNATE(2));      /* Blue.    */
 }
 
-/* CompilerErrors - BlockInstanceSetup */
-/* CompilerErrors - BlockInstanceSetup */
+/* CompilerErrors - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* CompilerErrors - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* CompilerWarnings - BlockInstanceSetup */
-/* CompilerWarnings - BlockInstanceSetup */
+/* CompilerWarnings - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* CompilerWarnings - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* Documentation - BlockInstanceSetup */
-/* Documentation - BlockInstanceSetup */
+/* Documentation - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* Documentation - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
-/* UserBottom - BlockInstanceSetup .c */
-/* UserBottom - BlockInstanceSetup .c */
+/* UserBottom - BlockTypeSetup .c */
+/* UserBottom - BlockInstanceSetup (<Root>/pwm_Config).c */
+/* UserBottom - BlockInstanceSetup (<Root>/pwm_Config1).c */
 
 /* [EOF] chibiOS_Config_Model.c */

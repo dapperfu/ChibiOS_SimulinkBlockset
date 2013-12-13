@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -51,14 +51,20 @@
 
 #include "ch.h"
 #include "hal.h"
-
+#include "chibiOS_Config_Model.h"
+#include "chibiOS_Config_Model_private.h"
+#include "chibiOS_Config_Model_types.h"
 /* Defines */
 
-/* Model has 3 rates */
+/* Create a Thread Working Area */
+static WORKING_AREA(periodicWorkingArea0, 128);
+static WORKING_AREA(periodicWorkingArea1, 128);
+/* Model has 2 rates */
 msg_t periodicThread0(void *param)
-{
+{ 
+  (void)param;
   systime_t time;
-  setName("thread_0.01s");
+  chRegSetThreadName("thread_0.01s");
   chThdSleepSeconds(0.0);
   while (TRUE) {
     time = chTimeNow() + S2ST(0.01);   // Next deadline
@@ -69,32 +75,15 @@ msg_t periodicThread0(void *param)
 
 msg_t periodicThread1(void *param)
 {
+  (void)param;
   systime_t time;
-  setName("thread_0.1s");
-  chThdSleepSeconds(0.0);
+  chThdSleepUntil(chTimeNow() + S2ST(0));
   while (TRUE) {
-    time = chTimeNow() + S2ST(0.1);    // Next deadline
+    time = chTimeNow() + MS2ST(10000);    // Next deadline
     chibiOS_Config_Model_step1();
     chThdSleepUntil(time);
   }
 }
-
-msg_t periodicThread2(void *param)
-{
-  systime_t time;
-  setName("thread_0.5s");
-  chThdSleepSeconds(0.0);
-  while (TRUE) {
-    time = chTimeNow() + S2ST(0.5);    // Next deadline
-    chibiOS_Config_Model_step2();
-    chThdSleepUntil(time);
-  }
-}
-
-/* Create a Thread Working Area */
-static WORKING_AREA(periodicWorkingArea0, 128);
-static WORKING_AREA(periodicWorkingArea1, 128);
-static WORKING_AREA(periodicWorkingArea2, 128);
 
 /* Types */
 
@@ -105,37 +94,28 @@ static WORKING_AREA(periodicWorkingArea2, 128);
 /* Declarations */
 
 /* Functions */
-int main (void)
+void main (void)
 {
   /* Create Static Threads */
   Thread *tp0;
   Thread *tp1;
-  Thread *tp2;
 
   /* ChibiOS Init */
   halInit();
   chSysInit();
-
+  palSetPad(GPIOD, GPIOD_LED5);
+  chThdSleep(S2ST(2));
+  chibiOS_Config_Model_initialize();
+  
   /* Start Static Threads */
-  *tp0 = chThdCreateStatic(periodicWorkingArea0,
-    sizeof(periodicWorkingArea0),
-    NORMALPRIO,
-    periodic_thread0,
-    NULL);
-  *tp1 = chThdCreateStatic(periodicWorkingArea1,
+  chThdCreateStatic(periodicWorkingArea1,
     sizeof(periodicWorkingArea1),
-    NORMALPRIO,
-    periodic_thread1,
-    NULL);
-  *tp2 = chThdCreateStatic(periodicWorkingArea2,
-    sizeof(periodicWorkingArea2),
-    NORMALPRIO,
-    periodic_thread2,
+    NORMALPRIO+10,
+    periodicThread1,
     NULL);
 
   /* Reduce priority of main thread */
   chThdSetPriority(NORMALPRIO-10);
-
   /* Infinite loop */
   while (1) {
     /* Add code here */

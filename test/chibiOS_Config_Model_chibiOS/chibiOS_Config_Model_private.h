@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -53,14 +53,18 @@
 #include "rtwtypes.h"
 
 /* LibCacheIncludes - BlockTypeSetup */
-/* LibCacheIncludes - BlockInstanceSetup */
-/* LibCacheIncludes - BlockInstanceSetup */
+LibCacheIncludes_BlockTypeSetup();
+
+/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config1)*/
 
 /* Defines */
 
 /* LibCacheDefine - BlockTypeSetup */
-/* LibCacheDefine - BlockInstanceSetup */
-/* LibCacheDefine - BlockInstanceSetup */
+LibCacheDefine_BlockTypeSetup();
+
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config1)*/
 #ifndef __RTWTYPES_H__
 #error This file requires rtwtypes.h to be included
 #else
@@ -84,20 +88,21 @@
 /* Declarations */
 
 /* LibCacheExtern - BlockTypeSetup */
+LibCacheExtern_BlockTypeSetup();
+
+/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config)*/
 extern void BlockTypeSetup;
 
-/* LibCacheExtern - BlockInstanceSetup */
-extern void BlockTypeSetup;
-
-/* LibCacheExtern - BlockInstanceSetup */
+/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config1)*/
 extern void BlockTypeSetup;
 
 /* LibCacheDefine - BlockTypeSetup */
-/* LibCacheDefine - BlockInstanceSetup */
-/* LibCacheDefine - BlockInstanceSetup */
+LibCacheDefine_BlockTypeSetup();
+
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config1)*/
 extern void chibiOS_Config_Model_step0(void);
 extern void chibiOS_Config_Model_step1(void);
-extern void chibiOS_Config_Model_step2(void);
 
 /* Functions */
 #endif                                 /* RTW_HEADER_chibiOS_Config_Model_private_h_ */

@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -155,8 +155,17 @@ Parameters_chibiOS_Config_Model chibiOS_Config_Model_P = {
   1.0,                                 /* Expression: CH_DBG_THREADS_PROFILING
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  0.75774014F                          /* Computed Parameter: Constant_Value
-                                        * Referenced by: '<Root>/Constant'
+  86.9292221F,                         /* Expression: single(rand(1,1)*100)
+                                        * Referenced by: '<Root>/Constant1'
+                                        */
+  57.970459F,                          /* Expression: single(rand(1,1)*100)
+                                        * Referenced by: '<Root>/Constant2'
+                                        */
+  54.9860191F,                         /* Expression: single(rand(1,1)*100)
+                                        * Referenced by: '<Root>/Constant3'
+                                        */
+  14.4954796F                          /* Expression: single(rand(1,1)*100)
+                                        * Referenced by: '<Root>/Constant4'
                                         */
 };
 

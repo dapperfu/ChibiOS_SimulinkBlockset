@@ -59,7 +59,7 @@ end
 block.DialogPrmsTunable = tmp;% {'Tunable','Nontunable','SimOnlyTunable'};
 
 % Set up the continuous states.
-block.NumContStates = 0;
+block.NumContStates = 1;
 
 % Register the sample times.
 %  [0 offset]            : Continuous sample time
@@ -344,7 +344,7 @@ block.AutoRegRuntimePrms;
 
 function InitializeConditions(block)
 
-% block.ContStates.Data = 1;
+block.ContStates.Data = 1;
 
 %endfunction
 

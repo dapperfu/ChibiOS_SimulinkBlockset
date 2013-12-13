@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -71,7 +71,7 @@
  * @brief   Enables the TM subsystem.
  */
 #if !defined(HAL_USE_TM) || defined(__DOXYGEN__)
-#define HAL_USE_TM                     FALSE
+#define HAL_USE_TM                     TRUE
 #endif
 
 /**
@@ -85,7 +85,7 @@
  * @brief   Enables the ADC subsystem.
  */
 #if !defined(HAL_USE_ADC) || defined(__DOXYGEN__)
-#define HAL_USE_ADC                    TRUE
+#define HAL_USE_ADC                    FALSE
 #endif
 
 /**
@@ -162,7 +162,7 @@
  * @brief   Enables the SERIAL subsystem.
  */
 #if !defined(HAL_USE_SERIAL) || defined(__DOXYGEN__)
-#define HAL_USE_SERIAL                 TRUE
+#define HAL_USE_SERIAL                 FALSE
 #endif
 
 /**
@@ -341,7 +341,7 @@
  * @note    Disabling this option saves both code and data space.
  */
 #if !defined(SPI_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
-#define SPI_USE_MUTUAL_EXCLUSION       TRUE
+#define SPI_USE_MUTUAL_EXCLUSION       FALSE
 #endif
 #endif                                 /* _HALCONF_H_ */
 

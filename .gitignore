@@ -7,3 +7,11 @@ slprj/*
 slprj/*
 *.mat
 .~lock.*
+*.d
+*.lst
+*.o
+*.bin
+*.dmp
+*.elf
+*.hex
+*.map

@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.129
+   Model version                    : 1.138
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 19:40:30 2013
+   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -77,7 +77,7 @@
  *          setting also defines the system tick time unit.
  */
 #if !defined(CH_FREQUENCY) || defined(__DOXYGEN__)
-#define CH_FREQUENCY                   5
+#define CH_FREQUENCY                   1000
 #endif
 
 /**
@@ -145,7 +145,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_OPTIMIZE_SPEED) || defined(__DOXYGEN__)
-#define CH_OPTIMIZE_SPEED              FALSE
+#define CH_OPTIMIZE_SPEED              TRUE
 #endif
 
 /** @} */
@@ -219,7 +219,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_USE_MUTEXES) || defined(__DOXYGEN__)
-#define CH_USE_MUTEXES                 FALSE
+#define CH_USE_MUTEXES                 TRUE
 #endif
 
 /**
