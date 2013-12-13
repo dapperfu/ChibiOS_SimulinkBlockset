@@ -144,12 +144,11 @@ static PWMConfig pwmcfg%<block.ParamSettings.pwmDriver> = {
 %%      generated code.
 %%
 %function BlockTypeSetup(block, system) Output
-    %<LibAddToCommonIncludes("ch.h")>
-    %<LibAddToCommonIncludes("hal.h")>
-
-
     %assign modelH      = LibGetModelDotHFile()
     %assign modelC      = LibGetModelDotCFile()
+    %<LibAddToCommonIncludes("hal.h")>
+    %<LibAddToCommonIncludes("ch.h")>
+
     %openfile buffer
         /* LibCacheDefine - BlockTypeSetup */
         LibCacheDefine_BlockTypeSetup();
@@ -203,11 +202,11 @@ static PWMConfig pwmcfg%<block.ParamSettings.pwmDriver> = {
 %%
 %function InitializeConditions(block, system) Output
     /* InitializeConditions Block: %<Name> */
+	pwmStart(&PWMD%<block.ParamSettings.pwmDriver>, &pwmcfg%<block.ParamSettings.pwmDriver>);
     %<block.ParamSettings.palSetPadMode1>
     %<block.ParamSettings.palSetPadMode2>
     %<block.ParamSettings.palSetPadMode3>
     %<block.ParamSettings.palSetPadMode4>
-	pwmStart(&PWMD%<block.ParamSettings.pwmDriver>, &pwmcfg%<block.ParamSettings.pwmDriver>);
 %endfunction
 
 %% Function: Start =============================================================
@@ -226,10 +225,10 @@ static PWMConfig pwmcfg%<block.ParamSettings.pwmDriver> = {
 %%
 %function Update(block, system) Output
     /* Update Block: %<Name> */
-    %assign PWM1=LibBlockInputSignalAddr(0, "", "", 0)
-    %assign PWM2=LibBlockInputSignalAddr(1, "", "", 0)
-    %assign PWM3=LibBlockInputSignalAddr(2, "", "", 0)
-    %assign PWM4=LibBlockInputSignalAddr(3, "", "", 0)
+    %assign PWM1=LibBlockInputSignal(0, "", "", 0)
+    %assign PWM2=LibBlockInputSignal(1, "", "", 0)
+    %assign PWM3=LibBlockInputSignal(2, "", "", 0)
+    %assign PWM4=LibBlockInputSignal(3, "", "", 0)
     pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM1>));
     pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM2>));
     pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM3>));

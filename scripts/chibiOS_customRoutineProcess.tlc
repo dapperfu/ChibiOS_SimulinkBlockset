@@ -26,6 +26,7 @@
 %openfile main_Buf
 #include "ch.h"
 #include "hal.h"
+#include "%<LibGetMdlSrcBaseName()>.h" /* Model's header file */
 %closefile main_Buf
 %<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
 %% Create calling syntax for the model initialization and step routine:
@@ -40,10 +41,10 @@
   %endif
 msg_t periodicThread%<tidIdx>(void *param) {
     systime_t time;
-    setName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
-    chThdSleepSeconds(%<SampleTime[tidIdx].PeriodAndOffset[1]>);
+    chRegSetThreadName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
+    chThdSleepUntil(chTimeNow() + MS2ST(%<SampleTime[tidIdx].PeriodAndOffset[1]>*1000));
     while (TRUE) {
-        time = chTimeNow() + S2ST(%<SampleTime[tidIdx].PeriodAndOffset[0]>);            // Next deadline
+        time = chTimeNow() + MS2ST(%<SampleTime[tidIdx].PeriodAndOffset[1]>*1000);
   %if !SLibConcurrentTasks() || !(FixedStepOpts.TID01EQ && tidIdx>0)
     %assign rootSystem.CurrentTID = tidIdx
     %<SLibModelStepFcnName(tidIdx)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx)>);
@@ -62,13 +63,13 @@ msg_t periodicThread%<tidIdx>(void *param) {
         && FixedStepOpts.TID01EQ)
     %continue
   %endif
-static WORKING_AREA(periodicWorkingArea%<tidIdx>, 128);
+static WORKING_AREA(waPeriodicThread%<tidIdx>, 128);
 %endforeach
 %closefile main_Buf
 %<LibSetSourceFileSection(cFile, "Defines", main_Buf)>
 
 %openfile main_Buf
-int main (void) {
+void main (void) {
     /* Create Static Threads */
 %foreach tidIdx = NumSynchronousSampleTimes
   %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
@@ -89,10 +90,10 @@ int main (void) {
         && FixedStepOpts.TID01EQ)
         %continue
     %endif
-    *tp%<tidIdx> = chThdCreateStatic(periodicWorkingArea%<tidIdx>,
-        sizeof(periodicWorkingArea%<tidIdx>),
+    *tp%<tidIdx> = chThdCreateStatic(waPeriodicThread%<tidIdx>,
+        sizeof(waPeriodicThread%<tidIdx>),
         NORMALPRIO,
-        periodic_thread%<tidIdx>,
+        periodicThread%<tidIdx>,
         NULL);
 %endforeach
 

@@ -127,52 +127,36 @@ switch block.DialogPrm(8).Data
 		block.WriteRTWParam('string','STM32_PLLSRC', 'STM32_PLLSRC_HSE');
 end
 % Divisor for PLL VCO input clock (STM32_PLLM_VALUE)
-if ischar(block.DialogPrm(9).Data)
-	block.WriteRTWParam('string','STM32_PLLM_VALUE', block.DialogPrm(9).Data);
-else
-	block.WriteRTWParam('string','STM32_PLLM_VALUE', num2str(block.DialogPrm(9).Data));
-end
+block.WriteRTWParam('string','STM32_PLLM_VALUE', num2str(block.DialogPrm(9).Data));
 
 % Multiplier for PLL VCO output clock (STM32_PLLN_VALUE)
-if ischar(block.DialogPrm(10).Data)
-	block.WriteRTWParam('string','STM32_PLLN_VALUE', block.DialogPrm(10).Data);
-else
-	block.WriteRTWParam('string','STM32_PLLN_VALUE', num2str(block.DialogPrm(10).Data));
-end
+block.WriteRTWParam('string','STM32_PLLN_VALUE', num2str(block.DialogPrm(10).Data));
 
 % PLL Divisor for main system clock (STM32_PLLP_VALUE)
-if ischar(block.DialogPrm(11).Data)
-	block.WriteRTWParam('string','STM32_PLLP_VALUE', block.DialogPrm(11).Data);
-else
-	block.WriteRTWParam('string','STM32_PLLP_VALUE', num2str(block.DialogPrm(11).Data));
-end
+block.WriteRTWParam('string','STM32_PLLP_VALUE', num2str(block.DialogPrm(11).Data));
 
 % PLL Divisor for OTG FS, SDIO and RNG clocks (STM32_PLLQ_VALUE)
-if ischar(block.DialogPrm(12).Data)
-	block.WriteRTWParam('string','STM32_PLLQ_VALUE', block.DialogPrm(12).Data);
-else
-	block.WriteRTWParam('string','STM32_PLLQ_VALUE', num2str(block.DialogPrm(12).Data));
-end
+block.WriteRTWParam('string','STM32_PLLQ_VALUE', num2str(block.DialogPrm(12).Data));
 
 % Advanced High Performance Bus Prescaler Value (AHB)
-block.WriteRTWParam('string','STM32_HPRE', sprintf('STM32_HPRE_DIV%.0f',block.DialogPrm(13).Data));
+block.WriteRTWParam('string','STM32_HPRE', sprintf('STM32_HPRE_DIV%s',block.DialogPrm(13).Data));
 
 % Low Speed Advanced Peripherial Bus Prescaler Value (AHB1)
-block.WriteRTWParam('string','STM32_PPRE1', sprintf('STM32_PPRE1_DIV%.0f',block.DialogPrm(14).Data));
+block.WriteRTWParam('string','STM32_PPRE1', sprintf('STM32_PPRE1_DIV%s',block.DialogPrm(14).Data));
 
 % High Speed Advanced Peripherial Bus Prescaler Value (AHB2)
-block.WriteRTWParam('string','STM32_PPRE2', sprintf('STM32_PPRE2_DIV%.0f',block.DialogPrm(15).Data));
+block.WriteRTWParam('string','STM32_PPRE2', sprintf('STM32_PPRE2_DIV%s',block.DialogPrm(15).Data));
 
 % RTC Clock Source
 switch block.DialogPrm(16).Data
 	case 'No RTC source'
-		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTC_NOCLOCK');
+		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTCSEL_NOCLOCK');
 	case 'LSE'
-		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTC_LSE');
+		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTCSEL_LSE');
 	case 'LSI'
-		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTC_LSI');
+		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTCSEL_LSI');
 	case 'HSE divided by programmable prescaler'
-		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTC_HSE');
+		block.WriteRTWParam('string','STM32_RTCSEL', 'STM32_RTCSEL_HSE');
 end
 
 % RTC HSE prescaler value
@@ -194,7 +178,7 @@ switch block.DialogPrm(18).Data
 		block.WriteRTWParam('string','STM32_MCO1SEL', 'STM32_MCO1SEL_PLL');
 end
 % MC01 prescaler value
-block.WriteRTWParam('string','STM32_MCO1PRE', sprintf('STM32_MCO1PRE_DIV%.0f',block.DialogPrm(19).Data));
+block.WriteRTWParam('string','STM32_MCO1PRE', sprintf('STM32_MCO1PRE_DIV%s',block.DialogPrm(19).Data));
 
 % MC02 clock source value
 switch block.DialogPrm(20).Data
@@ -208,18 +192,14 @@ switch block.DialogPrm(20).Data
 		block.WriteRTWParam('string','STM32_MCO2SEL', 'STM32_MCO2SEL_PLL');
 end
 % MC02 prescaler value
-if ischar(block.DialogPrm(21).Data)
-	block.WriteRTWParam('string','STM32_MCO2PRE', block.DialogPrm(21).Data);
-else
-	block.WriteRTWParam('string','STM32_MCO2PRE', num2str(block.DialogPrm(21).Data));
-end
+block.WriteRTWParam('string','STM32_MCO2PRE', sprintf('STM32_MCO2PRE_DIV%s',block.DialogPrm(21).Data));
 
 % I2S clock source
 switch block.DialogPrm(22).Data
 	case 'I2S PLL'
-		block.WriteRTWParam('string','STM32_I2SSRC', 'I2SPLL');
+		block.WriteRTWParam('string','STM32_I2SSRC', 'STM32_I2SSRC_I2SPLL');
 	case 'CKIN'
-		block.WriteRTWParam('string','STM32_I2SSRC', 'CKIN');
+		block.WriteRTWParam('string','STM32_I2SSRC', 'STM32_I2SSRC_CKIN');
 end
 % Multiplier for PLLI2S VCO output clock
 if ischar(block.DialogPrm(23).Data)
@@ -265,7 +245,7 @@ switch block.DialogPrm(27).Data
 		block.WriteRTWParam('string','STM32_PLS', 'STM32_PLS_LEV7');
 end
 % ADC common clock divider
-block.WriteRTWParam('string','STM32_ADC_ADCPRE', sprintf('STM32_RTCPRE_DIV%.0f',block.DialogPrm(28).Data));
+block.WriteRTWParam('string','STM32_ADC_ADCPRE', sprintf('STM32_RTCPRE_DIV%s',block.DialogPrm(28).Data));
 
 % ADC interrupt priority level setting
 if ischar(block.DialogPrm(29).Data)
@@ -681,16 +661,12 @@ else
 end
 
 % I2C 1 DMA Priority
-switch block.DialogPrm(88).Data
-	case '0'
-		block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', 'x0');
-	case '1'
-		block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', 'x1');
-	case '2'
-		block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', 'x2');
-	case '3'
-		block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', 'x3');
+if ischar(block.DialogPrm(88).Data)
+	block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', block.DialogPrm(88).Data);
+else
+	block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_PRIORITY', num2str(block.DialogPrm(88).Data));
 end
+
 % I2C 1 DMA Error Hook
 if ischar(block.DialogPrm(89).Data)
 	block.WriteRTWParam('string','STM32_I2C_I2C1_DMA_ERROR_HOOK', block.DialogPrm(89).Data);
@@ -727,16 +703,12 @@ else
 end
 
 % I2C 2 DMA Priority
-switch block.DialogPrm(94).Data
-	case '0'
-		block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', 'x0');
-	case '1'
-		block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', 'x1');
-	case '2'
-		block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', 'x2');
-	case '3'
-		block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', 'x3');
+if ischar(block.DialogPrm(94).Data)
+	block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', block.DialogPrm(94).Data);
+else
+	block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_PRIORITY', num2str(block.DialogPrm(94).Data));
 end
+
 % I2C 2 DMA Error Hook
 if ischar(block.DialogPrm(95).Data)
 	block.WriteRTWParam('string','STM32_I2C_I2C2_DMA_ERROR_HOOK', block.DialogPrm(95).Data);
@@ -773,16 +745,12 @@ else
 end
 
 % I2C 3 DMA Priority
-switch block.DialogPrm(100).Data
-	case '0'
-		block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', 'x0');
-	case '1'
-		block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', 'x1');
-	case '2'
-		block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', 'x2');
-	case '3'
-		block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', 'x3');
+if ischar(block.DialogPrm(100).Data)
+	block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', block.DialogPrm(100).Data);
+else
+	block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_PRIORITY', num2str(block.DialogPrm(100).Data));
 end
+
 % I2C 3 DMA Error Hook
 if ischar(block.DialogPrm(101).Data)
 	block.WriteRTWParam('string','STM32_I2C_I2C3_DMA_ERROR_HOOK', block.DialogPrm(101).Data);

@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.138
+   Model version                    : 1.155
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
+   C/C++ source code generated on   : Thu Dec 12 23:01:32 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -66,8 +66,8 @@
  * DMA priorities:
  * 0...3        Lowest...Highest.
  */
-
 #define STM32F4xx_MCUCONF
+
 /*
  * HAL
  */
@@ -95,6 +95,7 @@
 #define STM32_I2SSRC                   STM32_I2SSRC_CKIN
 #define STM32_PLLI2SN_VALUE            192
 #define STM32_PLLI2SR_VALUE            5
+#define STM32_VOS                      STM32_VOS_HIGH
 #define STM32_PVD_ENABLE               FALSE
 #define STM32_PLS                      STM32_PLS_LEV0
 
@@ -282,8 +283,6 @@
 #define STM32_UART_USE_USART1          FALSE
 #define STM32_UART_USE_USART2          FALSE
 #define STM32_UART_USE_USART3          FALSE
-#define STM32_UART_USE_UART4                FALSE
-#define STM32_UART_USE_UART5                FALSE
 #define STM32_UART_USE_USART6          FALSE
 #define STM32_UART_USART1_RX_DMA_STREAM STM32_DMA_STREAM_ID(2, 5)
 #define STM32_UART_USART1_TX_DMA_STREAM STM32_DMA_STREAM_ID(2, 7)

@@ -105,18 +105,18 @@ switch block.DialogPrm(1).Data
     case 3
         pwm(1).GPIO='C';
         pwm(1).pin='6';
-        pwm(1).AF='3';
+        pwm(1).AF='2';
         pwm(2).GPIO='C';
         pwm(2).pin='7';
-        pwm(2).AF='3';
+        pwm(2).AF='2';
         pwm(3).GPIO='C';
         pwm(3).pin='8';
-        pwm(3).AF='3';
+        pwm(3).AF='2';
         pwm(4).GPIO='C';
         pwm(4).pin='9';
-        pwm(4).AF='3';
+        pwm(4).AF='2';
     case 4
-        pwm(1).GPIO='A';
+        pwm(1).GPIO='D';
         pwm(1).pin='12';
         pwm(1).AF='2';
         pwm(2).GPIO='D';
