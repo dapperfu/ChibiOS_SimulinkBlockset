@@ -22,7 +22,7 @@ setup(block);
 
 function setup(block)
 % Register number of ports
-block.NumInputPorts  = 0;
+block.NumInputPorts  = 4;
 block.NumOutputPorts = 0;
 % Register number of dialog parameters
 block.NumDialogPrms  = 8;
@@ -54,9 +54,14 @@ block.SimStateCompliance = 'DefaultSimState';
 %% provided for each function for more information.
 %% -----------------------------------------------------------------
 block.RegBlockMethod('WriteRTW', @WriteRTW);
-block.RegBlockMethod('Outputs', @nullFCN);     % Required
+block.RegBlockMethod('PostPropagationSetup', @DoPostPropSetup);
+
+block.RegBlockMethod('Outputs', @nullFCN);   % Required
+block.RegBlockMethod('Start', @nullFCN);   % Required
+block.RegBlockMethod('Update', @nullFCN); % Required
 block.RegBlockMethod('Terminate', @nullFCN); % Required
-block.RegBlockMethod('PostPropagationSetup',    @DoPostPropSetup);
+block.RegBlockMethod('InitializeConditions', @nullFCN); % Required
+block.RegBlockMethod('InitializeConditions', @nullFCN); % Required
 
 %% Block runs on TLC in accelerator mode.
 block.SetAccelRunOnTLC(true);
@@ -69,12 +74,70 @@ block.AutoRegRuntimePrms;
 
 function WriteRTW(block)
 % PWM Driver
-if ischar(block.DialogPrm(1).Data)
-	block.WriteRTWParam('string','pwmDriver', block.DialogPrm(1).Data);
-else
-	block.WriteRTWParam('string','pwmDriver', num2str(block.DialogPrm(1).Data));
+block.WriteRTWParam('string','pwmDriver', sprintf('%.0f',block.DialogPrm(1).Data));
+switch block.DialogPrm(1).Data
+    case 1
+        pwm(1).GPIO='A';
+        pwm(1).pin='8';
+        pwm(1).AF='1';
+        pwm(2).GPIO='A';
+        pwm(2).pin='9';
+        pwm(2).AF='1';
+        pwm(3).GPIO='A';
+        pwm(3).pin='10';
+        pwm(3).AF='1';
+        pwm(4).GPIO='A';
+        pwm(4).pin='11';
+        pwm(4).AF='1';
+    case 2
+        pwm(1).GPIO='A';
+        pwm(1).pin='8';
+        pwm(1).AF='1';
+        pwm(2).GPIO='A';
+        pwm(2).pin='1';
+        pwm(2).AF='1';
+        pwm(3).GPIO='A';
+        pwm(3).pin='2';
+        pwm(3).AF='1';
+        pwm(4).GPIO='A';
+        pwm(4).pin='3';
+        pwm(4).AF='1';
+    case 3
+        pwm(1).GPIO='C';
+        pwm(1).pin='6';
+        pwm(1).AF='3';
+        pwm(2).GPIO='C';
+        pwm(2).pin='7';
+        pwm(2).AF='3';
+        pwm(3).GPIO='C';
+        pwm(3).pin='8';
+        pwm(3).AF='3';
+        pwm(4).GPIO='C';
+        pwm(4).pin='9';
+        pwm(4).AF='3';
+    case 4
+        pwm(1).GPIO='A';
+        pwm(1).pin='12';
+        pwm(1).AF='2';
+        pwm(2).GPIO='D';
+        pwm(2).pin='13';
+        pwm(2).AF='2';
+        pwm(3).GPIO='D';
+        pwm(3).pin='14';
+        pwm(3).AF='2';
+        pwm(4).GPIO='D';
+        pwm(4).pin='15';
+        pwm(4).AF='2';
+    case 5
+        
+    case 6
+        
+    case 7
+        
+    case 8
+        
+    case 9
 end
-
 % PWM Clock Frequency (Hz)
 if ischar(block.DialogPrm(2).Data)
     pwmClockFreq=str2double(block.DialogPrm(2).Data);
@@ -91,42 +154,17 @@ else
 end
 block.WriteRTWParam('string','pwmPeriod', sprintf('%.0f',pwmClockFreq*pwmPeriod));
 
-% PWM Channel 1
-switch block.DialogPrm(4).Data
-	case 'Disabled'
-		block.WriteRTWParam('string','pwmChan1', 'PWM_OUTPUT_DISABLED');
-	case 'Active High'
-		block.WriteRTWParam('string','pwmChan1', 'PWM_OUTPUT_ACTIVE_HIGH');
-	case 'Active Low'
-		block.WriteRTWParam('string','pwmChan1', 'PWM_OUTPUT_ACTIVE_LOW');
-end
-
-% PWM Channel 2
-switch block.DialogPrm(5).Data
-	case 'Disabled'
-		block.WriteRTWParam('string','pwmChan2', 'PWM_OUTPUT_DISABLED');
-	case 'Active High'
-		block.WriteRTWParam('string','pwmChan2', 'PWM_OUTPUT_ACTIVE_HIGH');
-	case 'Active Low'
-		block.WriteRTWParam('string','pwmChan2', 'PWM_OUTPUT_ACTIVE_LOW');
-end
-
-% PWM Channel 3
-switch block.DialogPrm(6).Data
-	case 'Disabled'
-		block.WriteRTWParam('string','pwmChan3', 'PWM_OUTPUT_DISABLED');
-	case 'Active High'
-		block.WriteRTWParam('string','pwmChan3', 'PWM_OUTPUT_ACTIVE_HIGH');
-	case 'Active Low'
-		block.WriteRTWParam('string','pwmChan3', 'PWM_OUTPUT_ACTIVE_LOW');
-end
-
-% PWM Channel 4
-switch block.DialogPrm(7).Data
-	case 'Disabled'
-		block.WriteRTWParam('string','pwmChan4', 'PWM_OUTPUT_DISABLED');
-	case 'Active High'
-		block.WriteRTWParam('string','pwmChan4', 'PWM_OUTPUT_ACTIVE_HIGH');
-	case 'Active Low'
-		block.WriteRTWParam('string','pwmChan4', 'PWM_OUTPUT_ACTIVE_LOW');
+% PWM Channel 
+for i=1:4
+    switch block.DialogPrm(i+3).Data
+        case 'Disabled'
+            block.WriteRTWParam('string', sprintf('pwmChan%.0f',i), 'PWM_OUTPUT_DISABLED');
+            block.WriteRTWParam('string', sprintf('palSetPadMode%.0f',i), '');
+        case 'Active High'
+            block.WriteRTWParam('string', sprintf('pwmChan%.0f',i), 'PWM_OUTPUT_ACTIVE_HIGH');
+            block.WriteRTWParam('string', sprintf('palSetPadMode%.0f',i), sprintf('palSetPadMode(GPIO%s, %s, PAL_MODE_ALTERNATE(%s));',pwm(i).GPIO,pwm(i).pin,pwm(i).AF));
+        case 'Active Low'
+            block.WriteRTWParam('string', sprintf('pwmChan%.0f',i), 'PWM_OUTPUT_ACTIVE_LOW');
+            block.WriteRTWParam('string', sprintf('palSetPadMode%.0f',i), sprintf('palSetPadMode(GPIO%s, %s, PAL_MODE_ALTERNATE(%s));',pwm(i).GPIO,pwm(i).pin,pwm(i).AF));
+    end
 end

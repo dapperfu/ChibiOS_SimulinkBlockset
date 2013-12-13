@@ -16,7 +16,7 @@
 %%
 %implements  pwm_Config "C"
 
-%% Function: BlockInstanceSetup ===================================================
+%% Function: BlockInstanceSetup (%<Name>)===================================================
 %%
 %% Purpose:
 %%      Set up external references for wrapper functions in the 
@@ -25,99 +25,115 @@
 %function BlockInstanceSetup(block, system) Output
     %assign modelH      = LibGetModelDotHFile()
     %assign modelC      = LibGetModelDotCFile()
-    %<LibAddToCommonIncludes("BlockTypeSetup_Common.h")>
-    %<LibAddToModelSources("BlockTypeSetup_Sources.c")>
     %openfile buffer
-        /* LibCacheDefine - BlockInstanceSetup */
+        /* LibCacheDefine - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibCacheDefine(buffer)>
 
     %openfile buffer2
-        /* LibCacheIncludes - BlockInstanceSetup */
+        /* LibCacheIncludes - BlockInstanceSetup (%<Name>)*/
     %closefile buffer2
     %<LibCacheIncludes(buffer2)>
 
     %openfile buffer3
-        /* LibCacheExtern - BlockInstanceSetup */
+        /* LibCacheExtern - BlockInstanceSetup (%<Name>)*/
         extern void BlockTypeSetup;
     %closefile buffer3
     %<LibCacheExtern(buffer3)>
 
     %openfile buffer4
-        /* LibCacheFunctionPrototype - BlockInstanceSetup */
+        /* LibCacheFunctionPrototype - BlockInstanceSetup (%<Name>)*/
     %closefile buffer4
     %<LibCacheFunctionPrototype(buffer)>
 
    %% Code Sections Emitted by CFP Templates
     %openfile buffer
-        /* Banner - BlockInstanceSetup */
+        /* Banner - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Banner",buffer)>
 
     %openfile buffer
-        /* Includes - BlockInstanceSetup */
+        /* Includes - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Includes",buffer)>
 
     %openfile buffer
-        /* Defines - BlockInstanceSetup */
+        /* Defines - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Defines",buffer)>
 
     %openfile buffer
-        /* IntrinsicTypes - BlockInstanceSetup */
+        /* IntrinsicTypes - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"IntrinsicTypes",buffer)>
 
     %openfile buffer
-        /* PrimitiveTypedefs - BlockInstanceSetup */
+        /* PrimitiveTypedefs - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"PrimitiveTypedefs",buffer)>
 
     %openfile buffer
-        /* UserTop - BlockInstanceSetup */
+        /* UserTop - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"UserTop",buffer)>
 
     %openfile buffer
-        /* Typedefs - BlockInstanceSetup */
+        /* Typedefs - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Typedefs",buffer)>
 
     %openfile buffer
-        /* Enums - BlockInstanceSetup */
+        /* Enums - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Enums",buffer)>
 
     %openfile buffer
-        /* Declarations - BlockInstanceSetup */
+        /* Declarations - BlockInstanceSetup (%<Name>)*/
+static PWMConfig pwmcfg%<block.ParamSettings.pwmDriver> = {
+	%<block.ParamSettings.pwmClockFreq>,
+	%<block.ParamSettings.pwmPeriod>,
+	NULL,
+	{
+		{%<block.ParamSettings.pwmChan1>, NULL},
+		{%<block.ParamSettings.pwmChan2>, NULL},
+		{%<block.ParamSettings.pwmChan3>, NULL},
+		{%<block.ParamSettings.pwmChan4>, NULL}
+	},
+	/* HW dependent part.*/
+	0,
+	0
+};
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Declarations",buffer)>
 
     %openfile buffer
-        /* Functions - BlockInstanceSetup */
+        /* Functions - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Functions",buffer)>
 
     %openfile buffer
-        /* CompilerErrors - BlockInstanceSetup */
+        /* CompilerErrors - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"CompilerErrors",buffer)>
 
     %openfile buffer
-        /* CompilerWarnings - BlockInstanceSetup */
+        /* CompilerWarnings - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"CompilerWarnings",buffer)>
 
     %openfile buffer
-        /* Documentation - BlockInstanceSetup */
+        /* Documentation - BlockInstanceSetup (%<Name>)*/
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"Documentation",buffer)>
 
     %openfile buffer
-        /* UserBottom - BlockInstanceSetup .c */
+        /* UserBottom - BlockInstanceSetup (%<Name>).c */
     %closefile buffer
     %<LibSetSourceFileSection(modelC,"UserBottom",buffer)>
+
+    %openfile buffer
+        /* UserBottom - BlockInstanceSetup (%<Name>).h */
+    %closefile buffer
     %<LibSetSourceFileSection(modelH,"UserBottom",buffer)>
 %endfunction
 
@@ -128,104 +144,109 @@
 %%      generated code.
 %%
 %function BlockTypeSetup(block, system) Output
-    %<LibAddToCommonIncludes("BlockTypeSetup_Common.h")>
-    %<LibAddToModelSources("BlockTypeSetup_Sources.c")>
+    %<LibAddToCommonIncludes("ch.h")>
+    %<LibAddToCommonIncludes("hal.h")>
+
+
+    %assign modelH      = LibGetModelDotHFile()
+    %assign modelC      = LibGetModelDotCFile()
     %openfile buffer
         /* LibCacheDefine - BlockTypeSetup */
+        LibCacheDefine_BlockTypeSetup();
     %closefile buffer
     %<LibCacheDefine(buffer)>
 
     %openfile buffer2
         /* LibCacheIncludes - BlockTypeSetup */
+        LibCacheIncludes_BlockTypeSetup();
     %closefile buffer2
     %<LibCacheIncludes(buffer2)>
 
     %openfile buffer3
         /* LibCacheExtern - BlockTypeSetup */
-        extern void BlockTypeSetup;
+        LibCacheExtern_BlockTypeSetup();
     %closefile buffer3
     %<LibCacheExtern(buffer3)>
 
     %openfile buffer4
         /* LibCacheFunctionPrototype - BlockTypeSetup */
+        LibCacheFunctionPrototype_BlockTypeSetup();
     %closefile buffer4
     %<LibCacheFunctionPrototype(buffer)>
+
+    %openfile buffer
+        /* UserBottom - BlockTypeSetup .c */
+    %closefile buffer
+    %<LibSetSourceFileSection(modelC,"UserBottom",buffer)>
+
+    %openfile buffer
+        /* UserBottom - BlockTypeSetup .h */
+    %closefile buffer
+    %<LibSetSourceFileSection(modelH,"UserBottom",buffer)>
 %endfunction
 
 %% Function: Enable =============================================================
 %%
 %function Enable(block, system) Output
-    /* %<Type> Block: %<Name> */
+    /* Enable Block: %<Name> */
 	Enable();
 %endfunction
 
 %% Function: Disable =============================================================
 %%
 %function Disable(block, system) Output
-    /* %<Type> Block: %<Name> */
+    /* Disable Block: %<Name> */
 	Disable();
 %endfunction
 
 %% InitializeConditions: Start =============================================================
 %%
 %function InitializeConditions(block, system) Output
-    /* %<Type> Block: %<Name> */
-	InitializeConditions();
+    /* InitializeConditions Block: %<Name> */
+    %<block.ParamSettings.palSetPadMode1>
+    %<block.ParamSettings.palSetPadMode2>
+    %<block.ParamSettings.palSetPadMode3>
+    %<block.ParamSettings.palSetPadMode4>
+	pwmStart(&PWMD%<block.ParamSettings.pwmDriver>, &pwmcfg%<block.ParamSettings.pwmDriver>);
 %endfunction
 
 %% Function: Start =============================================================
 %%
 %function Start(block, system) Output
-    %<block>
     /* Start Block: %<Name> */
-    %openfile buffer
-    /* Header Custom Code: %<Name> */
-    %closefile buffer
-	%<LibMdlStartCustomCode(buffer,"header")>;
-    %openfile buffer2
-    /* Declaration Custom Code: %<Name> */
-    %closefile buffer2
-	%<LibMdlStartCustomCode(buffer2,"declaration")>;
-    %openfile buffer3
-    /* Execution Custom Code: %<Name> */
-    %closefile buffer3
-	%<LibMdlStartCustomCode(buffer3,"execution")>;
-    %openfile buffer4
-    /* Trailer Custom Code: %<Name> */
-    %closefile buffer4
-	%<LibMdlStartCustomCode(buffer4,"trailer")>;
 %endfunction
 
 %% Function: Outputs ==========================================================
-%%openfile
-%% Purpose:
-%%      Code generation rules for mdlOutputs function.
 %%
 %function Outputs(block, system) Output
-    /* %<Type> Block: %<Name> */
-	outputs();
+    /* Output Block: %<Name> */
 %endfunction
 
 %% Function: Update =============================================================
 %%
 %function Update(block, system) Output
-    /* %<Type> Block: %<Name> */
-    Update();
+    /* Update Block: %<Name> */
+    %assign PWM1=LibBlockInputSignalAddr(0, "", "", 0)
+    %assign PWM2=LibBlockInputSignalAddr(1, "", "", 0)
+    %assign PWM3=LibBlockInputSignalAddr(2, "", "", 0)
+    %assign PWM4=LibBlockInputSignalAddr(3, "", "", 0)
+    pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM1>));
+    pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM2>));
+    pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM3>));
+    pwmEnableChannel(&PWMD%<block.ParamSettings.pwmDriver>, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD%<block.ParamSettings.pwmDriver>, %<PWM4>));
 %endfunction
 
 
 %% Function: Terminate =============================================================
 %%
 %function Derivatives(block, system) Output
-    /* %<Type> Block: %<Name> */
-	Derivatives();
+    /* Derivative Block: %<Name> */
 %endfunction
 
 %% Function: Terminate =============================================================
 %%
 %function Terminate(block, system) Output
-    /* %<Type> Block: %<Name> */
-	Terminate();
+    /* Terminate Block: %<Name> */
 %endfunction
 
 %% [EOF] level2.tlc
