@@ -80,6 +80,8 @@ function runtlccmd
 % 	-aChibiOS_Chip="STM32F4xx"
 % 	-aChibiOS_CompilerRoot="C:\ChibiStudio\tools\GNU Tools ARM Embedded\4.7 2013q3"
 % 	-aAlt_ChibiOS_CompilerRoot="C:\CHIBIS~1\tools\GNUTOO~1\43F2B~1.720"
+% 	-aSTLINK=""
+% 	-aALT_STLINK=""
 % 	-aGenerateTraceInfo=0
 % 	-aIgnoreTestpoints=0
 % 	-aProtectedModelReferenceTarget=0

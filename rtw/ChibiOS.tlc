@@ -162,13 +162,13 @@
   rtwoptions(oIdx).makevariable   = 'CHIBIOS_CHIP';
   rtwoptions(oIdx).enable         = 'off';
   rtwoptions(oIdx).tooltip        = '';
-  rtwoptions(oIdx).callback       = '';
+  rtwoptions(oIdx).callback       = ''; 
 
   oIdx = oIdx + 1;
   rtwoptions(oIdx).prompt        = 'Compiler Options';
   rtwoptions(oIdx).type          = 'Category';
   rtwoptions(oIdx).enable        = 'on';  
-  rtwoptions(oIdx).default       = 2; % number of items under this category 
+  rtwoptions(oIdx).default       = 3; % number of items under this category 
                                       % excluding this one. 
   rtwoptions(oIdx).tlcvariable   = '';
   rtwoptions(oIdx).tooltip       = '';
@@ -203,6 +203,49 @@
   rtwoptions(oIdx).default        = '';
   rtwoptions(oIdx).tlcvariable    = 'Alt_ChibiOS_CompilerRoot';
   rtwoptions(oIdx).makevariable   = 'ALT_CHIBIOS_COMPILERROOT';
+  rtwoptions(oIdx).enable         = 'off';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt        = 'ST Link Options';
+  rtwoptions(oIdx).type          = 'Category';
+  rtwoptions(oIdx).enable        = 'on';  
+  rtwoptions(oIdx).default       = 3; % number of items under this category 
+                                      % excluding this one. 
+  rtwoptions(oIdx).tlcvariable   = '';
+  rtwoptions(oIdx).tooltip       = '';
+  rtwoptions(oIdx).callback      = '';
+  rtwoptions(oIdx).makevariable  = '';
+
+oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Select ST-Link CLI';
+  rtwoptions(oIdx).type           = 'Pushbutton';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tlcvariable    = '';
+  rtwoptions(oIdx).makevariable   = '';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = 'chibiOS_selectSettings(hDlg, hSrc, ''STLinkv2'')';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Compiler Root:';
+  rtwoptions(oIdx).type           = 'Edit';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'STLINK';
+  rtwoptions(oIdx).makevariable   = 'STLINK';
+  rtwoptions(oIdx).enable         = 'off';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Alt Compiler Root:';
+  rtwoptions(oIdx).type           = 'Edit';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'ALT_STLINK';
+  rtwoptions(oIdx).makevariable   = 'ALT_STLINK';
   rtwoptions(oIdx).enable         = 'off';
   rtwoptions(oIdx).tooltip        = '';
   rtwoptions(oIdx).callback       = '';

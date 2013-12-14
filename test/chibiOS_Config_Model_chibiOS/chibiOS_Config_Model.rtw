@@ -3,8 +3,8 @@ CompiledModel {
   OrigName		  "chibiOS_Config_Model"
   Version		  "8.3 (R2012b) 20-Jul-2012"
   SimulinkVersion	  "8.0"
-  ModelVersion		  "1.166"
-  GeneratedOn		  "Sat Dec 14 00:32:22 2013"
+  ModelVersion		  "1.171"
+  GeneratedOn		  "Sat Dec 14 01:14:19 2013"
   HasSimStructVars	  0
   HasCodeVariants	  0
   PreserveExternInFcnDecls 1
@@ -87,6 +87,7 @@ CompiledModel {
     tParameters		    "chibiOS_Config_Model_P"
   }
   ConfigSet {
+    ALT_STLINK		    ""
     Alt_ChibiOS_CompilerRoot "C:\\CHIBIS~1\\tools\\GNUTOO~1\\43F2B~1.720"
     Alt_ChibiOS_Root	    "C:\\Projects\\chibios"
     AutosarCompliant	    0
@@ -286,6 +287,7 @@ CompiledModel {
     RollThreshold	    5
     RootIOFormat	    "Individual arguments"
     SFDataObjDesc	    1
+    STLINK		    ""
     ShowEliminatedStatement 1
     SignalDisplayLevel	    10
     SignalNamingFcn	    ""
@@ -476,7 +478,7 @@ CompiledModel {
     tlcLanguage		    "C"
     tlcTargetType	    "RT"
   }
-  RTWContext		  [-1224101072, 0]
+  RTWContext		  [-1224122832, 0]
   RTWCGIR		  1
   TLCBlkFcnInCGIR	  1
   SLCI			  off
@@ -532,7 +534,7 @@ CompiledModel {
   InvariantConstants	  no
   FundamentalStepSize	  0.01
   SingleRate		  no
-  NumSampleTimes	  4
+  NumSampleTimes	  3
   PositivePriority	  no
   ConcurrentTasks	  no
   SampleTime {
@@ -550,62 +552,45 @@ CompiledModel {
     NeedFloatTime	    no
     ClockTickDataTypeId	    7
     ClockTickDataTypeAtomic 1
-    TaskCounterDataTypeId   3
+    TaskCounterDataTypeId   5
   }
   SampleTime {
     TID			    1
     PriorityAssigned	    yes
     Priority		    41
-    PeriodAndOffset	    [0.1, 0.0]
-    Asynchronous	    no
-    IsUnionTs		    no
-    TimeSource		    Self_internal
-    AsyncPromotedTID	    1
-    TimerUpdateCode	    ""
-    ClockTickStepSize	    0.1
-    NeedAbsoluteTime	    no
-    NeedFloatTime	    no
-    ClockTickDataTypeId	    7
-    ClockTickDataTypeAtomic 1
-    TaskCounterDataTypeId   3
-  }
-  SampleTime {
-    TID			    2
-    PriorityAssigned	    yes
-    Priority		    42
     PeriodAndOffset	    [0.5, 0.0]
     Asynchronous	    no
     IsUnionTs		    no
     TimeSource		    Self_internal
-    AsyncPromotedTID	    2
+    AsyncPromotedTID	    1
     TimerUpdateCode	    ""
     ClockTickStepSize	    0.5
     NeedAbsoluteTime	    no
     NeedFloatTime	    no
     ClockTickDataTypeId	    7
     ClockTickDataTypeAtomic 1
-    TaskCounterDataTypeId   3
+    TaskCounterDataTypeId   5
   }
   SampleTime {
-    TID			    3
+    TID			    2
     PriorityAssigned	    yes
-    Priority		    43
-    PeriodAndOffset	    [1.0, 0.2]
+    Priority		    42
+    PeriodAndOffset	    [2.0, 1.0]
     Asynchronous	    no
     IsUnionTs		    no
     TimeSource		    Self_internal
-    AsyncPromotedTID	    3
+    AsyncPromotedTID	    2
     TimerUpdateCode	    ""
-    ClockTickStepSize	    1.0
+    ClockTickStepSize	    2.0
     NeedAbsoluteTime	    no
     NeedFloatTime	    no
-    ClockTickDataTypeId	    7
+    ClockTickDataTypeId	    5
     ClockTickDataTypeAtomic 1
-    TaskCounterDataTypeId   3
+    TaskCounterDataTypeId   5
   }
   NumVariableSampleTimes  0
   NumAsynchronousSampleTimes 0
-  NumSynchronousSampleTimes 4
+  NumSynchronousSampleTimes 3
   HasBlocksWithDiscreteSampleTime yes
   MdlGenRateGroupingCode  yes
   DataTypes {
@@ -900,7 +885,7 @@ CompiledModel {
 	Type			Constant
 	Parameter {
 	  Name			  "Value"
-	  _idx			  31
+	  _idx			  33
 	}
 	NumParameters		1
       }
@@ -911,7 +896,7 @@ CompiledModel {
 	Type			Constant
 	Parameter {
 	  Name			  "Value"
-	  _idx			  32
+	  _idx			  34
 	}
 	NumParameters		1
       }
@@ -922,7 +907,7 @@ CompiledModel {
 	Type			Constant
 	Parameter {
 	  Name			  "Value"
-	  _idx			  33
+	  _idx			  31
 	}
 	NumParameters		1
       }
@@ -933,7 +918,7 @@ CompiledModel {
 	Type			Constant
 	Parameter {
 	  Name			  "Value"
-	  _idx			  34
+	  _idx			  32
 	}
 	NumParameters		1
       }
@@ -1356,61 +1341,41 @@ CompiledModel {
     GlobalBlockOutput {
       VarGroupIdx	      [0, 0]
       CGTypeIdx		      1
-      TID		      3
+      TID		      2
       LogicalSrc	      B0
-      GrSrc		      [0, 9, 0, -1]
+      GrSrc		      [0, 11, 0, -1]
       SigSrc		      [0, -1, 9, -1]
     }
     GlobalBlockOutput {
       VarGroupIdx	      [0, 1]
       CGTypeIdx		      1
-      TID		      3
+      TID		      2
       LogicalSrc	      B1
-      GrSrc		      [0, 10, 0, -1]
+      GrSrc		      [0, 12, 0, -1]
       SigSrc		      [0, -1, 9, -1]
     }
     GlobalBlockOutput {
       VarGroupIdx	      [0, 2]
-      CGTypeIdx		      1
-      TID		      3
+      CGTypeIdx		      7
+      TID		      2
       LogicalSrc	      B2
-      GrSrc		      [0, 11, 0, -1]
+      GrSrc		      [0, 9, 0, -1]
       SigSrc		      [0, -1, 9, -1]
     }
     GlobalBlockOutput {
       VarGroupIdx	      [0, 3]
-      CGTypeIdx		      1
-      TID		      3
+      CGTypeIdx		      5
+      TID		      2
       LogicalSrc	      B3
-      GrSrc		      [0, 12, 0, -1]
+      GrSrc		      [0, 10, 0, -1]
       SigSrc		      [0, -1, 9, -1]
-    }
-    ConstOutputExpr {
-      Identifier	      "Constant1"
-      SysCsIdx		      [0, -1]
-      CGTypeIdx		      1
-      TID		      2
-      LogicalSrc	      B4
-      ConstExpr		      1
-      GrSrc		      [0, 0, 0, -1]
-      SigSrc		      [0, -1, 0, 0]
-    }
-    ConstOutputExpr {
-      Identifier	      "Constant2"
-      SysCsIdx		      [0, -1]
-      CGTypeIdx		      1
-      TID		      2
-      LogicalSrc	      B5
-      ConstExpr		      1
-      GrSrc		      [0, 1, 0, -1]
-      SigSrc		      [0, -1, 1, 0]
     }
     ConstOutputExpr {
       Identifier	      "Constant3"
       SysCsIdx		      [0, -1]
       CGTypeIdx		      1
-      TID		      2
-      LogicalSrc	      B6
+      TID		      1
+      LogicalSrc	      B4
       ConstExpr		      1
       GrSrc		      [0, 2, 0, -1]
       SigSrc		      [0, -1, 2, 0]
@@ -1419,11 +1384,31 @@ CompiledModel {
       Identifier	      "Constant4"
       SysCsIdx		      [0, -1]
       CGTypeIdx		      1
-      TID		      2
-      LogicalSrc	      B7
+      TID		      1
+      LogicalSrc	      B5
       ConstExpr		      1
       GrSrc		      [0, 3, 0, -1]
       SigSrc		      [0, -1, 3, 0]
+    }
+    ConstOutputExpr {
+      Identifier	      "Constant1"
+      SysCsIdx		      [0, -1]
+      CGTypeIdx		      7
+      TID		      1
+      LogicalSrc	      B6
+      ConstExpr		      1
+      GrSrc		      [0, 0, 0, -1]
+      SigSrc		      [0, -1, 0, 0]
+    }
+    ConstOutputExpr {
+      Identifier	      "Constant2"
+      SysCsIdx		      [0, -1]
+      CGTypeIdx		      5
+      TID		      1
+      LogicalSrc	      B7
+      ConstExpr		      1
+      GrSrc		      [0, 1, 0, -1]
+      SigSrc		      [0, -1, 1, 0]
     }
   }
   DWorks {
@@ -1738,7 +1723,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter1"
       LogicalSrc	      P0
       Value		      [1000.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 0];]
       GraphicalRef	      Matrix(1,2)
@@ -1750,7 +1735,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter2"
       LogicalSrc	      P1
       Value		      [20.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 1];]
       GraphicalRef	      Matrix(1,2)
@@ -1761,7 +1746,7 @@ CompiledModel {
     Parameter {
       Identifier	      "chibiOS_Config_MSFcnParameter3"
       LogicalSrc	      P2
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 2];]
       GraphicalRef	      Matrix(1,2)
@@ -1772,7 +1757,7 @@ CompiledModel {
     Parameter {
       Identifier	      "chibiOS_Config_MSFcnParameter4"
       LogicalSrc	      P3
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 3];]
       GraphicalRef	      Matrix(1,2)
@@ -1784,7 +1769,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter5"
       LogicalSrc	      P4
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 4];]
       GraphicalRef	      Matrix(1,2)
@@ -1796,7 +1781,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter6"
       LogicalSrc	      P5
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 5];]
       GraphicalRef	      Matrix(1,2)
@@ -1808,7 +1793,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter7"
       LogicalSrc	      P6
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 6];]
       GraphicalRef	      Matrix(1,2)
@@ -1820,7 +1805,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter8"
       LogicalSrc	      P7
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 7];]
       GraphicalRef	      Matrix(1,2)
@@ -1831,7 +1816,7 @@ CompiledModel {
     Parameter {
       Identifier	      "chibiOS_Config_MSFcnParameter9"
       LogicalSrc	      P8
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 8];]
       GraphicalRef	      Matrix(1,2)
@@ -1843,7 +1828,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter10"
       LogicalSrc	      P9
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 9];]
       GraphicalRef	      Matrix(1,2)
@@ -1855,7 +1840,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter11"
       LogicalSrc	      P10
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 10];]
       GraphicalRef	      Matrix(1,2)
@@ -1867,7 +1852,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter12"
       LogicalSrc	      P11
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 11];]
       GraphicalRef	      Matrix(1,2)
@@ -1879,7 +1864,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter13"
       LogicalSrc	      P12
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 12];]
       GraphicalRef	      Matrix(1,2)
@@ -1891,7 +1876,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter14"
       LogicalSrc	      P13
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 13];]
       GraphicalRef	      Matrix(1,2)
@@ -1903,7 +1888,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter15"
       LogicalSrc	      P14
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 14];]
       GraphicalRef	      Matrix(1,2)
@@ -1915,7 +1900,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter16"
       LogicalSrc	      P15
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 15];]
       GraphicalRef	      Matrix(1,2)
@@ -1926,7 +1911,7 @@ CompiledModel {
     Parameter {
       Identifier	      "chibiOS_Config_MSFcnParameter17"
       LogicalSrc	      P16
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 16];]
       GraphicalRef	      Matrix(1,2)
@@ -1938,7 +1923,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter18"
       LogicalSrc	      P17
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 17];]
       GraphicalRef	      Matrix(1,2)
@@ -1950,7 +1935,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter19"
       LogicalSrc	      P18
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 18];]
       GraphicalRef	      Matrix(1,2)
@@ -1962,7 +1947,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter20"
       LogicalSrc	      P19
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 19];]
       GraphicalRef	      Matrix(1,2)
@@ -1974,7 +1959,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter21"
       LogicalSrc	      P20
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 20];]
       GraphicalRef	      Matrix(1,2)
@@ -1985,7 +1970,7 @@ CompiledModel {
     Parameter {
       Identifier	      "chibiOS_Config_MSFcnParameter22"
       LogicalSrc	      P21
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 21];]
       GraphicalRef	      Matrix(1,2)
@@ -1997,7 +1982,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter23"
       LogicalSrc	      P22
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 22];]
       GraphicalRef	      Matrix(1,2)
@@ -2009,7 +1994,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter24"
       LogicalSrc	      P23
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 23];]
       GraphicalRef	      Matrix(1,2)
@@ -2021,7 +2006,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter25"
       LogicalSrc	      P24
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 24];]
       GraphicalRef	      Matrix(1,2)
@@ -2033,7 +2018,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter26"
       LogicalSrc	      P25
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 25];]
       GraphicalRef	      Matrix(1,2)
@@ -2045,7 +2030,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter27"
       LogicalSrc	      P26
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 26];]
       GraphicalRef	      Matrix(1,2)
@@ -2057,7 +2042,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter28"
       LogicalSrc	      P27
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 27];]
       GraphicalRef	      Matrix(1,2)
@@ -2069,7 +2054,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter29"
       LogicalSrc	      P28
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 28];]
       GraphicalRef	      Matrix(1,2)
@@ -2081,7 +2066,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter30"
       LogicalSrc	      P29
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 29];]
       GraphicalRef	      Matrix(1,2)
@@ -2093,7 +2078,7 @@ CompiledModel {
       Identifier	      "chibiOS_Config_MSFcnParameter31"
       LogicalSrc	      P30
       Value		      [1.0]
-      ContainerCGTypeIdx      21
+      ContainerCGTypeIdx      23
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 6, 30];]
       GraphicalRef	      Matrix(1,2)
@@ -2102,40 +2087,12 @@ CompiledModel {
       WasAccessedAsVariable   1
     }
     Parameter {
-      Identifier	      "Constant1_Value"
-      LogicalSrc	      P31
-      Value		      [4941.73926F]
-      OriginalDataTypeIdx     1
-      CGTypeIdx		      18
-      ContainerCGTypeIdx      22
-      ReferencedBy	      Matrix(1,4)
-[[0, -1, 0, 0];]
-      GraphicalRef	      Matrix(1,2)
-[[0, 0];]
-      OwnerSysIdx	      [0, -1]
-      WasAccessedAsVariable   1
-    }
-    Parameter {
-      Identifier	      "Constant2_Value"
-      LogicalSrc	      P32
-      Value		      [7790.51709F]
-      OriginalDataTypeIdx     1
-      CGTypeIdx		      18
-      ContainerCGTypeIdx      22
-      ReferencedBy	      Matrix(1,4)
-[[0, -1, 1, 0];]
-      GraphicalRef	      Matrix(1,2)
-[[0, 1];]
-      OwnerSysIdx	      [0, -1]
-      WasAccessedAsVariable   1
-    }
-    Parameter {
       Identifier	      "Constant3_Value"
-      LogicalSrc	      P33
-      Value		      [7150.37061F]
+      LogicalSrc	      P31
+      Value		      [8181.48535F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
-      ContainerCGTypeIdx      22
+      ContainerCGTypeIdx      24
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 2, 0];]
       GraphicalRef	      Matrix(1,2)
@@ -2145,15 +2102,43 @@ CompiledModel {
     }
     Parameter {
       Identifier	      "Constant4_Value"
-      LogicalSrc	      P34
-      Value		      [9037.20605F]
+      LogicalSrc	      P32
+      Value		      [8175.4707F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
-      ContainerCGTypeIdx      22
+      ContainerCGTypeIdx      24
       ReferencedBy	      Matrix(1,4)
 [[0, -1, 3, 0];]
       GraphicalRef	      Matrix(1,2)
 [[0, 3];]
+      OwnerSysIdx	      [0, -1]
+      WasAccessedAsVariable   1
+    }
+    Parameter {
+      Identifier	      "Constant1_Value"
+      LogicalSrc	      P33
+      Value		      [5216U]
+      OriginalDataTypeIdx     7
+      CGTypeIdx		      19
+      ContainerCGTypeIdx      25
+      ReferencedBy	      Matrix(1,4)
+[[0, -1, 0, 0];]
+      GraphicalRef	      Matrix(1,2)
+[[0, 0];]
+      OwnerSysIdx	      [0, -1]
+      WasAccessedAsVariable   1
+    }
+    Parameter {
+      Identifier	      "Constant2_Value"
+      LogicalSrc	      P34
+      Value		      [6339U]
+      OriginalDataTypeIdx     5
+      CGTypeIdx		      20
+      ContainerCGTypeIdx      26
+      ReferencedBy	      Matrix(1,4)
+[[0, -1, 1, 0];]
+      GraphicalRef	      Matrix(1,2)
+[[0, 1];]
       OwnerSysIdx	      [0, -1]
       WasAccessedAsVariable   1
     }
@@ -2228,12 +2213,10 @@ CompiledModel {
     OutputHeader0	    ""
     OutputHeader1	    ""
     OutputHeader2	    ""
-    OutputHeader3	    ""
     UpdateHeader	    ""
     UpdateHeader0	    ""
     UpdateHeader1	    ""
     UpdateHeader2	    ""
-    UpdateHeader3	    ""
     DerivativeHeader	    ""
     ProjectionHeader	    ""
     ForcingFunctionHeader   ""
@@ -2248,7 +2231,6 @@ CompiledModel {
     OutputUpdateHeader0	    ""
     OutputUpdateHeader1	    ""
     OutputUpdateHeader2	    ""
-    OutputUpdateHeader3	    ""
     StartBody		    ""
     VirtualOutportStartBody ""
     InitializeBody	    ""
@@ -2256,12 +2238,10 @@ CompiledModel {
     OutputBody0		    ""
     OutputBody1		    ""
     OutputBody2		    ""
-    OutputBody3		    ""
     UpdateBody		    ""
     UpdateBody0		    ""
     UpdateBody1		    ""
     UpdateBody2		    ""
-    UpdateBody3		    ""
     DerivativeBody	    ""
     ProjectionBody	    ""
     ForcingFunctionBody	    ""
@@ -2276,7 +2256,6 @@ CompiledModel {
     OutputUpdateBody0	    ""
     OutputUpdateBody1	    ""
     OutputUpdateBody2	    ""
-    OutputUpdateBody3	    ""
     StartTrailer	    ""
     VirtualOutportStartTrailer ""
     InitializeTrailer	    ""
@@ -2284,12 +2263,10 @@ CompiledModel {
     OutputTrailer0	    ""
     OutputTrailer1	    ""
     OutputTrailer2	    ""
-    OutputTrailer3	    ""
     UpdateTrailer	    ""
     UpdateTrailer0	    ""
     UpdateTrailer1	    ""
     UpdateTrailer2	    ""
-    UpdateTrailer3	    ""
     DerivativeTrailer	    ""
     ProjectionTrailer	    ""
     ForcingFunctionTrailer  ""
@@ -2304,7 +2281,6 @@ CompiledModel {
     OutputUpdateTrailer0    ""
     OutputUpdateTrailer1    ""
     OutputUpdateTrailer2    ""
-    OutputUpdateTrailer3    ""
     StartCacheAssert	    0
     VirtualOutportStartCacheAssert 0
     InitializeCacheAssert   0
@@ -2312,12 +2288,10 @@ CompiledModel {
     OutputCacheAssert0	    0
     OutputCacheAssert1	    0
     OutputCacheAssert2	    0
-    OutputCacheAssert3	    0
     UpdateCacheAssert	    0
     UpdateCacheAssert0	    0
     UpdateCacheAssert1	    0
     UpdateCacheAssert2	    0
-    UpdateCacheAssert3	    0
     DerivativeCacheAssert   0
     ProjectionCacheAssert   0
     ForcingFunctionCacheAssert 0
@@ -2332,7 +2306,6 @@ CompiledModel {
     OutputUpdateCacheAssert0 0
     OutputUpdateCacheAssert1 0
     OutputUpdateCacheAssert2 0
-    OutputUpdateCacheAssert3 0
     CachedStartFcn	    ""
     CachedVirtualOutportStartFcn ""
     CachedInitializeFcn	    ""
@@ -2340,12 +2313,10 @@ CompiledModel {
     CachedOutput0Fcn	    ""
     CachedOutput1Fcn	    ""
     CachedOutput2Fcn	    ""
-    CachedOutput3Fcn	    ""
     CachedUpdateFcn	    ""
     CachedUpdate0Fcn	    ""
     CachedUpdate1Fcn	    ""
     CachedUpdate2Fcn	    ""
-    CachedUpdate3Fcn	    ""
     CachedDerivativeFcn	    ""
     CachedProjectionFcn	    ""
     CachedForcingFunctionFcn ""
@@ -2360,7 +2331,6 @@ CompiledModel {
     CachedOutputUpdate0Fcn  ""
     CachedOutputUpdate1Fcn  ""
     CachedOutputUpdate2Fcn  ""
-    CachedOutputUpdate3Fcn  ""
     CachedStartSSVars	    ""
     CachedVirtualOutportStartSSVars ""
     CachedInitializeSSVars  ""
@@ -2368,12 +2338,10 @@ CompiledModel {
     CachedOutput0SSVars	    ""
     CachedOutput1SSVars	    ""
     CachedOutput2SSVars	    ""
-    CachedOutput3SSVars	    ""
     CachedUpdateSSVars	    ""
     CachedUpdate0SSVars	    ""
     CachedUpdate1SSVars	    ""
     CachedUpdate2SSVars	    ""
-    CachedUpdate3SSVars	    ""
     CachedDerivativeSSVars  ""
     CachedProjectionSSVars  ""
     CachedForcingFunctionSSVars	""
@@ -2388,7 +2356,6 @@ CompiledModel {
     CachedOutputUpdate0SSVars ""
     CachedOutputUpdate1SSVars ""
     CachedOutputUpdate2SSVars ""
-    CachedOutputUpdate3SSVars ""
     CachedStartGlobalVars   ""
     CachedVirtualOutportStartGlobalVars	""
     CachedInitializeGlobalVars ""
@@ -2396,12 +2363,10 @@ CompiledModel {
     CachedOutput0GlobalVars ""
     CachedOutput1GlobalVars ""
     CachedOutput2GlobalVars ""
-    CachedOutput3GlobalVars ""
     CachedUpdateGlobalVars  ""
     CachedUpdate0GlobalVars ""
     CachedUpdate1GlobalVars ""
     CachedUpdate2GlobalVars ""
-    CachedUpdate3GlobalVars ""
     CachedDerivativeGlobalVars ""
     CachedProjectionGlobalVars ""
     CachedForcingFunctionGlobalVars ""
@@ -2416,7 +2381,6 @@ CompiledModel {
     CachedOutputUpdate0GlobalVars ""
     CachedOutputUpdate1GlobalVars ""
     CachedOutputUpdate2GlobalVars ""
-    CachedOutputUpdate3GlobalVars ""
     CachedStartLocalBO	    ""
     CachedVirtualOutportStartLocalBO ""
     CachedInitializeLocalBO ""
@@ -2424,12 +2388,10 @@ CompiledModel {
     CachedOutput0LocalBO    ""
     CachedOutput1LocalBO    ""
     CachedOutput2LocalBO    ""
-    CachedOutput3LocalBO    ""
     CachedUpdateLocalBO	    ""
     CachedUpdate0LocalBO    ""
     CachedUpdate1LocalBO    ""
     CachedUpdate2LocalBO    ""
-    CachedUpdate3LocalBO    ""
     CachedDerivativeLocalBO ""
     CachedProjectionLocalBO ""
     CachedForcingFunctionLocalBO ""
@@ -2444,7 +2406,6 @@ CompiledModel {
     CachedOutputUpdate0LocalBO ""
     CachedOutputUpdate1LocalBO ""
     CachedOutputUpdate2LocalBO ""
-    CachedOutputUpdate3LocalBO ""
     CachedStartLocalVars    ""
     CachedVirtualOutportStartLocalVars ""
     CachedInitializeLocalVars ""
@@ -2452,12 +2413,10 @@ CompiledModel {
     CachedOutput0LocalVars  ""
     CachedOutput1LocalVars  ""
     CachedOutput2LocalVars  ""
-    CachedOutput3LocalVars  ""
     CachedUpdateLocalVars   ""
     CachedUpdate0LocalVars  ""
     CachedUpdate1LocalVars  ""
     CachedUpdate2LocalVars  ""
-    CachedUpdate3LocalVars  ""
     CachedDerivativeLocalVars ""
     CachedProjectionLocalVars ""
     CachedForcingFunctionLocalVars ""
@@ -2472,7 +2431,6 @@ CompiledModel {
     CachedOutputUpdate0LocalVars ""
     CachedOutputUpdate1LocalVars ""
     CachedOutputUpdate2LocalVars ""
-    CachedOutputUpdate3LocalVars ""
     CachedStartProfileDeclsCode	""
     CachedVirtualOutportStartProfileDeclsCode ""
     CachedInitializeProfileDeclsCode ""
@@ -2530,9 +2488,6 @@ CompiledModel {
     Output2Fcn		    ""
     Update2Fcn		    ""
     OutputUpdate2Fcn	    ""
-    Output3Fcn		    ""
-    Update3Fcn		    ""
-    OutputUpdate3Fcn	    ""
     CachedConstCodeLocalVars ""
     CachedSubFunctions	    ""
     CachedStateflowFcnCode  ""
@@ -2761,11 +2716,11 @@ CompiledModel {
       }
       Name		      "<Root>/Constant1"
       Identifier	      "Constant1"
-      TID		      2
+      TID		      1
       RollRegions	      [0]
       DataOutputPort {
-	SignalSrc		[C0]
-	CGTypeIdx		1
+	SignalSrc		[C2]
+	CGTypeIdx		7
 	OutputExpression	1
 	TrivialOutputExpression	1
       }
@@ -2775,13 +2730,13 @@ CompiledModel {
 	ASTNode {
 	  IsNonTerminal		  0
 	  Op			  SL_NOT_INLINED
-	  ModelParameterIdx	  31
+	  ModelParameterIdx	  33
 	}
-	Value			[4941.73926F]
-	OriginalDataTypeIdx	1
-	CGTypeIdx		18
-	ContainerCGTypeIdx	22
-	String			"single(rand(1,1)*10000)"
+	Value			[5216U]
+	OriginalDataTypeIdx	7
+	CGTypeIdx		19
+	ContainerCGTypeIdx	25
+	String			"uint32(rand(1,1)*10000)"
 	StringType		"Expression"
       }
       Value		      Parameter[0]
@@ -2797,11 +2752,11 @@ CompiledModel {
       }
       Name		      "<Root>/Constant2"
       Identifier	      "Constant2"
-      TID		      2
+      TID		      1
       RollRegions	      [0]
       DataOutputPort {
-	SignalSrc		[C1]
-	CGTypeIdx		1
+	SignalSrc		[C3]
+	CGTypeIdx		5
 	OutputExpression	1
 	TrivialOutputExpression	1
       }
@@ -2811,13 +2766,13 @@ CompiledModel {
 	ASTNode {
 	  IsNonTerminal		  0
 	  Op			  SL_NOT_INLINED
-	  ModelParameterIdx	  32
+	  ModelParameterIdx	  34
 	}
-	Value			[7790.51709F]
-	OriginalDataTypeIdx	1
-	CGTypeIdx		18
-	ContainerCGTypeIdx	22
-	String			"single(rand(1,1)*10000)"
+	Value			[6339U]
+	OriginalDataTypeIdx	5
+	CGTypeIdx		20
+	ContainerCGTypeIdx	26
+	String			"uint16(rand(1,1)*2^16)"
 	StringType		"Expression"
       }
       Value		      Parameter[0]
@@ -2833,10 +2788,10 @@ CompiledModel {
       }
       Name		      "<Root>/Constant3"
       Identifier	      "Constant3"
-      TID		      2
+      TID		      1
       RollRegions	      [0]
       DataOutputPort {
-	SignalSrc		[C2]
+	SignalSrc		[C0]
 	CGTypeIdx		1
 	OutputExpression	1
 	TrivialOutputExpression	1
@@ -2847,12 +2802,12 @@ CompiledModel {
 	ASTNode {
 	  IsNonTerminal		  0
 	  Op			  SL_NOT_INLINED
-	  ModelParameterIdx	  33
+	  ModelParameterIdx	  31
 	}
-	Value			[7150.37061F]
+	Value			[8181.48535F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
-	ContainerCGTypeIdx	22
+	ContainerCGTypeIdx	24
 	String			"single(rand(1,1)*10000)"
 	StringType		"Expression"
       }
@@ -2869,10 +2824,10 @@ CompiledModel {
       }
       Name		      "<Root>/Constant4"
       Identifier	      "Constant4"
-      TID		      2
+      TID		      1
       RollRegions	      [0]
       DataOutputPort {
-	SignalSrc		[C3]
+	SignalSrc		[C1]
 	CGTypeIdx		1
 	OutputExpression	1
 	TrivialOutputExpression	1
@@ -2883,12 +2838,12 @@ CompiledModel {
 	ASTNode {
 	  IsNonTerminal		  0
 	  Op			  SL_NOT_INLINED
-	  ModelParameterIdx	  34
+	  ModelParameterIdx	  32
 	}
-	Value			[9037.20605F]
+	Value			[8175.4707F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
-	ContainerCGTypeIdx	22
+	ContainerCGTypeIdx	24
 	String			"single(rand(1,1)*10000)"
 	StringType		"Expression"
       }
@@ -2908,9 +2863,19 @@ CompiledModel {
       }
       Name		      "<Root>/pwm_Config2"
       Identifier	      "pwm_Config2"
-      TID		      2
+      TID		      1
       RollRegions	      [0]
       NumDataInputPorts	      4
+      DataInputPort {
+	SignalSrc		[C2]
+	SignalRegion		[0@1]
+	CGTypeIdx		7
+      }
+      DataInputPort {
+	SignalSrc		[C3]
+	SignalRegion		[0@1]
+	CGTypeIdx		5
+      }
       DataInputPort {
 	SignalSrc		[C0]
 	SignalRegion		[0@1]
@@ -2918,16 +2883,6 @@ CompiledModel {
       }
       DataInputPort {
 	SignalSrc		[C1]
-	SignalRegion		[0@1]
-	CGTypeIdx		1
-      }
-      DataInputPort {
-	SignalSrc		[C2]
-	SignalRegion		[0@1]
-	CGTypeIdx		1
-      }
-      DataInputPort {
-	SignalSrc		[C3]
 	SignalRegion		[0@1]
 	CGTypeIdx		1
       }
@@ -2968,9 +2923,19 @@ CompiledModel {
       }
       Name		      "<Root>/pwm_Config3"
       Identifier	      "pwm_Config3"
-      TID		      3
+      TID		      2
       RollRegions	      [0]
       NumDataInputPorts	      4
+      DataInputPort {
+	SignalSrc		[b2]
+	SignalRegion		[0@1]
+	CGTypeIdx		7
+      }
+      DataInputPort {
+	SignalSrc		[b3]
+	SignalRegion		[0@1]
+	CGTypeIdx		5
+      }
       DataInputPort {
 	SignalSrc		[b0]
 	SignalRegion		[0@1]
@@ -2978,16 +2943,6 @@ CompiledModel {
       }
       DataInputPort {
 	SignalSrc		[b1]
-	SignalRegion		[0@1]
-	CGTypeIdx		1
-      }
-      DataInputPort {
-	SignalSrc		[b2]
-	SignalRegion		[0@1]
-	CGTypeIdx		1
-      }
-      DataInputPort {
-	SignalSrc		[b3]
 	SignalRegion		[0@1]
 	CGTypeIdx		1
       }
@@ -3028,7 +2983,7 @@ CompiledModel {
       }
       Name		      "<Root>/chibiOS_Config"
       Identifier	      "chibiOS_Config"
-      TID		      2
+      TID		      1
       NumDataOutputPorts      0
       ParamSettings {
 	MFile			chibiOS_Config
@@ -3078,7 +3033,7 @@ CompiledModel {
 	  ModelParameterIdx	  0
 	}
 	Value			[1000.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_FREQUENCY"
 	StringType		"Expression"
       }
@@ -3090,7 +3045,7 @@ CompiledModel {
 	  ModelParameterIdx	  1
 	}
 	Value			[20.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_TIME_QUANTUM"
 	StringType		"Expression"
       }
@@ -3101,7 +3056,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  2
 	}
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_MEMCORE_SIZE"
 	StringType		"Expression"
       }
@@ -3112,7 +3067,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  3
 	}
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_NO_IDLE_THREAD"
 	StringType		"Expression"
       }
@@ -3124,7 +3079,7 @@ CompiledModel {
 	  ModelParameterIdx	  4
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_OPTIMIZE_SPEED"
 	StringType		"Expression"
       }
@@ -3136,7 +3091,7 @@ CompiledModel {
 	  ModelParameterIdx	  5
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_REGISTRY"
 	StringType		"Expression"
       }
@@ -3148,7 +3103,7 @@ CompiledModel {
 	  ModelParameterIdx	  6
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_WAITEXIT"
 	StringType		"Expression"
       }
@@ -3160,7 +3115,7 @@ CompiledModel {
 	  ModelParameterIdx	  7
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_SEMAPHORES"
 	StringType		"Expression"
       }
@@ -3171,7 +3126,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  8
 	}
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_SEMAPHORES_PRIORITY"
 	StringType		"Expression"
       }
@@ -3183,7 +3138,7 @@ CompiledModel {
 	  ModelParameterIdx	  9
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_SEMSW"
 	StringType		"Expression"
       }
@@ -3195,7 +3150,7 @@ CompiledModel {
 	  ModelParameterIdx	  10
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MUTEXES"
 	StringType		"Expression"
       }
@@ -3207,7 +3162,7 @@ CompiledModel {
 	  ModelParameterIdx	  11
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_CONDVARS"
 	StringType		"Expression"
       }
@@ -3219,7 +3174,7 @@ CompiledModel {
 	  ModelParameterIdx	  12
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_CONDVARS_TIMEOUT"
 	StringType		"Expression"
       }
@@ -3231,7 +3186,7 @@ CompiledModel {
 	  ModelParameterIdx	  13
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_EVENTS"
 	StringType		"Expression"
       }
@@ -3243,7 +3198,7 @@ CompiledModel {
 	  ModelParameterIdx	  14
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_EVENTS_TIMEOUT"
 	StringType		"Expression"
       }
@@ -3255,7 +3210,7 @@ CompiledModel {
 	  ModelParameterIdx	  15
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MESSAGES"
 	StringType		"Expression"
       }
@@ -3266,7 +3221,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  16
 	}
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MESSAGES_PRIORITY"
 	StringType		"Expression"
       }
@@ -3278,7 +3233,7 @@ CompiledModel {
 	  ModelParameterIdx	  17
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MAILBOXES"
 	StringType		"Expression"
       }
@@ -3290,7 +3245,7 @@ CompiledModel {
 	  ModelParameterIdx	  18
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_QUEUES"
 	StringType		"Expression"
       }
@@ -3302,7 +3257,7 @@ CompiledModel {
 	  ModelParameterIdx	  19
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MEMCORE"
 	StringType		"Expression"
       }
@@ -3314,7 +3269,7 @@ CompiledModel {
 	  ModelParameterIdx	  20
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_HEAP"
 	StringType		"Expression"
       }
@@ -3325,7 +3280,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  21
 	}
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MALLOC_HEAP"
 	StringType		"Expression"
       }
@@ -3337,7 +3292,7 @@ CompiledModel {
 	  ModelParameterIdx	  22
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_MEMPOOLS"
 	StringType		"Expression"
       }
@@ -3349,7 +3304,7 @@ CompiledModel {
 	  ModelParameterIdx	  23
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_USE_DYNAMIC"
 	StringType		"Expression"
       }
@@ -3361,7 +3316,7 @@ CompiledModel {
 	  ModelParameterIdx	  24
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_SYSTEM_STATE_CHECK"
 	StringType		"Expression"
       }
@@ -3373,7 +3328,7 @@ CompiledModel {
 	  ModelParameterIdx	  25
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_ENABLE_CHECKS"
 	StringType		"Expression"
       }
@@ -3385,7 +3340,7 @@ CompiledModel {
 	  ModelParameterIdx	  26
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_ENABLE_ASSERTS"
 	StringType		"Expression"
       }
@@ -3397,7 +3352,7 @@ CompiledModel {
 	  ModelParameterIdx	  27
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_ENABLE_TRACE"
 	StringType		"Expression"
       }
@@ -3409,7 +3364,7 @@ CompiledModel {
 	  ModelParameterIdx	  28
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_ENABLE_STACK_CHECK"
 	StringType		"Expression"
       }
@@ -3421,7 +3376,7 @@ CompiledModel {
 	  ModelParameterIdx	  29
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_FILL_THREADS"
 	StringType		"Expression"
       }
@@ -3433,7 +3388,7 @@ CompiledModel {
 	  ModelParameterIdx	  30
 	}
 	Value			[1.0]
-	ContainerCGTypeIdx	21
+	ContainerCGTypeIdx	23
 	String			"CH_DBG_THREADS_PROFILING"
 	StringType		"Expression"
       }
@@ -3483,7 +3438,7 @@ CompiledModel {
       }
       Name		      "<Root>/hal_Config"
       Identifier	      "hal_Config"
-      TID		      2
+      TID		      1
       NumDataOutputPorts      0
       ParamSettings {
 	MFile			hal_Config
@@ -3539,7 +3494,7 @@ CompiledModel {
       }
       Name		      "<Root>/stm32F4xx_Config"
       Identifier	      "stm32F4xx_Config"
-      TID		      2
+      TID		      1
       NumDataOutputPorts      0
       ParamSettings {
 	MFile			stm32F4xx_Config
@@ -3754,9 +3709,9 @@ CompiledModel {
       }
       Name		      "<Root>/Opaque"
       Identifier	      "Constant1"
-      TID		      [0, 1, 2, 3]
+      TID		      [0, 1, 2]
       NumDataOutputPorts      0
-      TLCFileName	      "s0_b0_83w4r"
+      TLCFileName	      "s0_b0_51y4r"
       OpaqueBlockMethode {
 	HasStart		1
 	HasInitializeConditions	1
@@ -3770,41 +3725,41 @@ CompiledModel {
       Parameters	      [4, 4]
       Parameter {
 	Name			"Value"
+	MdlPrmIdx		33
+	Value			[5216U]
+	OriginalDataTypeIdx	7
+	CGTypeIdx		19
+	ContainerCGTypeIdx	25
+	String			"uint32(rand(1,1)*10000)"
+	StringType		"Expression"
+      }
+      Parameter {
+	Name			"Value"
+	MdlPrmIdx		34
+	Value			[6339U]
+	OriginalDataTypeIdx	5
+	CGTypeIdx		20
+	ContainerCGTypeIdx	26
+	String			"uint16(rand(1,1)*2^16)"
+	StringType		"Expression"
+      }
+      Parameter {
+	Name			"Value"
 	MdlPrmIdx		31
-	Value			[4941.73926F]
+	Value			[8181.48535F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
-	ContainerCGTypeIdx	22
+	ContainerCGTypeIdx	24
 	String			"single(rand(1,1)*10000)"
 	StringType		"Expression"
       }
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		32
-	Value			[7790.51709F]
+	Value			[8175.4707F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
-	ContainerCGTypeIdx	22
-	String			"single(rand(1,1)*10000)"
-	StringType		"Expression"
-      }
-      Parameter {
-	Name			"Value"
-	MdlPrmIdx		33
-	Value			[7150.37061F]
-	OriginalDataTypeIdx	1
-	CGTypeIdx		18
-	ContainerCGTypeIdx	22
-	String			"single(rand(1,1)*10000)"
-	StringType		"Expression"
-      }
-      Parameter {
-	Name			"Value"
-	MdlPrmIdx		34
-	Value			[9037.20605F]
-	OriginalDataTypeIdx	1
-	CGTypeIdx		18
-	ContainerCGTypeIdx	22
+	ContainerCGTypeIdx	24
 	String			"single(rand(1,1)*10000)"
 	StringType		"Expression"
       }
@@ -3813,8 +3768,8 @@ CompiledModel {
       NumRTWdatas	      0
     }
   }
-  BlockParamChecksum	  ["1735228132U", "3058129369U", "1344906628U", "2631720166U"]
-  ModelChecksum		  ["3025653360U", "2926035674U", "1459658713U", "4195857506U"]
+  BlockParamChecksum	  ["2054926161U", "4223147775U", "1660807165U", "2616097282U"]
+  ModelChecksum		  ["2637455242U", "1863626553U", "3242141569U", "3853836843U"]
   IncludeCodeGenSettings  1
   CGTypes {
     CGTypeDefaults {
@@ -3830,7 +3785,7 @@ CompiledModel {
       CGTypeIdx		      0
       Alignment		      -1
     }
-    NumCGTypes		    23
+    NumCGTypes		    27
     DeclareUsedMultiWordBits 0
     CGType {
       Name		      "real_T"
@@ -3925,18 +3880,18 @@ CompiledModel {
       BaseIdx		      1
     }
     CGType {
+      Constructor	      "matrix"
+      BaseIdx		      7
+    }
+    CGType {
+      Constructor	      "matrix"
+      BaseIdx		      5
+    }
+    CGType {
       Name		      "BlockIO_chibiOS_Config_Model"
       Constructor	      "struct"
       Members {
 	NumMembers		4
-	Member {
-	  Name			  "RateTransition"
-	  CGTypeIdx		  1
-	}
-	Member {
-	  Name			  "RateTransition1"
-	  CGTypeIdx		  1
-	}
 	Member {
 	  Name			  "RateTransition2"
 	  CGTypeIdx		  1
@@ -3944,6 +3899,14 @@ CompiledModel {
 	Member {
 	  Name			  "RateTransition3"
 	  CGTypeIdx		  1
+	}
+	Member {
+	  Name			  "RateTransition"
+	  CGTypeIdx		  7
+	}
+	Member {
+	  Name			  "RateTransition1"
+	  CGTypeIdx		  5
 	}
       }
     }
@@ -4046,20 +4009,20 @@ CompiledModel {
 	  Name			  "chibiOS_Config_MSFcnParameter31"
 	}
 	Member {
-	  Name			  "Constant1_Value"
-	  CGTypeIdx		  1
-	}
-	Member {
-	  Name			  "Constant2_Value"
-	  CGTypeIdx		  1
-	}
-	Member {
 	  Name			  "Constant3_Value"
 	  CGTypeIdx		  1
 	}
 	Member {
 	  Name			  "Constant4_Value"
 	  CGTypeIdx		  1
+	}
+	Member {
+	  Name			  "Constant1_Value"
+	  CGTypeIdx		  7
+	}
+	Member {
+	  Name			  "Constant2_Value"
+	  CGTypeIdx		  5
 	}
       }
     }
@@ -4071,6 +4034,18 @@ CompiledModel {
     CGType {
       Constructor	      "matrix"
       BaseIdx		      1
+      NumDimensions	      1
+      Dimensions	      [1]
+    }
+    CGType {
+      Constructor	      "matrix"
+      BaseIdx		      7
+      NumDimensions	      1
+      Dimensions	      [1]
+    }
+    CGType {
+      Constructor	      "matrix"
+      BaseIdx		      5
       NumDimensions	      1
       Dimensions	      [1]
     }
@@ -4117,62 +4092,62 @@ CompiledModel {
     }
     NumRTWCGModules	    1
     RTWCGModule {
-      TLCFileName	      "s0_b0_83w4r"
+      TLCFileName	      "s0_b0_51y4r"
       RTWFcnConst {
 	HasInstanceSetup	"no"
-	baseTidOfTasks		"[0, 1, 2, 3]"
+	baseTidOfTasks		"[0, 1, 2]"
 	Start_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Start"
+	  TLCFileName		  "s0_b0_51y4r_Start"
 	  StackSize		  0
 	}
 	InitializeConditions_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_InitializeConditions"
+	  TLCFileName		  "s0_b0_51y4r_InitializeConditions"
+	  StackSize		  0
+	}
+	Outputs_FunctionTID1 {
+	  HasTidArg 0
+	  HasCpiArg 0
+	  TLCFileName		  "s0_b0_51y4r_Outputs"
 	  StackSize		  0
 	}
 	Outputs_FunctionTID2 {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Outputs"
-	  StackSize		  0
-	}
-	Outputs_FunctionTID3 {
-	  HasTidArg 0
-	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Outputs"
+	  TLCFileName		  "s0_b0_51y4r_Outputs"
 	  StackSize		  0
 	}
 	Derivatives_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Derivatives"
+	  TLCFileName		  "s0_b0_51y4r_Derivatives"
 	  StackSize		  0
 	}
 	ForcingFunction_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_ForcingFunction"
+	  TLCFileName		  "s0_b0_51y4r_ForcingFunction"
 	  StackSize		  0
 	}
 	Enable_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Enable"
+	  TLCFileName		  "s0_b0_51y4r_Enable"
 	  StackSize		  0
 	}
 	Disable_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Disable"
+	  TLCFileName		  "s0_b0_51y4r_Disable"
 	  StackSize		  0
 	}
 	Terminate_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s0_b0_83w4r_Terminate"
+	  TLCFileName		  "s0_b0_51y4r_Terminate"
 	  StackSize		  0
 	}
       }
@@ -4183,7 +4158,7 @@ CompiledModel {
 	Start 0
 	InitializeConditions 1
 	Outputs 2
-	OutputsTID3 3
+	OutputsTID2 3
 	Derivatives 4
 	ForcingFunction 5
 	Enable 6
@@ -4193,8 +4168,8 @@ CompiledModel {
       SystemFunctionTypes {
 	Start 0
 	InitializeConditions 1
-	Outputs_TID2 2
-	Outputs_TID3 3
+	Outputs_TID1 2
+	Outputs_TID2 3
 	Derivatives 4
 	ForcingFunction 5
 	Enable 6
@@ -4217,14 +4192,14 @@ CompiledModel {
 	Name			"Outputs"
 	CPIArgIndex		-1
 	FunctionType		"Output"
-	FcnTID			2
+	FcnTID			1
 	NumTLCInterfaceFcns	70
       }
       Function {
 	Name			"Outputs"
 	CPIArgIndex		-1
 	FunctionType		"Output"
-	FcnTID			3
+	FcnTID			2
 	NumTLCInterfaceFcns	8
       }
       Function {
@@ -4279,7 +4254,7 @@ CompiledModel {
       SysIdx		      0
       HasElement	      "BLOCKIO_CHIBIOS_CONFIG_MODEL_VARIANT_EXISTS"
       InstanceIdx	      -1
-      CGTypeIdx		      19
+      CGTypeIdx		      21
       GlobalOffset	      0
       NumVarGroupElements     4
       VarGroupElements	      [B0, B1, B2, B3]
@@ -4291,7 +4266,7 @@ CompiledModel {
       SysIdx		      0
       HasElement	      "PARAMETERS_CHIBIOS_CONFIG_MODEL_VARIANT_EXISTS"
       InstanceIdx	      -1
-      CGTypeIdx		      20
+      CGTypeIdx		      22
       GlobalOffset	      0
       NumVarGroupElements     35
       VarGroupElements	      Vector(35)

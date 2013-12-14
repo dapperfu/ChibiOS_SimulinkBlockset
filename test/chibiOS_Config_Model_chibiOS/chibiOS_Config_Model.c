@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.166
+   Model version                    : 1.171
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Sat Dec 14 00:32:23 2013
+   C/C++ source code generated on   : Sat Dec 14 01:14:19 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -149,7 +149,6 @@ void chibiOS_Config_Model_SetEventsForThisBaseStep(boolean_T *eventFlags)
   /* Task runs when its counter is zero, computed via rtmStepTask macro */
   eventFlags[1] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 1));
   eventFlags[2] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 2));
-  eventFlags[3] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 3));
 }
 
 /*
@@ -170,18 +169,13 @@ static void rate_monotonic_scheduler(void)
    * appropriate non-zero value in the model's initialization function.
    */
   (chibiOS_Config_Model_M->Timing.TaskCounters.TID[1])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 9) {/* Sample time: [0.1s, 0.0s] */
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 49) {/* Sample time: [0.5s, 0.0s] */
     chibiOS_Config_Model_M->Timing.TaskCounters.TID[1] = 0;
   }
 
   (chibiOS_Config_Model_M->Timing.TaskCounters.TID[2])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[2]) > 49) {/* Sample time: [0.5s, 0.0s] */
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[2]) > 199) {/* Sample time: [2.0s, 1.0s] */
     chibiOS_Config_Model_M->Timing.TaskCounters.TID[2] = 0;
-  }
-
-  (chibiOS_Config_Model_M->Timing.TaskCounters.TID[3])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[3]) > 99) {/* Sample time: [1.0s, 0.2s] */
-    chibiOS_Config_Model_M->Timing.TaskCounters.TID[3] = 0;
   }
 }
 
@@ -194,13 +188,7 @@ void chibiOS_Config_Model_step0(void)  /* Sample time: [0.01s, 0.0s] */
 }
 
 /* Model step function for TID1 */
-void chibiOS_Config_Model_step1(void)  /* Sample time: [0.1s, 0.0s] */
-{
-  /* (no output/update code required) */
-}
-
-/* Model step function for TID2 */
-void chibiOS_Config_Model_step2(void)  /* Sample time: [0.5s, 0.0s] */
+void chibiOS_Config_Model_step1(void)  /* Sample time: [0.5s, 0.0s] */
 {
   /* Output Block: <Root>/pwm_Config2 */
 
@@ -215,8 +203,8 @@ void chibiOS_Config_Model_step2(void)  /* Sample time: [0.5s, 0.0s] */
     chibiOS_Config_Model_P.Constant4_Value));
 }
 
-/* Model step function for TID3 */
-void chibiOS_Config_Model_step3(void)  /* Sample time: [1.0s, 0.2s] */
+/* Model step function for TID2 */
+void chibiOS_Config_Model_step2(void)  /* Sample time: [2.0s, 1.0s] */
 {
   /* RateTransition: '<Root>/Rate Transition' incorporates:
    *  Constant: '<Root>/Constant1'
@@ -270,10 +258,6 @@ void chibiOS_Config_Model_step(int_T tid)
     chibiOS_Config_Model_step2();
     break;
 
-   case 3 :
-    chibiOS_Config_Model_step3();
-    break;
-
    default :
     break;
   }
@@ -292,7 +276,7 @@ void chibiOS_Config_Model_initialize(void)
                 sizeof(RT_MODEL_chibiOS_Config_Model));
 
   /* initialize sample time offsets */
-  chibiOS_Config_Model_M->Timing.TaskCounters.TID[3] = 80;/* Sample time: [1.0s, 0.2s] */
+  chibiOS_Config_Model_M->Timing.TaskCounters.TID[2] = 100;/* Sample time: [2.0s, 1.0s] */
 
   /* block I/O */
   (void) memset(((void *) &chibiOS_Config_Model_B), 0,

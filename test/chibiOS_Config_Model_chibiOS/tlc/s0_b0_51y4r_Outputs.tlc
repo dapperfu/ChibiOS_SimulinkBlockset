@@ -1,4 +1,4 @@
-%implements s0_b0_83w4r_Outputs "C"
+%implements s0_b0_51y4r_Outputs "C"
 
 %function OutputsForTID(block, system, tid) Output
 %if tid == 0
@@ -7,10 +7,6 @@
 %endif
 %if tid == 1
 %assign ::GlobalCurrentTID = 1
-%assign ::GlobalCurrentTID = []
-%endif
-%if tid == 2
-%assign ::GlobalCurrentTID = 2
 %assign tlcOutputsFcnOfS0B4 = OpaqueTLCBlockFcn("Outputs", 0, 4, 0, 2)
 %assign tlcOutputsFcnOfS0B6 = OpaqueTLCBlockFcn("Outputs", 0, 6, 0, 2)
 %assign tlcOutputsFcnOfS0B7 = OpaqueTLCBlockFcn("Outputs", 0, 7, 0, 2)
@@ -35,8 +31,8 @@ static void Outputs(\
 %<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
 %assign ::GlobalCurrentTID = []
 %endif
-%if tid == 3
-%assign ::GlobalCurrentTID = 3
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
 %assign tlcOutputsFcnOfS0B5 = OpaqueTLCBlockFcn("Outputs", 0, 5, 0, 3)
 %assign tlcUpdateFcnOfS0B5 = OpaqueTLCBlockFcn("Update", 0, 5, 0, 3)
 %<SLibCG_TrackParam(0)>\

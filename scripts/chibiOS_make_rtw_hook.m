@@ -104,7 +104,9 @@ switch hookMethod
     case 'after_make'
         % Called after make process is complete. All arguments are valid at
         % this stage.
-        
+        fprintf('#### Flashing to board\n');
+        cmd=sprintf('"%s" -P "%s" -V -Rst','C:\PROGRA~2\STMICR~1\STM32S~1\ST-LIN~1\ST-LIN~1.EXE','build\TestModel.hex');
+        [~,~]=dos(cmd);
     case 'exit'
         % Called at the end of the build process.  All arguments are valid
         % at this stage.
