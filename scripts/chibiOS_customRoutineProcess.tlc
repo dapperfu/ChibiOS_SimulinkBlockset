@@ -26,7 +26,8 @@
 %openfile main_Buf
 #include "ch.h"
 #include "hal.h"
-#include "%<LibGetMdlSrcBaseName()>.h" /* Model's header file */
+#include "%<LibGetMdlSrcBaseName()>.h"         /* Model's header file */
+#include "%<LibGetMdlSrcBaseName()>_private.h" /* Model's private header file */
 %closefile main_Buf
 %<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
 %% Create calling syntax for the model initialization and step routine:
@@ -42,9 +43,12 @@
 msg_t periodicThread%<tidIdx>(void *param) {
     systime_t time;
     chRegSetThreadName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
-    chThdSleepUntil(chTimeNow() + MS2ST(%<SampleTime[tidIdx].PeriodAndOffset[1]>*1000));
+    %if !ISEQUAL(SampleTime[tidIdx].PeriodAndOffset[1],0.0)
+    /* Adjust for thread offset */
+    chThdSleepUntil(chTimeNow() + MS2ST(%<FEVAL("round",FEVAL("times",SampleTime[tidIdx].PeriodAndOffset[1],1000))>));
+    %endif
     while (TRUE) {
-        time = chTimeNow() + MS2ST(%<SampleTime[tidIdx].PeriodAndOffset[1]>*1000);
+        time = chTimeNow() + MS2ST(%<FEVAL("times",SampleTime[tidIdx].ClockTickStepSize,1000)>);
   %if !SLibConcurrentTasks() || !(FixedStepOpts.TID01EQ && tidIdx>0)
     %assign rootSystem.CurrentTID = tidIdx
     %<SLibModelStepFcnName(tidIdx)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx)>);
@@ -82,7 +86,12 @@ void main (void) {
     /* ChibiOS Init */
     halInit();
     chSysInit();
-
+    palSetPad(GPIOD, GPIOD_LED3);
+    palSetPad(GPIOD, GPIOD_LED4);
+    palSetPad(GPIOD, GPIOD_LED5);
+    palSetPad(GPIOD, GPIOD_LED6);
+    chThdSleep(MS2ST(500));
+    %<LibGetMdlSrcBaseName()>_initialize();
     /* Start Static Threads */
 %foreach tidIdx = NumSynchronousSampleTimes
     %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
@@ -90,9 +99,9 @@ void main (void) {
         && FixedStepOpts.TID01EQ)
         %continue
     %endif
-    *tp%<tidIdx> = chThdCreateStatic(waPeriodicThread%<tidIdx>,
+    tp%<tidIdx> = chThdCreateStatic(waPeriodicThread%<tidIdx>,
         sizeof(waPeriodicThread%<tidIdx>),
-        NORMALPRIO,
+        NORMALPRIO+%<SampleTime[tidIdx].Priority-SampleTime[0].Priority>,
         periodicThread%<tidIdx>,
         NULL);
 %endforeach

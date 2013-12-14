@@ -10,14 +10,47 @@
 #  SYS_TARGET_FILE - Name of system target file.
 
 MAKECMD         = "%MATLAB%\bin\win32\gmake"
-
-SHELL           = cmd
+MODEL           = |>MODEL_NAME<|
+MODULES         = |>MODEL_MODULES<|
+#SHELL           = cmd
 HOST            = PC
 BUILD           = yes
 SYS_TARGET_FILE = ChibiOS.tlc
 MAKEFILE_FILESEP = /
 
+##############################################################################
+# Build global options
+# NOTE: Can be overridden externally.
 #
+# Compiler options here.
+ifeq ($(USE_OPT),)
+  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
+endif
+
+# C specific options here (added to USE_OPT).
+ifeq ($(USE_COPT),)
+  USE_COPT = 
+endif
+
+# C++ specific options here (added to USE_OPT).
+ifeq ($(USE_CPPOPT),)
+  USE_CPPOPT = -fno-rtti
+endif
+
+# Enable this if you want the linker to remove unused code and data
+ifeq ($(USE_LINK_GC),)
+  USE_LINK_GC = yes
+endif
+
+# If enabled, this option allows to compile the application in THUMB mode.
+ifeq ($(USE_THUMB),)
+  USE_THUMB = yes
+endif
+
+# Enable this if you want to see the full log while compiling.
+ifeq ($(USE_VERBOSE_COMPILE),)
+  USE_VERBOSE_COMPILE = no
+endif
 # Build global options
 ##############################################################################
 
@@ -46,7 +79,7 @@ endif
 
 # Define project name here
 PROJECT  = TestModel
-BUILDDIR = C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
+#BUILDDIR = $(subst from,to,text)C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
 
 # Imported source files and paths
 CHIBIOS      = |>ALT_CHIBIOS_ROOT<|
@@ -57,15 +90,17 @@ COMPILER_ROOT= |>ALT_CHIBIOS_COMPILERROOT<|
 INSTRUCTION  = |>CHIBIOS_INSTRUCTIONSET<|
 CHIP         = |>CHIBIOS_CHIP<|
 
-include $(CHIBIOS)/boards/$(BOARD)/board.mk
-include $(CHIBIOS)/os/hal/platforms/$(PLATFORM)/platform.mk
+include $(CHIBIOS)/boards/|>CHIBIOS_BOARD<|/board.mk
+include $(CHIBIOS)/os/hal/platforms/|>CHIBIOS_PLATFORM<|/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
-include $(CHIBIOS)/os/ports/$(COMPILER)/$(INSTRUCTION)/$(CHIP)/port.mk
+include $(CHIBIOS)/os/ports/|>CHIBIOS_COMPILER<|/|>CHIBIOS_INSTRUCTIONSET<|/|>CHIBIOS_CHIP<|/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
 include $(CHIBIOS)/test/test.mk
 
+
 # Define linker script file here
 LDSCRIPT= $(PORTLD)/STM32F407xG.ld
+#LDSCRIPT= $(PORTLD)/STM32F407xG_CCM.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -77,7 +112,7 @@ CSRC = $(PORTSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/devices_lib/accel/lis302dl.c \
        $(CHIBIOS)/os/various/chprintf.c \
-       |>MODEL_MODULES<|
+       $(MODEL).c rt_nonfinite.c |>MODEL_MODULES<|
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -212,4 +247,6 @@ ifeq ($(USE_FWLIB),yes)
   USE_OPT += -DUSE_STDPERIPH_DRIVER
 endif
 
-include $(CHIBIOS)/os/ports/$(COMPILER)/$(INSTRUCTION)/rules.mk
+include $(CHIBIOS)/os/ports/|>CHIBIOS_COMPILER<|/|>CHIBIOS_INSTRUCTIONSET<|/rules.mk
+
+@echo "### Created"

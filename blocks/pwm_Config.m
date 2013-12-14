@@ -36,8 +36,11 @@ block.DialogPrmsTunable=tmp;
 %  [positive_num offset] : Discrete sample time
 %  [-1, 0]               : Inherited sample time
 %  [-2, 0]               : Variable sample time
-block.SampleTimes = [block.DialogPrm(8).Data 0];
-
+if length(block.DialogPrm(8).Data)==1
+    block.SampleTimes = [block.DialogPrm(8).Data 0];
+else
+    block.SampleTimes = block.DialogPrm(8).Data;
+end
 % Specify the block simStateCompliance. The allowed values are:
 %    'UnknownSimState', < The default setting; warn and assume DefaultSimState
 %    'DefaultSimState', < Same sim state as a built-in block

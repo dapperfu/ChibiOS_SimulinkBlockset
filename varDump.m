@@ -6,16 +6,20 @@ f=fieldnames(data);
 for i=1:numel(f)
     doTab(depth);
     fprintf('%s:\t',f{i});
-    switch class(data.(f{i}))
-        case 'char'
-            fprintf('''%s''',data.(f{i}));
-        case 'double'
-            fprintf('%.2f ',data.(f{i}));
-        otherwise
-            try
-               f2=fieldnames(data.(f{i}));
-               varDump(data.(f{i}),depth+1);
-            end
+    try
+        switch class(data.(f{i}))
+            case 'char'
+                fprintf('''%s''',data.(f{i}));
+            case 'double'
+                fprintf('%.2f ',data.(f{i}));
+            otherwise
+                try
+                    f2=fieldnames(data.(f{i}));
+                    varDump(data.(f{i}),depth+1);
+                end
+        end
+    catch e
+        fprintf('error');
     end
     fprintf('\n');
 end
