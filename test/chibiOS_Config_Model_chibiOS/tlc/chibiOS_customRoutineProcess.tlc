@@ -1,0 +1,119 @@
+%%
+%% CUSTOM_ROUTINE_PROCESS generates required files beyond the 
+%% default RTW generated files.
+%%
+%% $ custom_routine_process.tlc 2009-05-14 dlange $
+%% Main creation example :
+%% Create MAIN (harness) for singlerate PIL system:
+%selectfile NULL_FILE
+%%Create sysTick_handler for Real Time appli. 
+%<LibSetCodeTemplateComplianceLevel(1)>
+
+%assign CodeFormat = "Embedded-C"
+
+%warning Create real-time application main.c
+%assign modelName = LibGetModelName()
+%assign SrcBaseName = LibGetMdlSrcBaseName()
+%assign cFile = LibCreateSourceFile("Source", "Custom", "main")
+%assign NbOfTasks = LibGetNumSyncPeriodicTasks()
+%assign FixedStep = FEVAL("getFixedStep","%<modelName>")
+%if (ISEQUAL("%<FixedStep>", "auto"))
+%assign FixedStep = 0.001
+%endif
+%%	%assign NbOfTasks = LibGetNumTasks()
+
+%% Add corresponding System-Includes to the Includes-Section:
+%openfile main_Buf
+#include "ch.h"
+#include "hal.h"
+#include "%<LibGetMdlSrcBaseName()>.h"         /* Model's header file */
+#include "%<LibGetMdlSrcBaseName()>_private.h" /* Model's private header file */
+%closefile main_Buf
+%<LibSetSourceFileSection(cFile, "Includes", main_Buf)>
+%% Create calling syntax for the model initialization and step routine:
+%openfile main_Buf
+
+/* Model has %<FcnNumST()> rates */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+msg_t periodicThread%<tidIdx>(void *param) {
+    systime_t time;
+    chRegSetThreadName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
+    %if !ISEQUAL(SampleTime[tidIdx].PeriodAndOffset[1],0.0)
+    /* Adjust for thread offset */
+    chThdSleepUntil(chTimeNow() + MS2ST(%<FEVAL("round",FEVAL("times",SampleTime[tidIdx].PeriodAndOffset[1],1000))>));
+    %endif
+    while (TRUE) {
+        time = chTimeNow() + MS2ST(%<FEVAL("times",SampleTime[tidIdx].ClockTickStepSize,1000)>);
+  %if !SLibConcurrentTasks() || !(FixedStepOpts.TID01EQ && tidIdx>0)
+    %assign rootSystem.CurrentTID = tidIdx
+    %<SLibModelStepFcnName(tidIdx)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx)>);
+  %else
+    %assign rootSystem.CurrentTID = tidIdx + 1
+    %<SLibModelStepFcnName(tidIdx+1)>(%<GetErtModelFcnArgs("OutputUpdate",2,tidIdx+1)>);
+  %endif
+        chThdSleepUntil(time);
+    }
+}
+%endforeach
+/* Create a Thread Working Area */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+static WORKING_AREA(waPeriodicThread%<tidIdx>, 128);
+%endforeach
+%closefile main_Buf
+%<LibSetSourceFileSection(cFile, "Defines", main_Buf)>
+
+%openfile main_Buf
+void main (void) {
+    /* Create Static Threads */
+%foreach tidIdx = NumSynchronousSampleTimes
+  %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+    %continue
+  %endif
+    Thread *tp%<tidIdx>;
+%endforeach
+    /* ChibiOS Init */
+    halInit();
+    chSysInit();
+    palSetPad(GPIOD, GPIOD_LED3);
+    palSetPad(GPIOD, GPIOD_LED4);
+    palSetPad(GPIOD, GPIOD_LED5);
+    palSetPad(GPIOD, GPIOD_LED6);
+    chThdSleep(MS2ST(500));
+    %<LibGetMdlSrcBaseName()>_initialize();
+    /* Start Static Threads */
+%foreach tidIdx = NumSynchronousSampleTimes
+    %if (FixedStepOpts.TID01EQ && tidIdx == 1 && !SLibConcurrentTasks()) || ...
+        (ISEQUAL(tidIdx, NumSynchronousSampleTimes -1) && SLibConcurrentTasks()...
+        && FixedStepOpts.TID01EQ)
+        %continue
+    %endif
+    tp%<tidIdx> = chThdCreateStatic(waPeriodicThread%<tidIdx>,
+        sizeof(waPeriodicThread%<tidIdx>),
+        NORMALPRIO+%<SampleTime[tidIdx].Priority-SampleTime[0].Priority>,
+        periodicThread%<tidIdx>,
+        NULL);
+%endforeach
+
+    /* Reduce priority of main thread */
+    chThdSetPriority(NORMALPRIO-10);
+
+    /* Infinite loop */
+    while(1) {
+        /* Add code here */
+    }
+}        
+%closefile main_Buf 
+%<LibSetSourceFileSection(cFile, "Functions", main_Buf)>
+%% EOF: chibiOS_customRoutineProcess.tlc

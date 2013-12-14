@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.138
+   Model version                    : 1.166
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
+   C/C++ source code generated on   : Sat Dec 14 00:32:23 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -55,16 +55,16 @@
 /* LibCacheIncludes - BlockTypeSetup */
 LibCacheIncludes_BlockTypeSetup();
 
-/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config)*/
-/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config1)*/
+/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config2)*/
+/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /* Defines */
 
 /* LibCacheDefine - BlockTypeSetup */
 LibCacheDefine_BlockTypeSetup();
 
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config)*/
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config1)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config2)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
 #ifndef __RTWTYPES_H__
 #error This file requires rtwtypes.h to be included
 #else
@@ -90,19 +90,21 @@ LibCacheDefine_BlockTypeSetup();
 /* LibCacheExtern - BlockTypeSetup */
 LibCacheExtern_BlockTypeSetup();
 
-/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config)*/
+/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config2)*/
 extern void BlockTypeSetup;
 
-/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config1)*/
+/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config3)*/
 extern void BlockTypeSetup;
 
 /* LibCacheDefine - BlockTypeSetup */
 LibCacheDefine_BlockTypeSetup();
 
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config)*/
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config1)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config2)*/
+/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
 extern void chibiOS_Config_Model_step0(void);
 extern void chibiOS_Config_Model_step1(void);
+extern void chibiOS_Config_Model_step2(void);
+extern void chibiOS_Config_Model_step3(void);
 
 /* Functions */
 #endif                                 /* RTW_HEADER_chibiOS_Config_Model_private_h_ */

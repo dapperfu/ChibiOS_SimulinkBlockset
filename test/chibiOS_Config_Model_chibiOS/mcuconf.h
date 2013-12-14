@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.155
+   Model version                    : 1.166
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Thu Dec 12 23:01:32 2013
+   C/C++ source code generated on   : Sat Dec 14 00:32:23 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -95,7 +95,6 @@
 #define STM32_I2SSRC                   STM32_I2SSRC_CKIN
 #define STM32_PLLI2SN_VALUE            192
 #define STM32_PLLI2SR_VALUE            5
-#define STM32_VOS                      STM32_VOS_HIGH
 #define STM32_PVD_ENABLE               FALSE
 #define STM32_PLS                      STM32_PLS_LEV0
 

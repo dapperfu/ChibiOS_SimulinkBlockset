@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.138
+   Model version                    : 1.166
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Tue Dec 10 23:47:43 2013
+   C/C++ source code generated on   : Sat Dec 14 00:32:23 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc

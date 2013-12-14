@@ -1,0 +1,20 @@
+%implements s0_b0_83w4r_Disable "C"
+
+%function Disable(block, system) Output
+%assign tlcDisableFcnOfS0B4 = OpaqueTLCBlockFcn("Disable", 0, 4, 0, 7)
+%assign tlcDisableFcnOfS0B5 = OpaqueTLCBlockFcn("Disable", 0, 5, 0, 7)
+%assign tlcDisableFcnOfS0B6 = OpaqueTLCBlockFcn("Disable", 0, 6, 0, 7)
+%assign tlcDisableFcnOfS0B7 = OpaqueTLCBlockFcn("Disable", 0, 7, 0, 7)
+%assign tlcDisableFcnOfS0B8 = OpaqueTLCBlockFcn("Disable", 0, 8, 0, 7)
+%<tlcDisableFcnOfS0B4>\
+%<tlcDisableFcnOfS0B5>\
+%<tlcDisableFcnOfS0B6>\
+%<tlcDisableFcnOfS0B7>\
+%<tlcDisableFcnOfS0B8>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Disable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 7, fcnProtoType)>
+%endfunction
