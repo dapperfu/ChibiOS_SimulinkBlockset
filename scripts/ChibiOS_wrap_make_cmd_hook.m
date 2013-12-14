@@ -9,4 +9,4 @@ switch mexext
         args.make=chibiOS_getShortName(fullfile(matlabroot,'bin','win64','gmake.exe'));
 end
 makeFile = [args.modelName, '.mk'];
-makeCmd =  sprintf('"%s" -j %d -f %s', args.make, numProcessors, makeFile);
+makeCmd =  sprintf('"%s" -j %d simulink', args.make, numProcessors);

@@ -72,7 +72,7 @@ switch hookMethod
         % at this stage are hookMethod and modelName. This enables cleaning up
         % any static or global data used by this hook file.
         msg = DAStudio.message('RTW:makertw:buildAborted', modelName);
-        dusp(msg);
+        disp(msg);
         
         
     case 'entry'
@@ -96,13 +96,15 @@ switch hookMethod
         % off make process (assuming code generation only is not selected.)  All
         % arguments are valid at this stage.
         fid=fopen('Makefile','w');
-        fprintf(fid,'include %s.mk',modelName);
+        fprintf(fid,'include %s.mk\n\n',modelName);
+        fprintf(fid,'simulink: all\n');
+        fprintf(fid,'\t### Created and Compiled %s',modelName);
         fclose(fid);
         
     case 'after_make'
         % Called after make process is complete. All arguments are valid at
         % this stage.
-        fprintf('### Created\n;')
+        
     case 'exit'
         % Called at the end of the build process.  All arguments are valid
         % at this stage.
