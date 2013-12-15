@@ -1,4 +1,4 @@
-%implements s1_b0_vqm6r_Enable "C"
+%implements s1_b0_cun6r_Enable "C"
 
 %function Enable(block, system) Output
 %assign tlcEnableFcnOfS1B4 = OpaqueTLCBlockFcn("Enable", 1, 4, 1, 8)

@@ -1,4 +1,4 @@
-%implements s1_b0_vqm6r_Derivatives "C"
+%implements s1_b0_cun6r_Derivatives "C"
 
 %function Derivatives(block, system) Output
 %assign tlcDerivativesFcnOfS1B4 = OpaqueTLCBlockFcn("Derivatives", 1, 4, 1, 6)

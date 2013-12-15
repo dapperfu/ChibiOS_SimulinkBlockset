@@ -1,4 +1,4 @@
-%implements s1_b0_vqm6r_Outputs "C"
+%implements s1_b0_cun6r_Outputs "C"
 
 %function OutputsForTID(block, system, tid) Output
 %if tid == 0

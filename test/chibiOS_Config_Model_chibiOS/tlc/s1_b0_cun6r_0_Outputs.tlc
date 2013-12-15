@@ -1,4 +1,4 @@
-%implements s1_b0_vqm6r_0_Outputs "C"
+%implements s1_b0_cun6r_0_Outputs "C"
 
 %function Outputs(block, system) Output
 %<SLibCG_TrackParam(1)>\

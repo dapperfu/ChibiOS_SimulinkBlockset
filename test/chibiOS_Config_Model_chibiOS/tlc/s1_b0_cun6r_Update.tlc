@@ -1,4 +1,4 @@
-%implements s1_b0_vqm6r_Update "C"
+%implements s1_b0_cun6r_Update "C"
 
 %function UpdateForTID(block, system, tid) Output
 %if tid == 0
