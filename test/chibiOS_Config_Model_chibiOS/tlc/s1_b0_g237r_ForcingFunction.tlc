@@ -1,4 +1,4 @@
-%implements s1_b0_cun6r_ForcingFunction "C"
+%implements s1_b0_g237r_ForcingFunction "C"
 
 %function ForcingFunction(block, system) Output
 %assign tlcForcingFunctionFcnOfS1B4 = OpaqueTLCBlockFcn("ForcingFunction", 1, 4, 1, 7)

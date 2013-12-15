@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.191
+   Model version                    : 1.198
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Sat Dec 14 23:07:14 2013
+   C/C++ source code generated on   : Sun Dec 15 17:55:18 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -56,13 +56,14 @@
 
 /* Defines */
 
+/* 	SolverMode = MultiTasking */
 /* Model has 5 rates */
 msg_t periodicThread0(void *param)
 {
   systime_t time;
   chRegSetThreadName("thread_0.1s");
   while (TRUE) {
-    time = chTimeNow() + MS2ST(100.0);
+    time = chTimeNow() + MS2ST(100);
     chibiOS_Config_Model_step0();
     chThdSleepUntil(time);
   }
@@ -73,7 +74,7 @@ msg_t periodicThread1(void *param)
   systime_t time;
   chRegSetThreadName("thread_1.0s");
   while (TRUE) {
-    time = chTimeNow() + MS2ST(1000.0);
+    time = chTimeNow() + MS2ST(1000);
     chibiOS_Config_Model_step1();
     chThdSleepUntil(time);
   }
@@ -84,7 +85,7 @@ msg_t periodicThread2(void *param)
   systime_t time;
   chRegSetThreadName("thread_1.1s");
   while (TRUE) {
-    time = chTimeNow() + MS2ST(1100.0);
+    time = chTimeNow() + MS2ST(1100);
     chibiOS_Config_Model_step2();
     chThdSleepUntil(time);
   }
@@ -95,7 +96,7 @@ msg_t periodicThread3(void *param)
   systime_t time;
   chRegSetThreadName("thread_2.0s");
   while (TRUE) {
-    time = chTimeNow() + MS2ST(2000.0);
+    time = chTimeNow() + MS2ST(2000);
     chibiOS_Config_Model_step3();
     chThdSleepUntil(time);
   }
@@ -106,7 +107,7 @@ msg_t periodicThread4(void *param)
   systime_t time;
   chRegSetThreadName("thread_6.0s");
   while (TRUE) {
-    time = chTimeNow() + MS2ST(6000.0);
+    time = chTimeNow() + MS2ST(6000);
     chibiOS_Config_Model_step4();
     chThdSleepUntil(time);
   }

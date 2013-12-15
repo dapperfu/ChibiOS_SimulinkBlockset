@@ -1,4 +1,4 @@
-%implements s1_b0_cun6r_InitializeConditions "C"
+%implements s1_b0_g237r_InitializeConditions "C"
 
 %function InitializeConditions(block, system) Output
 %assign tlcInitializeConditionsFcnOfS1B4 = OpaqueTLCBlockFcn("InitializeConditions", 1, 4, 1, 1)

@@ -80,6 +80,7 @@ function runtlccmd
 % 	-aChibiOS_Chip="STM32F4xx"
 % 	-aChibiOS_CompilerRoot="C:\ChibiStudio\tools\GNU Tools ARM Embedded\4.7 2013q3"
 % 	-aAlt_ChibiOS_CompilerRoot="C:\CHIBIS~1\tools\GNUTOO~1\43F2B~1.720"
+% 	-aSTLink_Flash=1
 % 	-aSTLink="C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility\ST-LINK_CLI.exe"
 % 	-aAlt_STLink="C:\PROGRA~2\STMICR~1\STM32S~1\ST-LIN~1\ST-LIN~1.EXE"
 % 	-aSTLink_Protocol="SWD"

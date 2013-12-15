@@ -3,8 +3,8 @@ CompiledModel {
   OrigName		  "chibiOS_Config_Model"
   Version		  "8.3 (R2012b) 20-Jul-2012"
   SimulinkVersion	  "8.0"
-  ModelVersion		  "1.191"
-  GeneratedOn		  "Sat Dec 14 23:07:14 2013"
+  ModelVersion		  "1.198"
+  GeneratedOn		  "Sun Dec 15 17:55:18 2013"
   HasSimStructVars	  0
   HasCodeVariants	  0
   PreserveExternInFcnDecls 1
@@ -291,6 +291,7 @@ CompiledModel {
     STLink_CMD		    "-Rst"
     STLink_Connection	    "Hotplug"
     STLink_Erase	    0
+    STLink_Flash	    1
     STLink_Protocol	    "SWD"
     STLink_Verify	    1
     ShowEliminatedStatement 1
@@ -483,7 +484,7 @@ CompiledModel {
     tlcLanguage		    "C"
     tlcTargetType	    "RT"
   }
-  RTWContext		  [-1664145248, 0]
+  RTWContext		  [-1117317280, 0]
   RTWCGIR		  1
   TLCBlkFcnInCGIR	  1
   SLCI			  off
@@ -2224,7 +2225,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant3_Value"
       LogicalSrc	      P31
-      Value		      [1146.81372F]
+      Value		      [1878.1676F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
       ContainerCGTypeIdx      24
@@ -2238,7 +2239,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant4_Value"
       LogicalSrc	      P32
-      Value		      [2.64777899F]
+      Value		      [1.0203805F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
       ContainerCGTypeIdx      24
@@ -2252,7 +2253,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant5_Value"
       LogicalSrc	      P33
-      Value		      [3310.0481F]
+      Value		      [4454.51611F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
       ContainerCGTypeIdx      24
@@ -2266,7 +2267,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant6_Value"
       LogicalSrc	      P34
-      Value		      [2080.79297F]
+      Value		      [4796.45703F]
       OriginalDataTypeIdx     1
       CGTypeIdx		      18
       ContainerCGTypeIdx      24
@@ -2280,7 +2281,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant1_Value"
       LogicalSrc	      P35
-      Value		      [7703U]
+      Value		      [5060U]
       OriginalDataTypeIdx     7
       CGTypeIdx		      19
       ContainerCGTypeIdx      25
@@ -2294,7 +2295,7 @@ CompiledModel {
     Parameter {
       Identifier	      "Constant2_Value"
       LogicalSrc	      P36
-      Value		      [22952U]
+      Value		      [45815U]
       OriginalDataTypeIdx     5
       CGTypeIdx		      20
       ContainerCGTypeIdx      26
@@ -2980,7 +2981,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  31
 	}
-	Value			[1146.81372F]
+	Value			[1878.1676F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -3016,7 +3017,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  32
 	}
-	Value			[2.64777899F]
+	Value			[1.0203805F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -3153,7 +3154,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  35
 	}
-	Value			[7703U]
+	Value			[5060U]
 	OriginalDataTypeIdx	7
 	CGTypeIdx		19
 	ContainerCGTypeIdx	25
@@ -3189,7 +3190,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  33
 	}
-	Value			[3310.0481F]
+	Value			[4454.51611F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -3225,7 +3226,7 @@ CompiledModel {
 	  Op			  SL_NOT_INLINED
 	  ModelParameterIdx	  34
 	}
-	Value			[2080.79297F]
+	Value			[4796.45703F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -4066,7 +4067,7 @@ CompiledModel {
       Identifier	      "Constant1"
       TID		      [0, 1, 2, 3, 4]
       NumDataOutputPorts      0
-      TLCFileName	      "s1_b0_cun6r"
+      TLCFileName	      "s1_b0_g237r"
       OpaqueBlockMethode {
 	HasStart		1
 	HasInitializeConditions	1
@@ -4081,7 +4082,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		31
-	Value			[1146.81372F]
+	Value			[1878.1676F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -4091,7 +4092,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		32
-	Value			[2.64777899F]
+	Value			[1.0203805F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -4101,7 +4102,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		35
-	Value			[7703U]
+	Value			[5060U]
 	OriginalDataTypeIdx	7
 	CGTypeIdx		19
 	ContainerCGTypeIdx	25
@@ -4111,7 +4112,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		36
-	Value			[22952U]
+	Value			[45815U]
 	OriginalDataTypeIdx	5
 	CGTypeIdx		20
 	ContainerCGTypeIdx	26
@@ -4121,7 +4122,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		33
-	Value			[3310.0481F]
+	Value			[4454.51611F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -4131,7 +4132,7 @@ CompiledModel {
       Parameter {
 	Name			"Value"
 	MdlPrmIdx		34
-	Value			[2080.79297F]
+	Value			[4796.45703F]
 	OriginalDataTypeIdx	1
 	CGTypeIdx		18
 	ContainerCGTypeIdx	24
@@ -4143,8 +4144,8 @@ CompiledModel {
       NumRTWdatas	      0
     }
   }
-  BlockParamChecksum	  ["1346831856U", "3431752880U", "1021164252U", "4137117759U"]
-  ModelChecksum		  ["740751606U", "3636170568U", "2133647555U", "3761400071U"]
+  BlockParamChecksum	  ["3274238145U", "370421254U", "3514174038U", "546657938U"]
+  ModelChecksum		  ["281228260U", "2344794546U", "3737230539U", "3510676280U"]
   IncludeCodeGenSettings  1
   CGTypes {
     CGTypeDefaults {
@@ -4487,13 +4488,13 @@ CompiledModel {
     }
     NumRTWCGModules	    2
     RTWCGModule {
-      TLCFileName	      "s1_b0_cun6r_0"
+      TLCFileName	      "s1_b0_g237r_0"
       RTWFcnConst {
 	HasInstanceSetup	"no"
 	Outputs_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_0_Outputs"
+	  TLCFileName		  "s1_b0_g237r_0_Outputs"
 	  StackSize		  0
 	}
       }
@@ -4514,74 +4515,74 @@ CompiledModel {
       }
     }
     RTWCGModule {
-      TLCFileName	      "s1_b0_cun6r"
+      TLCFileName	      "s1_b0_g237r"
       RTWFcnConst {
 	HasInstanceSetup	"no"
 	baseTidOfTasks		"[0, 1, 2, 3, 4]"
 	Start_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Start"
+	  TLCFileName		  "s1_b0_g237r_Start"
 	  StackSize		  0
 	}
 	InitializeConditions_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_InitializeConditions"
+	  TLCFileName		  "s1_b0_g237r_InitializeConditions"
 	  StackSize		  0
 	}
 	Outputs_FunctionTID1 {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Outputs"
+	  TLCFileName		  "s1_b0_g237r_Outputs"
 	  StackSize		  0
 	}
 	Outputs_FunctionTID2 {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Outputs"
+	  TLCFileName		  "s1_b0_g237r_Outputs"
 	  StackSize		  0
 	}
 	Outputs_FunctionTID3 {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Outputs"
+	  TLCFileName		  "s1_b0_g237r_Outputs"
 	  StackSize		  0
 	}
 	Outputs_FunctionTID4 {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Outputs"
+	  TLCFileName		  "s1_b0_g237r_Outputs"
 	  StackSize		  0
 	}
 	Derivatives_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Derivatives"
+	  TLCFileName		  "s1_b0_g237r_Derivatives"
 	  StackSize		  0
 	}
 	ForcingFunction_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_ForcingFunction"
+	  TLCFileName		  "s1_b0_g237r_ForcingFunction"
 	  StackSize		  0
 	}
 	Enable_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Enable"
+	  TLCFileName		  "s1_b0_g237r_Enable"
 	  StackSize		  0
 	}
 	Disable_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Disable"
+	  TLCFileName		  "s1_b0_g237r_Disable"
 	  StackSize		  0
 	}
 	Terminate_Function {
 	  HasTidArg 0
 	  HasCpiArg 0
-	  TLCFileName		  "s1_b0_cun6r_Terminate"
+	  TLCFileName		  "s1_b0_g237r_Terminate"
 	  StackSize		  0
 	}
       }

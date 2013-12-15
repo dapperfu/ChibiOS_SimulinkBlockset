@@ -1,4 +1,4 @@
-%implements s1_b0_cun6r_Disable "C"
+%implements s1_b0_g237r_Disable "C"
 
 %function Disable(block, system) Output
 %assign tlcDisableFcnOfS1B4 = OpaqueTLCBlockFcn("Disable", 1, 4, 1, 9)

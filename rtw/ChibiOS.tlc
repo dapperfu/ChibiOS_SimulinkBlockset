@@ -218,7 +218,17 @@
   rtwoptions(oIdx).callback      = '';
   rtwoptions(oIdx).makevariable  = '';
 
-oIdx = oIdx + 1;
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Flash after build';
+  rtwoptions(oIdx).type           = 'Checkbox';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_Flash';
+  rtwoptions(oIdx).makevariable   = 'STLINK_FLASH';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+
+  oIdx = oIdx + 1;
   rtwoptions(oIdx).prompt         = 'Select ST-Link CLI';
   rtwoptions(oIdx).type           = 'Pushbutton';
   rtwoptions(oIdx).default        = '';

@@ -1,4 +1,4 @@
-%implements s1_b0_cun6r_Start "C"
+%implements s1_b0_g237r_Start "C"
 
 %function Start(block, system) Output
 %assign tlcStartFcnOfS1B4 = OpaqueTLCBlockFcn("Start", 1, 4, 1, 0)

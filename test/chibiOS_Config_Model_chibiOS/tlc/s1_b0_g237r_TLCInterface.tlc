@@ -1,4 +1,4 @@
-%implements s1_b0_cun6r_TLCInterface "C"
+%implements s1_b0_g237r_TLCInterface "C"
 
 %function getInputAddr_1_4_1_0_0_0(block, lcv, ucv, sigIdx, reim) void
 %<SLibCG_TrackBlockIO(1)>
