@@ -28,7 +28,7 @@ function runtlccmd
 % 	-aGenerateReport=0
 % 	-aGenCodeOnly=0
 % 	-aRTWVerbose=1
-% 	-aIncludeHyperlinkInReport=0
+% 	-aIncludeHyperlinkInReport=1
 % 	-aLaunchReport=0
 % 	-aGenerateTraceInfo=0
 % 	-aPortableWordSizes=0
@@ -71,8 +71,8 @@ function runtlccmd
 % 	-aRTWCAPIParams=0
 % 	-aRootIOStructures=0
 % 	-aERTCustomFileTemplate="chibiOS_customRoutineProcess.tlc"
-% 	-aChibiOS_Root="C:\Projects\chibios"
-% 	-aAlt_ChibiOS_Root="C:\Projects\chibios"
+% 	-aChibiOS_Root="C:\ChibiStudio\chibios"
+% 	-aAlt_ChibiOS_Root="C:\CHIBIS~1\chibios"
 % 	-aChibiOS_Board="ST_STM32F4_DISCOVERY"
 % 	-aChibiOS_Platform="STM32F4xx"
 % 	-aChibiOS_Compiler="GCC"
@@ -80,8 +80,13 @@ function runtlccmd
 % 	-aChibiOS_Chip="STM32F4xx"
 % 	-aChibiOS_CompilerRoot="C:\ChibiStudio\tools\GNU Tools ARM Embedded\4.7 2013q3"
 % 	-aAlt_ChibiOS_CompilerRoot="C:\CHIBIS~1\tools\GNUTOO~1\43F2B~1.720"
-% 	-aSTLINK=""
-% 	-aALT_STLINK=""
+% 	-aSTLink="C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility\ST-LINK_CLI.exe"
+% 	-aAlt_STLink="C:\PROGRA~2\STMICR~1\STM32S~1\ST-LIN~1\ST-LIN~1.EXE"
+% 	-aSTLink_Protocol="SWD"
+% 	-aSTLink_Connection="Hotplug"
+% 	-aSTLink_Erase=0
+% 	-aSTLink_Verify=1
+% 	-aSTLink_CMD="-Rst"
 % 	-aGenerateTraceInfo=0
 % 	-aIgnoreTestpoints=0
 % 	-aProtectedModelReferenceTarget=0

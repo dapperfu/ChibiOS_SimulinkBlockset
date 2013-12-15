@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.171
+   Model version                    : 1.189
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Sat Dec 14 01:14:19 2013
+   C/C++ source code generated on   : Sat Dec 14 22:43:34 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -48,7 +48,6 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-/* Includes - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Includes - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 #include "chibiOS_Config_Model.h"
@@ -56,26 +55,20 @@
 
 /* Defines */
 
-/* Defines - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Defines - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /* Types */
 
-/* IntrinsicTypes - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* IntrinsicTypes - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
-/* PrimitiveTypedefs - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* PrimitiveTypedefs - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
-/* UserTop - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* UserTop - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
-/* Typedefs - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Typedefs - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /* Enums */
 
-/* Enums - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Enums - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /* Definitions */
@@ -90,27 +83,6 @@ RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M =
 
 /* Declarations */
 static void rate_monotonic_scheduler(void);
-
-/* Declarations - BlockInstanceSetup (<Root>/pwm_Config2)*/
-static PWMConfig pwmcfg3 = {
-  10000,
-  10000,
-  NULL,
-
-  {
-    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
-
-    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
-
-    { PWM_OUTPUT_ACTIVE_HIGH, NULL },
-
-    { PWM_OUTPUT_ACTIVE_HIGH, NULL }
-  },
-
-  /* HW dependent part.*/
-  0,
-  0
-};
 
 /* Declarations - BlockInstanceSetup (<Root>/pwm_Config3)*/
 static PWMConfig pwmcfg4 = {
@@ -135,7 +107,6 @@ static PWMConfig pwmcfg4 = {
 
 /* Functions */
 
-/* Functions - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Functions - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /*
@@ -149,6 +120,8 @@ void chibiOS_Config_Model_SetEventsForThisBaseStep(boolean_T *eventFlags)
   /* Task runs when its counter is zero, computed via rtmStepTask macro */
   eventFlags[1] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 1));
   eventFlags[2] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 2));
+  eventFlags[3] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 3));
+  eventFlags[4] = ((boolean_T)rtmStepTask(chibiOS_Config_Model_M, 4));
 }
 
 /*
@@ -164,70 +137,72 @@ static void rate_monotonic_scheduler(void)
   /* Compute which subrates run during the next base time step.  Subrates
    * are an integer multiple of the base rate counter.  Therefore, the subtask
    * counter is reset when it reaches its limit (zero means run).
-   *
-   * Sample time offsets are handled by priming the counter with the
-   * appropriate non-zero value in the model's initialization function.
    */
   (chibiOS_Config_Model_M->Timing.TaskCounters.TID[1])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 49) {/* Sample time: [0.5s, 0.0s] */
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[1]) > 9) {/* Sample time: [1.0s, 0.0s] */
     chibiOS_Config_Model_M->Timing.TaskCounters.TID[1] = 0;
   }
 
   (chibiOS_Config_Model_M->Timing.TaskCounters.TID[2])++;
-  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[2]) > 199) {/* Sample time: [2.0s, 1.0s] */
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[2]) > 10) {/* Sample time: [1.1s, 0.0s] */
     chibiOS_Config_Model_M->Timing.TaskCounters.TID[2] = 0;
+  }
+
+  (chibiOS_Config_Model_M->Timing.TaskCounters.TID[3])++;
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[3]) > 19) {/* Sample time: [2.0s, 0.0s] */
+    chibiOS_Config_Model_M->Timing.TaskCounters.TID[3] = 0;
+  }
+
+  (chibiOS_Config_Model_M->Timing.TaskCounters.TID[4])++;
+  if ((chibiOS_Config_Model_M->Timing.TaskCounters.TID[4]) > 59) {/* Sample time: [6.0s, 0.0s] */
+    chibiOS_Config_Model_M->Timing.TaskCounters.TID[4] = 0;
   }
 }
 
 /* Model step function for TID0 */
-void chibiOS_Config_Model_step0(void)  /* Sample time: [0.01s, 0.0s] */
+void chibiOS_Config_Model_step0(void)  /* Sample time: [0.1s, 0.0s] */
 {
-  {                                    /* Sample time: [0.01s, 0.0s] */
+  {                                    /* Sample time: [0.1s, 0.0s] */
     rate_monotonic_scheduler();
   }
 }
 
 /* Model step function for TID1 */
-void chibiOS_Config_Model_step1(void)  /* Sample time: [0.5s, 0.0s] */
+void chibiOS_Config_Model_step1(void)  /* Sample time: [1.0s, 0.0s] */
 {
-  /* Output Block: <Root>/pwm_Config2 */
+  /* Outputs for Atomic SubSystem: '<Root>/AtomicSubsystem' */
+  chibiOS_Con_AtomicSubsystem();
 
-  /* Update Block: <Root>/pwm_Config2 */
-  pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
-    chibiOS_Config_Model_P.Constant1_Value));
-  pwmEnableChannel(&PWMD3, 1, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
-    chibiOS_Config_Model_P.Constant2_Value));
-  pwmEnableChannel(&PWMD3, 2, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
-    chibiOS_Config_Model_P.Constant3_Value));
-  pwmEnableChannel(&PWMD3, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD3,
-    chibiOS_Config_Model_P.Constant4_Value));
+  /* End of Outputs for SubSystem: '<Root>/AtomicSubsystem' */
 }
 
 /* Model step function for TID2 */
-void chibiOS_Config_Model_step2(void)  /* Sample time: [2.0s, 1.0s] */
+void chibiOS_Config_Model_step2(void)  /* Sample time: [1.1s, 0.0s] */
+{
+  /* Sum: '<Root>/Sum' incorporates:
+   *  Constant: '<Root>/Constant5'
+   *  Constant: '<Root>/Constant6'
+   */
+  chibiOS_Config_Model_B.Sum = chibiOS_Config_Model_P.Constant5_Value +
+    chibiOS_Config_Model_P.Constant6_Value;
+}
+
+/* Model step function for TID3 */
+void chibiOS_Config_Model_step3(void)  /* Sample time: [2.0s, 0.0s] */
 {
   /* RateTransition: '<Root>/Rate Transition' incorporates:
    *  Constant: '<Root>/Constant1'
    */
   chibiOS_Config_Model_B.RateTransition = chibiOS_Config_Model_P.Constant1_Value;
 
-  /* RateTransition: '<Root>/Rate Transition1' incorporates:
-   *  Constant: '<Root>/Constant2'
-   */
-  chibiOS_Config_Model_B.RateTransition1 =
-    chibiOS_Config_Model_P.Constant2_Value;
+  /* RateTransition: '<Root>/Rate Transition1' */
+  chibiOS_Config_Model_B.RateTransition1 = chibiOS_Config_Model_B.Constant2;
 
-  /* RateTransition: '<Root>/Rate Transition2' incorporates:
-   *  Constant: '<Root>/Constant3'
-   */
-  chibiOS_Config_Model_B.RateTransition2 =
-    chibiOS_Config_Model_P.Constant3_Value;
+  /* RateTransition: '<Root>/Rate Transition2' */
+  chibiOS_Config_Model_B.RateTransition2 = chibiOS_Config_Model_B.Sum;
 
-  /* RateTransition: '<Root>/Rate Transition3' incorporates:
-   *  Constant: '<Root>/Constant4'
-   */
-  chibiOS_Config_Model_B.RateTransition3 =
-    chibiOS_Config_Model_P.Constant4_Value;
+  /* RateTransition: '<Root>/Rate Transition3' */
+  chibiOS_Config_Model_B.RateTransition3 = chibiOS_Config_Model_B.Product;
 
   /* Output Block: <Root>/pwm_Config3 */
 
@@ -240,6 +215,13 @@ void chibiOS_Config_Model_step2(void)  /* Sample time: [2.0s, 1.0s] */
     chibiOS_Config_Model_B.RateTransition2));
   pwmEnableChannel(&PWMD4, 3, PWM_PERCENTAGE_TO_WIDTH(&PWMD4,
     chibiOS_Config_Model_B.RateTransition3));
+}
+
+/* Model step function for TID4 */
+void chibiOS_Config_Model_step4(void)  /* Sample time: [6.0s, 0.0s] */
+{
+  /* Constant: '<Root>/Constant2' */
+  chibiOS_Config_Model_B.Constant2 = chibiOS_Config_Model_P.Constant2_Value;
 }
 
 /* Model step wrapper function for compatibility with a static main program */
@@ -256,6 +238,14 @@ void chibiOS_Config_Model_step(int_T tid)
 
    case 2 :
     chibiOS_Config_Model_step2();
+    break;
+
+   case 3 :
+    chibiOS_Config_Model_step3();
+    break;
+
+   case 4 :
+    chibiOS_Config_Model_step4();
     break;
 
    default :
@@ -275,23 +265,11 @@ void chibiOS_Config_Model_initialize(void)
   (void) memset((void *)chibiOS_Config_Model_M, 0,
                 sizeof(RT_MODEL_chibiOS_Config_Model));
 
-  /* initialize sample time offsets */
-  chibiOS_Config_Model_M->Timing.TaskCounters.TID[2] = 100;/* Sample time: [2.0s, 1.0s] */
-
   /* block I/O */
   (void) memset(((void *) &chibiOS_Config_Model_B), 0,
                 sizeof(BlockIO_chibiOS_Config_Model));
 
-  /* Start Block: <Root>/pwm_Config2 */
-
   /* Start Block: <Root>/pwm_Config3 */
-
-  /* InitializeConditions Block: <Root>/pwm_Config2 */
-  pwmStart(&PWMD3, &pwmcfg3);
-  palSetPadMode(GPIOC, 6, PAL_MODE_ALTERNATE(2));
-  palSetPadMode(GPIOC, 7, PAL_MODE_ALTERNATE(2));
-  palSetPadMode(GPIOC, 8, PAL_MODE_ALTERNATE(2));
-  palSetPadMode(GPIOC, 9, PAL_MODE_ALTERNATE(2));
 
   /* InitializeConditions Block: <Root>/pwm_Config3 */
   pwmStart(&PWMD4, &pwmcfg4);
@@ -301,17 +279,13 @@ void chibiOS_Config_Model_initialize(void)
   palSetPadMode(GPIOD, 15, PAL_MODE_ALTERNATE(2));
 }
 
-/* CompilerErrors - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* CompilerErrors - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
-/* CompilerWarnings - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* CompilerWarnings - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
-/* Documentation - BlockInstanceSetup (<Root>/pwm_Config2)*/
 /* Documentation - BlockInstanceSetup (<Root>/pwm_Config3)*/
 
 /* UserBottom - BlockTypeSetup .c */
-/* UserBottom - BlockInstanceSetup (<Root>/pwm_Config2).c */
 /* UserBottom - BlockInstanceSetup (<Root>/pwm_Config3).c */
 
 /* [EOF] chibiOS_Config_Model.c */

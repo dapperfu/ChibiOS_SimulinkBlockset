@@ -1,9 +1,9 @@
 function chibiOS_DefaultConfigSet(hDlg, hSrc)
 
 % CHIBIOS_DEFAULTCONFIGSET sets the target's
-% default configuration after applying the stm32F4xx.tlc
-%
-% $ chibiOS_DefaultConfigSet.m 2013-11-3 freyjed $
+% default configuration after applying the chibios.tlc
+
+% $ chibiOS_DefaultConfigSet.m 2013-11- jafrey $
 
 %% Set default RTW parameters for ChibiOS target:
 tabs={'CodeStyleTab','SolverTab','HardwareImplementationTab','CodeGenerationTab','ReportTab','TemplatesTab','ChibiOSTab'};
@@ -18,10 +18,7 @@ function SolverTab(hDlg,hSrc) %#ok<*DEFNU>
 slConfigUISetVal(hDlg, hSrc,     'SolverName','FixedStepDiscrete')
 slConfigUISetEnabled(hDlg, hSrc, 'SolverName', false);
 
-slConfigUISetVal(hDlg, hSrc,     'SolverName','FixedStepDiscrete')
-slConfigUISetEnabled(hDlg, hSrc, 'SolverName', false);
-
-slConfigUISetVal(hDlg, hSrc,     'FixedStep','0.01')
+slConfigUISetVal(hDlg, hSrc,     'FixedStep','auto')
 slConfigUISetEnabled(hDlg, hSrc, 'FixedStep', true);
 
 %% HardwareImplementation tab **********************************************************
@@ -91,7 +88,7 @@ slConfigUISetEnabled(hDlg, hSrc, 'PreserveIfCondition', true);
 slConfigUISetVal(hDlg, hSrc,     'ConvertIfToSwitch','on')
 slConfigUISetEnabled(hDlg, hSrc, 'ConvertIfToSwitch', true);
 
-% ChibiOS Tab
+% ChibiOS Tab *************************************************************
 function ChibiOSTab(hDlg,hSrc)
 if ispref('ChibiOS','ChibiOS_Root')
     ChibiOS_Root=getpref('ChibiOS','ChibiOS_Root');
@@ -99,10 +96,19 @@ if ispref('ChibiOS','ChibiOS_Root')
         slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',ChibiOS_Root);
         slConfigUISetVal(hDlg, hSrc,'Alt_ChibiOS_Root',chibiOS_getShortName(ChibiOS_Root));
     end
+end
+if ispref('ChibiOS','ChibiOS_CompilerRoot')
     ChibiOS_CompilerRoot=getpref('ChibiOS','ChibiOS_CompilerRoot');
     if isdir(ChibiOS_CompilerRoot)
         slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',ChibiOS_CompilerRoot);
         slConfigUISetVal(hDlg, hSrc,'Alt_ChibiOS_CompilerRoot',chibiOS_getShortName(ChibiOS_CompilerRoot));
+    end
+end
+if ispref('ChibiOS','STLink')
+    STLink=getpref('ChibiOS','STLink');
+    if exist(STLink,'file')
+        slConfigUISetVal(hDlg, hSrc,'STLink',STLink);
+        slConfigUISetVal(hDlg, hSrc,'Alt_STLink',chibiOS_getShortName(STLink));
     end
 end
 % [EOF] stm32F4xxDefaultConfigSet.m

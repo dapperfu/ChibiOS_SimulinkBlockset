@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.171
+   Model version                    : 1.189
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Sat Dec 14 01:14:19 2013
+   C/C++ source code generated on   : Sat Dec 14 22:43:34 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -155,16 +155,22 @@ Parameters_chibiOS_Config_Model chibiOS_Config_Model_P = {
   1.0,                                 /* Expression: CH_DBG_THREADS_PROFILING
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  8181.48535F,                         /* Expression: single(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant3'
+  471.654938F,                         /* Expression: single(rand(1,1)*2500)
+                                        * Referenced by: '<S1>/Constant3'
                                         */
-  8175.4707F,                          /* Expression: single(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant4'
+  1.1499927F,                          /* Expression: single(rand(1,1)*4)
+                                        * Referenced by: '<S1>/Constant4'
                                         */
-  5216U,                               /* Expression: uint32(rand(1,1)*10000)
+  3416.81616F,                         /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<Root>/Constant5'
+                                        */
+  2732.96558F,                         /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<Root>/Constant6'
+                                        */
+  911U,                                /* Expression: uint32(rand(1,1)*10000)
                                         * Referenced by: '<Root>/Constant1'
                                         */
-  6339U                                /* Expression: uint16(rand(1,1)*2^16)
+  37762U                               /* Expression: uint16(rand(1,1)*2^16)
                                         * Referenced by: '<Root>/Constant2'
                                         */
 };

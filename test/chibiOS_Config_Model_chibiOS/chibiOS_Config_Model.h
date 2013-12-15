@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Model.
-   Model version                    : 1.171
+   Model version                    : 1.189
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Sat Dec 14 01:14:19 2013
+   C/C++ source code generated on   : Sat Dec 14 22:43:34 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -61,6 +61,9 @@
 
 #include "chibiOS_Config_Model_types.h"
 
+/* Child system includes */
+#include "AtomicSubsystem.h"
+
 /* Defines */
 
 /* Macros for accessing real-time model data structure */
@@ -88,9 +91,12 @@
 
 /* Block signals (auto storage) */
 typedef struct {
+  real32_T Sum;                        /* '<Root>/Sum' */
   real32_T RateTransition2;            /* '<Root>/Rate Transition2' */
   real32_T RateTransition3;            /* '<Root>/Rate Transition3' */
+  real32_T Product;                    /* '<S1>/Product' */
   uint32_T RateTransition;             /* '<Root>/Rate Transition' */
+  uint16_T Constant2;                  /* '<Root>/Constant2' */
   uint16_T RateTransition1;            /* '<Root>/Rate Transition1' */
 } BlockIO_chibiOS_Config_Model;
 
@@ -189,11 +195,17 @@ struct Parameters_chibiOS_Config_Model_ {
   real_T chibiOS_Config_MSFcnParameter31;/* Expression: CH_DBG_THREADS_PROFILING
                                           * Referenced by: '<Root>/chibiOS_Config'
                                           */
-  real32_T Constant3_Value;            /* Expression: single(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant3'
+  real32_T Constant3_Value;            /* Expression: single(rand(1,1)*2500)
+                                        * Referenced by: '<S1>/Constant3'
                                         */
-  real32_T Constant4_Value;            /* Expression: single(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant4'
+  real32_T Constant4_Value;            /* Expression: single(rand(1,1)*4)
+                                        * Referenced by: '<S1>/Constant4'
+                                        */
+  real32_T Constant5_Value;            /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<Root>/Constant5'
+                                        */
+  real32_T Constant6_Value;            /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<Root>/Constant6'
                                         */
   uint32_T Constant1_Value;            /* Expression: uint32(rand(1,1)*10000)
                                         * Referenced by: '<Root>/Constant1'
@@ -214,7 +226,7 @@ struct tag_RTM_chibiOS_Config_Model {
    */
   struct {
     struct {
-      uint16_T TID[3];
+      uint8_T TID[5];
     } TaskCounters;
   } Timing;
 };
@@ -259,6 +271,7 @@ extern RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'chibiOS_Config_Model'
+ * '<S1>'   : 'chibiOS_Config_Model/AtomicSubsystem'
  */
 
 /*-
@@ -266,7 +279,6 @@ extern RT_MODEL_chibiOS_Config_Model *const chibiOS_Config_Model_M;
  */
 
 /* UserBottom - BlockTypeSetup .h */
-/* UserBottom - BlockInstanceSetup (<Root>/pwm_Config2).h */
 /* UserBottom - BlockInstanceSetup (<Root>/pwm_Config3).h */
 #endif                                 /* RTW_HEADER_chibiOS_Config_Model_h_ */
 

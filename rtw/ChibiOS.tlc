@@ -211,7 +211,7 @@
   rtwoptions(oIdx).prompt        = 'ST Link Options';
   rtwoptions(oIdx).type          = 'Category';
   rtwoptions(oIdx).enable        = 'on';  
-  rtwoptions(oIdx).default       = 3; % number of items under this category 
+  rtwoptions(oIdx).default       = 8; % number of items under this category 
                                       % excluding this one. 
   rtwoptions(oIdx).tlcvariable   = '';
   rtwoptions(oIdx).tooltip       = '';
@@ -229,24 +229,81 @@ oIdx = oIdx + 1;
   rtwoptions(oIdx).callback       = 'chibiOS_selectSettings(hDlg, hSrc, ''STLinkv2'')';
 
   oIdx = oIdx + 1;
-  rtwoptions(oIdx).prompt         = 'Compiler Root:';
+  rtwoptions(oIdx).prompt         = 'STLink Path:';
   rtwoptions(oIdx).type           = 'Edit';
   rtwoptions(oIdx).popupstrings   = '';
   rtwoptions(oIdx).default        = '';
-  rtwoptions(oIdx).tlcvariable    = 'STLINK';
+  rtwoptions(oIdx).tlcvariable    = 'STLink';
   rtwoptions(oIdx).makevariable   = 'STLINK';
   rtwoptions(oIdx).enable         = 'off';
   rtwoptions(oIdx).tooltip        = '';
   rtwoptions(oIdx).callback       = '';
 
   oIdx = oIdx + 1;
-  rtwoptions(oIdx).prompt         = 'Alt Compiler Root:';
+  rtwoptions(oIdx).prompt         = 'Alt STLink Path:';
   rtwoptions(oIdx).type           = 'Edit';
   rtwoptions(oIdx).popupstrings   = '';
   rtwoptions(oIdx).default        = '';
-  rtwoptions(oIdx).tlcvariable    = 'ALT_STLINK';
+  rtwoptions(oIdx).tlcvariable    = 'Alt_STLink';
   rtwoptions(oIdx).makevariable   = 'ALT_STLINK';
   rtwoptions(oIdx).enable         = 'off';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+
+  rtwoptions(oIdx).prompt         = 'STLink Protocol';
+  rtwoptions(oIdx).type           = 'Popup';
+  rtwoptions(oIdx).popupstrings   = 'SWD|JTAG';
+  rtwoptions(oIdx).default        = 'SWD';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_Protocol';
+  rtwoptions(oIdx).makevariable   = 'STLINK_PROTOCOL';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+
+  rtwoptions(oIdx).prompt         = 'STLink Connection';
+  rtwoptions(oIdx).type           = 'Popup';
+  rtwoptions(oIdx).popupstrings   = 'Hotplug|Reset';
+  rtwoptions(oIdx).default        = 'Hotplug';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_Connection';
+  rtwoptions(oIdx).makevariable   = 'STLINK_CONNECTION';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Full chip erase';
+  rtwoptions(oIdx).type           = 'Checkbox';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_Erase';
+  rtwoptions(oIdx).makevariable   = 'STLINK_ERASE';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Verify programming';
+  rtwoptions(oIdx).type           = 'Checkbox';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_Verify';
+  rtwoptions(oIdx).makevariable   = 'STLINK_VERIFY';
+  rtwoptions(oIdx).enable         = 'on';
+  rtwoptions(oIdx).tooltip        = '';
+  rtwoptions(oIdx).callback       = '';
+
+  oIdx = oIdx + 1;
+  rtwoptions(oIdx).prompt         = 'Additional STLink Commands:';
+  rtwoptions(oIdx).type           = 'Edit';
+  rtwoptions(oIdx).popupstrings   = '';
+  rtwoptions(oIdx).default        = '';
+  rtwoptions(oIdx).tlcvariable    = 'STLink_CMD';
+  rtwoptions(oIdx).makevariable   = 'STLINK_CMD';
+  rtwoptions(oIdx).enable         = 'on';
   rtwoptions(oIdx).tooltip        = '';
   rtwoptions(oIdx).callback       = '';
 

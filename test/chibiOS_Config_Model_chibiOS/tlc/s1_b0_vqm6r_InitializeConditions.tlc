@@ -1,0 +1,20 @@
+%implements s1_b0_vqm6r_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign tlcInitializeConditionsFcnOfS1B4 = OpaqueTLCBlockFcn("InitializeConditions", 1, 4, 1, 1)
+%assign tlcInitializeConditionsFcnOfS1B5 = OpaqueTLCBlockFcn("InitializeConditions", 1, 5, 1, 1)
+%assign tlcInitializeConditionsFcnOfS1B6 = OpaqueTLCBlockFcn("InitializeConditions", 1, 6, 1, 1)
+%assign tlcInitializeConditionsFcnOfS1B7 = OpaqueTLCBlockFcn("InitializeConditions", 1, 7, 1, 1)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<tlcInitializeConditionsFcnOfS1B4>\
+%<tlcInitializeConditionsFcnOfS1B5>\
+%<tlcInitializeConditionsFcnOfS1B6>\
+%<tlcInitializeConditionsFcnOfS1B7>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitializeConditions(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 1, fcnProtoType)>
+%endfunction

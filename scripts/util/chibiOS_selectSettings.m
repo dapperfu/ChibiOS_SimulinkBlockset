@@ -17,7 +17,7 @@ end
 
 % Switch
 switch option
-    case 'STLink' 
+    case 'STLinkv2' 
         varargout{1}=selectSTLink(hDlg,hSrc);
     case 'ChibiOS_Root'
         varargout{1}=chibiOS_selectRoot(hDlg,hSrc);
@@ -59,21 +59,23 @@ if nargout==0
 end
 %%
 function success=selectSTLink(hDlg, hSrc)
-stLink=slConfigUIGetVal(hDlg, hSrc,'ChibiOS_Root');
+stLink=slConfigUIGetVal(hDlg, hSrc,'STLink');
 if isdir(stLink)
     stLink=fileparts(stLink);
 else
     stLink=pwd;
 end
-stLink=uigetdir(stLink,'Select the STLink CLI Application');
+cwd=cd(stLink);
+[stLink,stLink_path]=uigetfile({'*.exe','Executables (*.exe)'},'Select the STLink CLI Application');
+cd(cwd);
 if stLink==0
     warning('CHIBIOS:ROOTCANCELED','ST Link CLI path selection canceled.')
     success=false;
 else
+    stLink=fullfile(stLink_path,stLink);
     slConfigUISetVal(hDlg, hSrc,'STLink',stLink);
     slConfigUISetVal(hDlg, hSrc,'Alt_STLink',chibiOS_getShortName(stLink));
-    setpref('ChibiOS','STLink',ChibiOS_Root);
-    setpref('ChibiOS','Alt_STLink',chibiOS_getShortName(stLink));
+    setpref('ChibiOS','STLink',stLink);
     success=true;
 end
 %%
@@ -92,7 +94,6 @@ else
     slConfigUISetVal(hDlg, hSrc,'ChibiOS_Root',ChibiOS_Root);
     slConfigUISetVal(hDlg, hSrc,'Alt_ChibiOS_Root',chibiOS_getShortName(ChibiOS_Root));
     setpref('ChibiOS','ChibiOS_Root',ChibiOS_Root);
-    setpref('ChibiOS','Alt_ChibiOS_Root',chibiOS_getShortName(ChibiOS_Root));
     success=true;
 end
 %%

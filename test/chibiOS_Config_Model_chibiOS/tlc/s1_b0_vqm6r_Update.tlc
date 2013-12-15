@@ -1,4 +1,4 @@
-%implements s0_b0_51y4r_Update "C"
+%implements s1_b0_vqm6r_Update "C"
 
 %function UpdateForTID(block, system, tid) Output
 %if tid == 0
@@ -11,6 +11,14 @@
 %endif
 %if tid == 2
 %assign ::GlobalCurrentTID = 2
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 3
+%assign ::GlobalCurrentTID = 3
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 4
+%assign ::GlobalCurrentTID = 4
 %assign ::GlobalCurrentTID = []
 %endif
 %endfunction

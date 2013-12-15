@@ -78,7 +78,7 @@ endif
 #
 
 # Define project name here
-PROJECT  = TestModel
+PROJECT  = |>MODEL_NAME<|
 #BUILDDIR = $(subst from,to,text)C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
 
 # Imported source files and paths

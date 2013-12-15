@@ -11,7 +11,7 @@
 
 MAKECMD         = "%MATLAB%\bin\win32\gmake"
 MODEL           = chibiOS_Config_Model
-MODULES         = chibiOS_Config_Model_data.c main.c rtGetInf.c rtGetNaN.c 
+MODULES         = AtomicSubsystem.c chibiOS_Config_Model_data.c main.c rtGetInf.c rtGetNaN.c 
 #SHELL           = cmd
 HOST            = PC
 BUILD           = yes
@@ -78,11 +78,11 @@ endif
 #
 
 # Define project name here
-PROJECT  = TestModel
+PROJECT  = chibiOS_Config_Model
 #BUILDDIR = $(subst from,to,text)C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
 
 # Imported source files and paths
-CHIBIOS      = C:\Projects\chibios
+CHIBIOS      = C:\CHIBIS~1\chibios
 BOARD        = ST_STM32F4_DISCOVERY
 PLATFORM     = STM32F4xx
 COMPILER     = GCC
@@ -112,7 +112,7 @@ CSRC = $(PORTSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/devices_lib/accel/lis302dl.c \
        $(CHIBIOS)/os/various/chprintf.c \
-       $(MODEL).c rt_nonfinite.c chibiOS_Config_Model_data.c main.c rtGetInf.c rtGetNaN.c 
+       $(MODEL).c rt_nonfinite.c AtomicSubsystem.c chibiOS_Config_Model_data.c main.c rtGetInf.c rtGetNaN.c 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

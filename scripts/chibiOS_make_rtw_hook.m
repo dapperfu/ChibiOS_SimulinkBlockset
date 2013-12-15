@@ -104,12 +104,45 @@ switch hookMethod
     case 'after_make'
         % Called after make process is complete. All arguments are valid at
         % this stage.
-        fprintf('#### Flashing to board\n');
-        cmd=sprintf('"%s" -P "%s" -V -Rst','C:\PROGRA~2\STMICR~1\STM32S~1\ST-LIN~1\ST-LIN~1.EXE','build\TestModel.hex');
-        [~,~]=dos(cmd);
     case 'exit'
         % Called at the end of the build process.  All arguments are valid
         % at this stage.
+        STLink_Protocol=get_param(modelName,'STLink_Protocol');
+        switch get_param(modelName,'STLink_Connection');
+            case 'Hotplug'
+                STLink_Connection='HOTPLUG';
+            case 'Reset'
+                STLink_Connection='UR';
+        end
+        switch get_param(modelName,'STLink_Erase')
+            case 'on'
+                STLink_Erase='-ME';
+            case 'off'
+                STLink_Erase='';
+        end
+        switch get_param(modelName,'STLink_Verify')
+            case 'on'
+                STLink_Verify='-V';
+            case 'off'
+                STLink_Verify='';
+        end
+        cmd=sprintf('"%s" -c %s %s %s %s -P "build/%s.hex"',get_param(modelName,'Alt_STLink'), ...
+                                                      STLink_Protocol, ...
+                                                      STLink_Connection, ...
+                                                      STLink_Erase, ...
+                                                      STLink_Verify, ...
+                                                      modelName);
+        fprintf('#### Flashing to board...');
+        [s,m]=dos(cmd);
+        fprintf(m);
+        if s==0
+            fprintf('... Succeeded.\n\n');
+        else
+            fprintf('... Failed.\n\n');
+            error('CHIBIOS:FLASHFAILED', 'Flashing failed');
+        end
+        
+        
         if strcmp(get_param(modelName,'GenCodeOnly'),'off')
             msgID = 'RTW:makertw:exitRTWBuild';
         else

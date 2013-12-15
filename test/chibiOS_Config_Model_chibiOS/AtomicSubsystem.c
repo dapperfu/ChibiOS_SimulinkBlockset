@@ -48,34 +48,13 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-#ifndef RTW_HEADER_chibiOS_Config_Model_private_h_
-#define RTW_HEADER_chibiOS_Config_Model_private_h_
-#include "rtwtypes.h"
+#include "AtomicSubsystem.h"
 
-/* LibCacheIncludes - BlockTypeSetup */
-LibCacheIncludes_BlockTypeSetup();
-
-/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config3)*/
+/* Include model header file for global data */
+#include "chibiOS_Config_Model.h"
+#include "chibiOS_Config_Model_private.h"
 
 /* Defines */
-
-/* LibCacheDefine - BlockTypeSetup */
-LibCacheDefine_BlockTypeSetup();
-
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
-#ifndef __RTWTYPES_H__
-#error This file requires rtwtypes.h to be included
-#else
-#ifdef TMWTYPES_PREVIOUSLY_INCLUDED
-#error This file requires rtwtypes.h to be included before tmwtypes.h
-#else
-
-/* Check for inclusion of an incorrect version of rtwtypes.h */
-#ifndef RTWTYPES_ID_C08S16I32L32N32F1
-#error This code was generated with a different "rtwtypes.h" than the file included
-#endif                                 /* RTWTYPES_ID_C08S16I32L32N32F1 */
-#endif                                 /* TMWTYPES_PREVIOUSLY_INCLUDED */
-#endif                                 /* __RTWTYPES_H__ */
 
 /* Types */
 
@@ -85,23 +64,17 @@ LibCacheDefine_BlockTypeSetup();
 
 /* Declarations */
 
-/* LibCacheExtern - BlockTypeSetup */
-LibCacheExtern_BlockTypeSetup();
-
-/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config3)*/
-extern void BlockTypeSetup;
-
-/* LibCacheDefine - BlockTypeSetup */
-LibCacheDefine_BlockTypeSetup();
-
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
-extern void chibiOS_Config_Model_step0(void);
-extern void chibiOS_Config_Model_step1(void);
-extern void chibiOS_Config_Model_step2(void);
-extern void chibiOS_Config_Model_step3(void);
-extern void chibiOS_Config_Model_step4(void);
-
 /* Functions */
-#endif                                 /* RTW_HEADER_chibiOS_Config_Model_private_h_ */
 
-/* [EOF] chibiOS_Config_Model_private.h */
+/* Output and update for atomic system: '<Root>/AtomicSubsystem' */
+void chibiOS_Con_AtomicSubsystem(void)
+{
+  /* Product: '<S1>/Product' incorporates:
+   *  Constant: '<S1>/Constant3'
+   *  Constant: '<S1>/Constant4'
+   */
+  chibiOS_Config_Model_B.Product = chibiOS_Config_Model_P.Constant3_Value *
+    chibiOS_Config_Model_P.Constant4_Value;
+}
+
+/* [EOF] AtomicSubsystem.c */

@@ -1,0 +1,108 @@
+%implements s1_b0_vqm6r_Outputs "C"
+
+%function OutputsForTID(block, system, tid) Output
+%if tid == 0
+%assign ::GlobalCurrentTID = 0
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 1
+%assign ::GlobalCurrentTID = 1
+%assign tlcOutputsFcnOfS1B5 = OpaqueTLCBlockFcn("Outputs", 1, 5, 1, 2)
+%assign tlcOutputsFcnOfS1B6 = OpaqueTLCBlockFcn("Outputs", 1, 6, 1, 2)
+%assign tlcOutputsFcnOfS1B7 = OpaqueTLCBlockFcn("Outputs", 1, 7, 1, 2)
+%assign tlcUpdateFcnOfS1B5 = OpaqueTLCBlockFcn("Update", 1, 5, 1, 2)
+%assign tlcUpdateFcnOfS1B6 = OpaqueTLCBlockFcn("Update", 1, 6, 1, 2)
+%assign tlcUpdateFcnOfS1B7 = OpaqueTLCBlockFcn("Update", 1, 7, 1, 2)
+%assign   Outputs_open_AtomicSubsystem_1_8 = ""
+%openfile Outputs_open_AtomicSubsystem_1_8
+
+/* Outputs for Atomic SubSystem: '<Root>/AtomicSubsystem' */
+%closefile Outputs_open_AtomicSubsystem_1_8
+
+%assign    Outputs_body_AtomicSubsystem_1_8 = ""
+%openfile  Outputs_body_AtomicSubsystem_1_8
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[0], "Output",1)
+chibiOS_Con_AtomicSubsystem();
+%endif
+%closefile Outputs_body_AtomicSubsystem_1_8
+
+%assign    Outputs_close_AtomicSubsystem_1_8 = ""
+%openfile  Outputs_close_AtomicSubsystem_1_8
+
+/* End of Outputs for SubSystem: '<Root>/AtomicSubsystem' */
+%closefile Outputs_close_AtomicSubsystem_1_8
+%<SLibCG_DumpSSCode(Outputs_open_AtomicSubsystem_1_8, Outputs_body_AtomicSubsystem_1_8, Outputs_close_AtomicSubsystem_1_8)>
+
+%<tlcOutputsFcnOfS1B5>\
+%<tlcOutputsFcnOfS1B6>\
+%<tlcOutputsFcnOfS1B7>\
+%<tlcUpdateFcnOfS1B5>\
+%<tlcUpdateFcnOfS1B6>\
+%<tlcUpdateFcnOfS1B7>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 2, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%<SLibCG_TrackParam(1)>\
+%<SLibCG_TrackBlockIO(1)>\
+/* Sum: '<Root>/Sum' incorporates:
+ *  Constant: '<Root>/Constant5'
+ *  Constant: '<Root>/Constant6'
+ */
+chibiOS_Config_Model_B.Sum = chibiOS_Config_Model_P.Constant5_Value + chibiOS_Config_Model_P.Constant6_Value;
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 3, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 3
+%assign ::GlobalCurrentTID = 3
+%assign tlcOutputsFcnOfS1B4 = OpaqueTLCBlockFcn("Outputs", 1, 4, 1, 4)
+%assign tlcUpdateFcnOfS1B4 = OpaqueTLCBlockFcn("Update", 1, 4, 1, 4)
+%<SLibCG_TrackParam(1)>\
+%<SLibCG_TrackBlockIO(1)>\
+/* RateTransition: '<Root>/Rate Transition' incorporates:
+ *  Constant: '<Root>/Constant1'
+ */
+chibiOS_Config_Model_B.RateTransition = chibiOS_Config_Model_P.Constant1_Value;
+/* RateTransition: '<Root>/Rate Transition1' */
+chibiOS_Config_Model_B.RateTransition1 = chibiOS_Config_Model_B.Constant2;
+/* RateTransition: '<Root>/Rate Transition2' */
+chibiOS_Config_Model_B.RateTransition2 = chibiOS_Config_Model_B.Sum;
+/* RateTransition: '<Root>/Rate Transition3' */
+chibiOS_Config_Model_B.RateTransition3 = chibiOS_Config_Model_B.Product;
+%<tlcOutputsFcnOfS1B4>\
+%<tlcUpdateFcnOfS1B4>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 4, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 4
+%assign ::GlobalCurrentTID = 4
+%<SLibCG_TrackParam(1)>\
+%<SLibCG_TrackBlockIO(1)>\
+/* Constant: '<Root>/Constant2' */
+chibiOS_Config_Model_B.Constant2 = chibiOS_Config_Model_P.Constant2_Value;
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 5, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction

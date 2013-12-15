@@ -48,34 +48,20 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-#ifndef RTW_HEADER_chibiOS_Config_Model_private_h_
-#define RTW_HEADER_chibiOS_Config_Model_private_h_
+#ifndef RTW_HEADER_AtomicSubsystem_h_
+#define RTW_HEADER_AtomicSubsystem_h_
+#ifndef chibiOS_Config_Model_COMMON_INCLUDES_
+# define chibiOS_Config_Model_COMMON_INCLUDES_
+#include <string.h>
 #include "rtwtypes.h"
+#include "hal.h"
+#include "ch.h"
+#include "rt_nonfinite.h"
+#endif                                 /* chibiOS_Config_Model_COMMON_INCLUDES_ */
 
-/* LibCacheIncludes - BlockTypeSetup */
-LibCacheIncludes_BlockTypeSetup();
-
-/* LibCacheIncludes - BlockInstanceSetup (<Root>/pwm_Config3)*/
+#include "chibiOS_Config_Model_types.h"
 
 /* Defines */
-
-/* LibCacheDefine - BlockTypeSetup */
-LibCacheDefine_BlockTypeSetup();
-
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
-#ifndef __RTWTYPES_H__
-#error This file requires rtwtypes.h to be included
-#else
-#ifdef TMWTYPES_PREVIOUSLY_INCLUDED
-#error This file requires rtwtypes.h to be included before tmwtypes.h
-#else
-
-/* Check for inclusion of an incorrect version of rtwtypes.h */
-#ifndef RTWTYPES_ID_C08S16I32L32N32F1
-#error This code was generated with a different "rtwtypes.h" than the file included
-#endif                                 /* RTWTYPES_ID_C08S16I32L32N32F1 */
-#endif                                 /* TMWTYPES_PREVIOUSLY_INCLUDED */
-#endif                                 /* __RTWTYPES_H__ */
 
 /* Types */
 
@@ -84,24 +70,9 @@ LibCacheDefine_BlockTypeSetup();
 /* Definitions */
 
 /* Declarations */
-
-/* LibCacheExtern - BlockTypeSetup */
-LibCacheExtern_BlockTypeSetup();
-
-/* LibCacheExtern - BlockInstanceSetup (<Root>/pwm_Config3)*/
-extern void BlockTypeSetup;
-
-/* LibCacheDefine - BlockTypeSetup */
-LibCacheDefine_BlockTypeSetup();
-
-/* LibCacheDefine - BlockInstanceSetup (<Root>/pwm_Config3)*/
-extern void chibiOS_Config_Model_step0(void);
-extern void chibiOS_Config_Model_step1(void);
-extern void chibiOS_Config_Model_step2(void);
-extern void chibiOS_Config_Model_step3(void);
-extern void chibiOS_Config_Model_step4(void);
+extern void chibiOS_Con_AtomicSubsystem(void);
 
 /* Functions */
-#endif                                 /* RTW_HEADER_chibiOS_Config_Model_private_h_ */
+#endif                                 /* RTW_HEADER_AtomicSubsystem_h_ */
 
-/* [EOF] chibiOS_Config_Model_private.h */
+/* [EOF] AtomicSubsystem.h */
