@@ -20,6 +20,7 @@
 
 %% Add corresponding System-Includes to the Includes-Section:
 %openfile main_Buf
+#include <math.h>
 #include "ch.h"
 #include "hal.h"
 #include "%<LibGetMdlSrcBaseName()>.h"         /* Model's header file */
@@ -31,12 +32,12 @@
 /* 	SolverMode = %<FixedStepOpts.SolverMode> */
 %if ISEQUAL(FixedStepOpts.SolverMode,"SingleTasking")
     %assign tidIdx = 0
-    %assign MS = FEVAL("times",FundamentalStepSize,1000)
+    %assign MS = CAST("Number",FundamentalStepSize*1000)
     msg_t periodicThread(void *param) {
         systime_t time;
         chRegSetThreadName("simulinkThread");
         while (TRUE) {
-            time = chTimeNow() + MS2ST(%<FEVAL("sprintf","%.0f",MS)>);
+            time = chTimeNow() + MS2ST(%<MS>);
             %<modelName>_step();
             chThdSleepUntil(time);
         }
@@ -79,12 +80,12 @@
             && FixedStepOpts.TID01EQ)
         %continue
       %endif
-    %assign MS       = FEVAL("sprintf","%.0f",FEVAL("times",SampleTime[tidIdx].PeriodAndOffset[0],1000))
-    %assign MSoffset = FEVAL("sprintf","%.0f",FEVAL("times",SampleTime[tidIdx].PeriodAndOffset[1],1000))
+    %assign MS       = CAST("Number",SampleTime[tidIdx].PeriodAndOffset[0]*1000)
+    %assign MSoffset = CAST("Number",SampleTime[tidIdx].PeriodAndOffset[1]*1000)
     msg_t periodicThread%<tidIdx>(void *param) {
         systime_t time;
         chRegSetThreadName("thread_%<SampleTime[tidIdx].PeriodAndOffset[0]>s");
-        %if !ISEQUAL(MSoffset,"0")
+        %if !ISEQUAL(MSoffset,0)
            /* Adjust for thread offset */
            chThdSleepUntil(chTimeNow() + MS2ST(%<MSoffset>));
         %endif
