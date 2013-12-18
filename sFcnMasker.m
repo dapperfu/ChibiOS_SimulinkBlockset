@@ -8,14 +8,14 @@ set(gcbh,'Parameters',Parameters);
 % Get the mask of the current plot
 p=Simulink.Mask.get(gcbh);
 Parameters=p.Parameters;
-%%
+%
 ParameterType={Parameters.Type};
 ParameterPopup={Parameters.TypeOptions};
 ParameterEvaluate={Parameters.Evaluate};
 ParameterPrompts={Parameters.Prompt};
 ParameterName={Parameters.Name};
 ParameterTabName={Parameters.TabName};
-%%
+%
 fid=fopen('WriteRTW.tmp','w');
 fprintf(fid,'function WriteRTW(block)\n');
 for i=1:numel(ParameterType)
@@ -58,6 +58,7 @@ for i=1:numel(ParameterType)
 end
 %%
 fclose(fid);
+return;
 %%
 fid=fopen('header.h','w');
 fprintf(fid,'/*\n * %s\n */\n',ParameterTabName{1});

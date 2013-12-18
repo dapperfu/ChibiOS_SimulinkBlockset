@@ -1,0 +1,20 @@
+%implements s0_b0_f4acs_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign tlcTerminateFcnOfS0B31 = OpaqueTLCBlockFcn("Terminate", 0, 31, 0, 10)
+%assign tlcTerminateFcnOfS0B32 = OpaqueTLCBlockFcn("Terminate", 0, 32, 0, 10)
+%assign tlcTerminateFcnOfS0B48 = OpaqueTLCBlockFcn("Terminate", 0, 48, 0, 10)
+%assign tlcTerminateFcnOfS0B64 = OpaqueTLCBlockFcn("Terminate", 0, 64, 0, 10)
+%assign tlcTerminateFcnOfS0B81 = OpaqueTLCBlockFcn("Terminate", 0, 81, 0, 10)
+%<tlcTerminateFcnOfS0B31>\
+%<tlcTerminateFcnOfS0B32>\
+%<tlcTerminateFcnOfS0B48>\
+%<tlcTerminateFcnOfS0B64>\
+%<tlcTerminateFcnOfS0B81>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 10, fcnProtoType)>
+%endfunction

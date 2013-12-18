@@ -1,0 +1,26 @@
+%implements s0_b0_f4acs_Enable "C"
+
+%function Enable(block, system) Output
+%assign tlcEnableFcnOfS0B31 = OpaqueTLCBlockFcn("Enable", 0, 31, 0, 8)
+%assign tlcEnableFcnOfS0B32 = OpaqueTLCBlockFcn("Enable", 0, 32, 0, 8)
+%assign tlcEnableFcnOfS0B48 = OpaqueTLCBlockFcn("Enable", 0, 48, 0, 8)
+%assign tlcEnableFcnOfS0B64 = OpaqueTLCBlockFcn("Enable", 0, 64, 0, 8)
+%assign tlcEnableFcnOfS0B81 = OpaqueTLCBlockFcn("Enable", 0, 81, 0, 8)
+%assign tlcEnableFcnOfS0B82 = OpaqueTLCBlockFcn("Enable", 0, 82, 0, 8)
+%assign tlcEnableFcnOfS0B83 = OpaqueTLCBlockFcn("Enable", 0, 83, 0, 8)
+%assign tlcEnableFcnOfS0B84 = OpaqueTLCBlockFcn("Enable", 0, 84, 0, 8)
+%<tlcEnableFcnOfS0B31>\
+%<tlcEnableFcnOfS0B32>\
+%<tlcEnableFcnOfS0B48>\
+%<tlcEnableFcnOfS0B64>\
+%<tlcEnableFcnOfS0B81>\
+%<tlcEnableFcnOfS0B82>\
+%<tlcEnableFcnOfS0B83>\
+%<tlcEnableFcnOfS0B84>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 8, fcnProtoType)>
+%endfunction

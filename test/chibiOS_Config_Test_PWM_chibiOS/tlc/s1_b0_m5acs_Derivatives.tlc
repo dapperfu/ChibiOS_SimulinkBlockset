@@ -1,0 +1,18 @@
+%implements s1_b0_m5acs_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign tlcDerivativesFcnOfS1B4 = OpaqueTLCBlockFcn("Derivatives", 1, 4, 1, 6)
+%assign tlcDerivativesFcnOfS1B5 = OpaqueTLCBlockFcn("Derivatives", 1, 5, 1, 6)
+%assign tlcDerivativesFcnOfS1B6 = OpaqueTLCBlockFcn("Derivatives", 1, 6, 1, 6)
+%assign tlcDerivativesFcnOfS1B7 = OpaqueTLCBlockFcn("Derivatives", 1, 7, 1, 6)
+%<tlcDerivativesFcnOfS1B4>\
+%<tlcDerivativesFcnOfS1B5>\
+%<tlcDerivativesFcnOfS1B6>\
+%<tlcDerivativesFcnOfS1B7>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Derivatives(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 6, fcnProtoType)>
+%endfunction

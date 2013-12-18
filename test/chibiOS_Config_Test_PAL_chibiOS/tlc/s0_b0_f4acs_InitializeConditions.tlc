@@ -1,0 +1,28 @@
+%implements s0_b0_f4acs_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign tlcInitializeConditionsFcnOfS0B31 = OpaqueTLCBlockFcn("InitializeConditions", 0, 31, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B32 = OpaqueTLCBlockFcn("InitializeConditions", 0, 32, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B48 = OpaqueTLCBlockFcn("InitializeConditions", 0, 48, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B64 = OpaqueTLCBlockFcn("InitializeConditions", 0, 64, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B81 = OpaqueTLCBlockFcn("InitializeConditions", 0, 81, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B82 = OpaqueTLCBlockFcn("InitializeConditions", 0, 82, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B83 = OpaqueTLCBlockFcn("InitializeConditions", 0, 83, 0, 1)
+%assign tlcInitializeConditionsFcnOfS0B84 = OpaqueTLCBlockFcn("InitializeConditions", 0, 84, 0, 1)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<tlcInitializeConditionsFcnOfS0B31>\
+%<tlcInitializeConditionsFcnOfS0B32>\
+%<tlcInitializeConditionsFcnOfS0B48>\
+%<tlcInitializeConditionsFcnOfS0B64>\
+%<tlcInitializeConditionsFcnOfS0B81>\
+%<tlcInitializeConditionsFcnOfS0B82>\
+%<tlcInitializeConditionsFcnOfS0B83>\
+%<tlcInitializeConditionsFcnOfS0B84>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitializeConditions(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

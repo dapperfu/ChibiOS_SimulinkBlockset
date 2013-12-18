@@ -95,7 +95,7 @@ include $(CHIBIOS)/os/hal/platforms/|>CHIBIOS_PLATFORM<|/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/|>CHIBIOS_COMPILER<|/|>CHIBIOS_INSTRUCTIONSET<|/|>CHIBIOS_CHIP<|/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
-include $(CHIBIOS)/test/test.mk
+#include $(CHIBIOS)/test/test.mk
 
 
 # Define linker script file here
@@ -112,7 +112,7 @@ CSRC = $(PORTSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/devices_lib/accel/lis302dl.c \
        $(CHIBIOS)/os/various/chprintf.c \
-       $(MODEL).c rt_nonfinite.c |>MODEL_MODULES<|
+       $(MODEL).c |>MODEL_MODULES<|
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
