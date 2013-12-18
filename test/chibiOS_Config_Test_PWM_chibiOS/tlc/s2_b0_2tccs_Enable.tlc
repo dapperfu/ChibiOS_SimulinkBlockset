@@ -1,0 +1,16 @@
+%implements s2_b0_2tccs_Enable "C"
+
+%function Enable(block, system) Output
+%assign tlcEnableFcnOfS2B1 = OpaqueTLCBlockFcn("Enable", 2, 1, 1, 5)
+%assign tlcEnableFcnOfS2B2 = OpaqueTLCBlockFcn("Enable", 2, 2, 1, 5)
+%assign tlcEnableFcnOfS2B3 = OpaqueTLCBlockFcn("Enable", 2, 3, 1, 5)
+%<tlcEnableFcnOfS2B1>\
+%<tlcEnableFcnOfS2B2>\
+%<tlcEnableFcnOfS2B3>\
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 5, fcnProtoType)>
+%endfunction

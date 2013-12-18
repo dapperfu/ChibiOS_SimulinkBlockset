@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
-   Model version                    : 1.198
+   Model version                    : 1.210
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:49 2013
+   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -62,6 +62,24 @@
 
 /* Block parameters (auto storage) */
 Parameters_chibiOS_Config_Test_ chibiOS_Config_Test_PWM_P = {
+  5.0,                                 /* Expression: 5
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  1.0,                                 /* Expression: 1
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  10.0,                                /* Expression: 10
+                                        * Referenced by: '<Root>/Step1'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/Step1'
+                                        */
+  -1.0,                                /* Expression: -1
+                                        * Referenced by: '<Root>/Step1'
+                                        */
   1000.0,                              /* Expression: CH_FREQUENCY
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
@@ -155,23 +173,23 @@ Parameters_chibiOS_Config_Test_ chibiOS_Config_Test_PWM_P = {
   1.0,                                 /* Expression: CH_DBG_THREADS_PROFILING
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  2036.8092F,                          /* Expression: single(rand(1,1)*2500)
-                                        * Referenced by: '<S1>/Constant3'
+  380.945038F,                         /* Expression: single(rand(1,1)*2500)
+                                        * Referenced by: '<S2>/Constant3'
                                         */
-  3.62316775F,                         /* Expression: single(rand(1,1)*4)
-                                        * Referenced by: '<S1>/Constant4'
+  3.30326796F,                         /* Expression: single(rand(1,1)*4)
+                                        * Referenced by: '<S2>/Constant4'
                                         */
-  3161.79614F,                         /* Expression: single(rand(1,1)*5000)
-                                        * Referenced by: '<Root>/Constant5'
+  390.877655F,                         /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<S1>/Constant5'
                                         */
-  487.702026F,                         /* Expression: single(rand(1,1)*5000)
-                                        * Referenced by: '<Root>/Constant6'
+  2213.39136F,                         /* Expression: single(rand(1,1)*5000)
+                                        * Referenced by: '<S1>/Constant6'
                                         */
-  1270U,                               /* Expression: uint32(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant1'
+  5383U,                               /* Expression: uint32(rand(1,1)*10000)
+                                        * Referenced by: '<S1>/Constant1'
                                         */
-  59859U                               /* Expression: uint16(rand(1,1)*2^16)
-                                        * Referenced by: '<Root>/Constant2'
+  65283U                               /* Expression: uint16(rand(1,1)*2^16)
+                                        * Referenced by: '<S1>/Constant2'
                                         */
 };
 

@@ -187,12 +187,14 @@ static PWMConfig pwmcfg%<block.ParamSettings.pwmDriver> = {
 %%
 %function Enable(block, system) Output
     /* Enable Block: %<Name> */
+	pwmStart(&PWMD%<block.ParamSettings.pwmDriver>, &pwmcfg%<block.ParamSettings.pwmDriver>);
 %endfunction
 
 %% Function: Disable =============================================================
 %%
 %function Disable(block, system) Output
     /* Disable Block: %<Name> */
+    pwmStop(&PWMD%<block.ParamSettings.pwmDriver>);
 %endfunction
 
 %% InitializeConditions: Start =============================================================

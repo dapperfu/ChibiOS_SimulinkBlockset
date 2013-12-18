@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
-   Model version                    : 1.198
+   Model version                    : 1.210
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:49 2013
+   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -75,33 +75,47 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
-#ifndef rtmStepTask
-# define rtmStepTask(rtm, idx)         ((rtm)->Timing.TaskCounters.TID[(idx)] == 0)
-#endif
-
 #ifndef rtmGetStopRequested
 # define rtmGetStopRequested(rtm)      ((void*) 0)
-#endif
-
-#ifndef rtmTaskCounter
-# define rtmTaskCounter(rtm, idx)      ((rtm)->Timing.TaskCounters.TID[(idx)])
 #endif
 
 /* Types */
 
 /* Block signals (auto storage) */
 typedef struct {
-  real32_T Sum;                        /* '<Root>/Sum' */
-  real32_T RateTransition2;            /* '<Root>/Rate Transition2' */
-  real32_T RateTransition3;            /* '<Root>/Rate Transition3' */
-  real32_T Product;                    /* '<S1>/Product' */
-  uint32_T RateTransition;             /* '<Root>/Rate Transition' */
-  uint16_T Constant2;                  /* '<Root>/Constant2' */
-  uint16_T RateTransition1;            /* '<Root>/Rate Transition1' */
+  real32_T Sum;                        /* '<S1>/Sum' */
+  real32_T RateTransition2;            /* '<S1>/Rate Transition2' */
+  real32_T RateTransition3;            /* '<S1>/Rate Transition3' */
+  real32_T Product;                    /* '<S2>/Product' */
+  uint32_T RateTransition;             /* '<S1>/Rate Transition' */
+  uint16_T RateTransition1;            /* '<S1>/Rate Transition1' */
 } BlockIO_chibiOS_Config_Test_PWM;
+
+/* Block states (auto storage) for system '<Root>' */
+typedef struct {
+  boolean_T Subsystem_MODE;            /* '<Root>/Subsystem' */
+} D_Work_chibiOS_Config_Test_PWM;
 
 /* Parameters (auto storage) */
 struct Parameters_chibiOS_Config_Test__ {
+  real_T Step_Time;                    /* Expression: 5
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_Y0;                      /* Expression: 0
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step_YFinal;                  /* Expression: 1
+                                        * Referenced by: '<Root>/Step'
+                                        */
+  real_T Step1_Time;                   /* Expression: 10
+                                        * Referenced by: '<Root>/Step1'
+                                        */
+  real_T Step1_Y0;                     /* Expression: 0
+                                        * Referenced by: '<Root>/Step1'
+                                        */
+  real_T Step1_YFinal;                 /* Expression: -1
+                                        * Referenced by: '<Root>/Step1'
+                                        */
   real_T chibiOS_Config_MSFcnParameter1;/* Expression: CH_FREQUENCY
                                          * Referenced by: '<Root>/chibiOS_Config'
                                          */
@@ -196,22 +210,22 @@ struct Parameters_chibiOS_Config_Test__ {
                                           * Referenced by: '<Root>/chibiOS_Config'
                                           */
   real32_T Constant3_Value;            /* Expression: single(rand(1,1)*2500)
-                                        * Referenced by: '<S1>/Constant3'
+                                        * Referenced by: '<S2>/Constant3'
                                         */
   real32_T Constant4_Value;            /* Expression: single(rand(1,1)*4)
-                                        * Referenced by: '<S1>/Constant4'
+                                        * Referenced by: '<S2>/Constant4'
                                         */
   real32_T Constant5_Value;            /* Expression: single(rand(1,1)*5000)
-                                        * Referenced by: '<Root>/Constant5'
+                                        * Referenced by: '<S1>/Constant5'
                                         */
   real32_T Constant6_Value;            /* Expression: single(rand(1,1)*5000)
-                                        * Referenced by: '<Root>/Constant6'
+                                        * Referenced by: '<S1>/Constant6'
                                         */
   uint32_T Constant1_Value;            /* Expression: uint32(rand(1,1)*10000)
-                                        * Referenced by: '<Root>/Constant1'
+                                        * Referenced by: '<S1>/Constant1'
                                         */
   uint16_T Constant2_Value;            /* Expression: uint16(rand(1,1)*2^16)
-                                        * Referenced by: '<Root>/Constant2'
+                                        * Referenced by: '<S1>/Constant2'
                                         */
 };
 
@@ -225,8 +239,9 @@ struct tag_RTM_chibiOS_Config_Test_PWM {
    * the timing information for the model.
    */
   struct {
+    uint32_T clockTick0;
     struct {
-      uint8_T TID[5];
+      uint8_T TID[6];
     } TaskCounters;
   } Timing;
 };
@@ -243,15 +258,12 @@ extern Parameters_chibiOS_Config_Test_ chibiOS_Config_Test_PWM_P;
 /* Block signals (auto storage) */
 extern BlockIO_chibiOS_Config_Test_PWM chibiOS_Config_Test_PWM_B;
 
-/* External function called from main */
-extern void chibiOS_Config_Test_PWM_SetEventsForThisBaseStep(boolean_T
-  *eventFlags);
+/* Block states (auto storage) */
+extern D_Work_chibiOS_Config_Test_PWM chibiOS_Config_Test_PWM_DWork;
 
 /* Model entry point functions */
-extern void chibiOS_Config_Test_PWM_SetEventsForThisBaseStep(boolean_T
-  *eventFlags);
 extern void chibiOS_Config_Test_PWM_initialize(void);
-extern void chibiOS_Config_Test_PWM_step(int_T tid);
+extern void chibiOS_Config_Test_PWM_step(void);
 
 /* Real-time Model object */
 extern RT_MODEL_chibiOS_Config_Test_PW *const chibiOS_Config_Test_PWM_M;
@@ -273,7 +285,8 @@ extern RT_MODEL_chibiOS_Config_Test_PW *const chibiOS_Config_Test_PWM_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'chibiOS_Config_Test_PWM'
- * '<S1>'   : 'chibiOS_Config_Test_PWM/AtomicSubsystem'
+ * '<S1>'   : 'chibiOS_Config_Test_PWM/Subsystem'
+ * '<S2>'   : 'chibiOS_Config_Test_PWM/Subsystem/AtomicSubsystem'
  */
 
 /*-
@@ -281,7 +294,7 @@ extern RT_MODEL_chibiOS_Config_Test_PW *const chibiOS_Config_Test_PWM_M;
  */
 
 /* UserBottom - BlockTypeSetup .h */
-/* UserBottom - BlockInstanceSetup (<Root>/pwm_Config3).h */
+/* UserBottom - BlockInstanceSetup (<S1>/pwm_Config3).h */
 #endif                                 /* RTW_HEADER_chibiOS_Config_Test_PWM_h_ */
 
 /* [EOF] chibiOS_Config_Test_PWM.h */

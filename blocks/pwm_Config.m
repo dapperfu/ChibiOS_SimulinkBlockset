@@ -63,6 +63,8 @@ block.RegBlockMethod('Outputs', @nullFCN);   % Required
 block.RegBlockMethod('Start', @nullFCN);   % Required
 block.RegBlockMethod('Update', @nullFCN); % Required
 block.RegBlockMethod('Terminate', @nullFCN); % Required
+block.RegBlockMethod('Enable', @nullFCN); % Required
+block.RegBlockMethod('Disable', @nullFCN); % Required
 block.RegBlockMethod('InitializeConditions', @nullFCN); % Required
 block.RegBlockMethod('InitializeConditions', @nullFCN); % Required
 

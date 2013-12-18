@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
-   Model version                    : 1.198
+   Model version                    : 1.210
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:49 2013
+   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -66,12 +66,12 @@
 
 /* Functions */
 
-/* Output and update for atomic system: '<Root>/AtomicSubsystem' */
-void chibiOS_Con_AtomicSubsystem(void)
+/* Output and update for atomic system: '<S1>/AtomicSubsystem' */
+void chibiOS_Config__AtomicSubsystem(void)
 {
-  /* Product: '<S1>/Product' incorporates:
-   *  Constant: '<S1>/Constant3'
-   *  Constant: '<S1>/Constant4'
+  /* Product: '<S2>/Product' incorporates:
+   *  Constant: '<S2>/Constant3'
+   *  Constant: '<S2>/Constant4'
    */
   chibiOS_Config_Test_PWM_B.Product = chibiOS_Config_Test_PWM_P.Constant3_Value *
     chibiOS_Config_Test_PWM_P.Constant4_Value;

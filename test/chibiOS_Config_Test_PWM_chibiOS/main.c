@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
-   Model version                    : 1.198
+   Model version                    : 1.210
    Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
    TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:49 2013
+   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -55,70 +55,6 @@
 
 /* Defines */
 
-/* 	SolverMode = MultiTasking */
-/* Model has 5 rates */
-msg_t periodicThread0(void *param)
-{
-  systime_t time;
-  chRegSetThreadName("thread_0.1s");
-  while (TRUE) {
-    time = chTimeNow() + MS2ST(100);
-    chibiOS_Config_Test_PWM_step0();
-    chThdSleepUntil(time);
-  }
-}
-
-msg_t periodicThread1(void *param)
-{
-  systime_t time;
-  chRegSetThreadName("thread_1.0s");
-  while (TRUE) {
-    time = chTimeNow() + MS2ST(1000);
-    chibiOS_Config_Test_PWM_step1();
-    chThdSleepUntil(time);
-  }
-}
-
-msg_t periodicThread2(void *param)
-{
-  systime_t time;
-  chRegSetThreadName("thread_1.1s");
-  while (TRUE) {
-    time = chTimeNow() + MS2ST(1100);
-    chibiOS_Config_Test_PWM_step2();
-    chThdSleepUntil(time);
-  }
-}
-
-msg_t periodicThread3(void *param)
-{
-  systime_t time;
-  chRegSetThreadName("thread_2.0s");
-  while (TRUE) {
-    time = chTimeNow() + MS2ST(2000);
-    chibiOS_Config_Test_PWM_step3();
-    chThdSleepUntil(time);
-  }
-}
-
-msg_t periodicThread4(void *param)
-{
-  systime_t time;
-  chRegSetThreadName("thread_6.0s");
-  while (TRUE) {
-    time = chTimeNow() + MS2ST(6000);
-    chibiOS_Config_Test_PWM_step4();
-    chThdSleepUntil(time);
-  }
-}
-
-/* Create a Thread Working Area */
-static WORKING_AREA(waPeriodicThread0, 128);
-static WORKING_AREA(waPeriodicThread1, 128);
-static WORKING_AREA(waPeriodicThread2, 128);
-static WORKING_AREA(waPeriodicThread3, 128);
-static WORKING_AREA(waPeriodicThread4, 128);
-
 /* Types */
 
 /* Enums */
@@ -128,18 +64,31 @@ static WORKING_AREA(waPeriodicThread4, 128);
 /* Declarations */
 
 /* Functions */
+
+/* 	SolverMode = SingleTasking */
+msg_t periodicThread(void *param)
+{
+  systime_t time;
+  chRegSetThreadName("simulinkThread");
+  while (TRUE) {
+    time = chTimeNow() + MS2ST(50);
+    chibiOS_Config_Test_PWM_step();
+    chThdSleepUntil(time);
+  }
+}
+
+/* Create a Thread Working Area */
+static WORKING_AREA(waPeriodicThread0, 128);
 void main (void)
 {
   /* Create Static Threads */
   Thread *tp0;
-  Thread *tp1;
-  Thread *tp2;
-  Thread *tp3;
-  Thread *tp4;
 
   /* ChibiOS Init */
   halInit();
   chSysInit();
+
+  /* Turn on all LED's */
   palSetPad(GPIOD, GPIOD_LED3);
   palSetPad(GPIOD, GPIOD_LED4);
   palSetPad(GPIOD, GPIOD_LED5);
@@ -150,28 +99,8 @@ void main (void)
   /* Start Static Threads */
   tp0 = chThdCreateStatic(waPeriodicThread0,
     sizeof(waPeriodicThread0),
-    NORMALPRIO+0,
-    periodicThread0,
-    NULL);
-  tp1 = chThdCreateStatic(waPeriodicThread1,
-    sizeof(waPeriodicThread1),
-    NORMALPRIO+1,
-    periodicThread1,
-    NULL);
-  tp2 = chThdCreateStatic(waPeriodicThread2,
-    sizeof(waPeriodicThread2),
-    NORMALPRIO+2,
-    periodicThread2,
-    NULL);
-  tp3 = chThdCreateStatic(waPeriodicThread3,
-    sizeof(waPeriodicThread3),
-    NORMALPRIO+3,
-    periodicThread3,
-    NULL);
-  tp4 = chThdCreateStatic(waPeriodicThread4,
-    sizeof(waPeriodicThread4),
-    NORMALPRIO+4,
-    periodicThread4,
+    NORMALPRIO,
+    periodicThread,
     NULL);
 
   /* Reduce priority of main thread */
