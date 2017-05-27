@@ -1,0 +1,35 @@
+%implements s2_b0_bbqsh_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcTerminateFcnOfS1B5 = OpaqueTLCBlockFcn("Terminate", 1, 5, 1, 1)
+%assign   Terminate_open_Subsystem_2_3 = ""
+%openfile Terminate_open_Subsystem_2_3
+
+/* Terminate for Enabled SubSystem: '<Root>/Subsystem' */
+%closefile Terminate_open_Subsystem_2_3
+
+%assign    Terminate_body_Subsystem_2_3 = ""
+%openfile  Terminate_body_Subsystem_2_3
+
+%<tlcTerminateFcnOfS1B5>\
+%closefile Terminate_body_Subsystem_2_3
+
+%assign    Terminate_close_Subsystem_2_3 = ""
+%openfile  Terminate_close_Subsystem_2_3
+
+/* End of Terminate for SubSystem: '<Root>/Subsystem' */
+%closefile Terminate_close_Subsystem_2_3
+%<SLibCG_DumpSSCode(Terminate_open_Subsystem_2_3, Terminate_body_Subsystem_2_3, Terminate_close_Subsystem_2_3)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 1, fcnProtoType)>
+%endfunction

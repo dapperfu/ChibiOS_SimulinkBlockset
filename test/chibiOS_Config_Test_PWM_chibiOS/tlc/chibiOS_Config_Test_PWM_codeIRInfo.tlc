@@ -1,5 +1,5 @@
 %function FcnLoadCodeIRInfo() Output 
-codeIRInfoStruct = load('C:/Projects/ChibiOS_SimulinkBlockset/test/chibiOS_Config_Test_PWM_chibiOS/tlc/codeIRInfo.mat');
+codeIRInfoStruct = load('C:\Projects\ChibiOS_SimulinkBlockset\test\chibiOS_Config_Test_PWM_chibiOS\tlc\codeIRInfo.mat');
 codeInfo = codeIRInfoStruct.codeInfo;
 %endfunction
 
@@ -18,13 +18,18 @@ codeInfo = codeIRInfoStruct.codeInfo;
 %return tmpIdx 
 %endfunction
 
+%function FcnGetRootInportsMapFromIRInfo() void
+%assign tmpIdx = []
+%return tmpIdx 
+%endfunction
+
 %function FcnGetUnsetEOIdxFromIRInfo() void
 %assign tmpIdx = []
 %return tmpIdx 
 %endfunction
 
 %function FcnGetUnsetParamIdxFromIRInfo() void
-%assign tmpIdx = []
+%assign tmpIdx = Matrix(4,2)[[0, 0]; [1, 1]; [2, 2]; [3, 3]; ]
 %return tmpIdx 
 %endfunction
 

@@ -1,0 +1,57 @@
+%implements s0_b0_s6psh_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcStartFcnOfS0B31 = OpaqueTLCBlockFcn("Start", 0, 31, 0, 7)
+%assign tlcStartFcnOfS0B32 = OpaqueTLCBlockFcn("Start", 0, 32, 0, 7)
+%assign tlcStartFcnOfS0B48 = OpaqueTLCBlockFcn("Start", 0, 48, 0, 7)
+%assign tlcStartFcnOfS0B64 = OpaqueTLCBlockFcn("Start", 0, 64, 0, 7)
+%assign tlcStartFcnOfS0B81 = OpaqueTLCBlockFcn("Start", 0, 81, 0, 7)
+%assign tlcInitializeConditionsFcnOfS0B31 = OpaqueTLCBlockFcn("InitializeConditions", 0, 31, 0, 7)
+%assign tlcInitializeConditionsFcnOfS0B32 = OpaqueTLCBlockFcn("InitializeConditions", 0, 32, 0, 7)
+%assign tlcInitializeConditionsFcnOfS0B48 = OpaqueTLCBlockFcn("InitializeConditions", 0, 48, 0, 7)
+%assign tlcInitializeConditionsFcnOfS0B64 = OpaqueTLCBlockFcn("InitializeConditions", 0, 64, 0, 7)
+%assign tlcInitializeConditionsFcnOfS0B81 = OpaqueTLCBlockFcn("InitializeConditions", 0, 81, 0, 7)
+%assign tlcEnableFcnOfS0B31 = OpaqueTLCBlockFcn("Enable", 0, 31, 0, 7)
+%assign tlcEnableFcnOfS0B32 = OpaqueTLCBlockFcn("Enable", 0, 32, 0, 7)
+%assign tlcEnableFcnOfS0B48 = OpaqueTLCBlockFcn("Enable", 0, 48, 0, 7)
+%assign tlcEnableFcnOfS0B64 = OpaqueTLCBlockFcn("Enable", 0, 64, 0, 7)
+%assign tlcEnableFcnOfS0B81 = OpaqueTLCBlockFcn("Enable", 0, 81, 0, 7)
+%assign tlcEnableFcnOfS0B82 = OpaqueTLCBlockFcn("Enable", 0, 82, 0, 7)
+%assign tlcEnableFcnOfS0B83 = OpaqueTLCBlockFcn("Enable", 0, 83, 0, 7)
+%assign tlcEnableFcnOfS0B84 = OpaqueTLCBlockFcn("Enable", 0, 84, 0, 7)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Body")>\
+%<tlcStartFcnOfS0B31>\
+%<tlcStartFcnOfS0B32>\
+%<tlcStartFcnOfS0B48>\
+%<tlcStartFcnOfS0B64>\
+%<tlcStartFcnOfS0B81>\
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Trailer")>\
+%<tlcInitializeConditionsFcnOfS0B31>\
+%<tlcInitializeConditionsFcnOfS0B32>\
+%<tlcInitializeConditionsFcnOfS0B48>\
+%<tlcInitializeConditionsFcnOfS0B64>\
+%<tlcInitializeConditionsFcnOfS0B81>\
+%<tlcEnableFcnOfS0B31>\
+%<tlcEnableFcnOfS0B32>\
+%<tlcEnableFcnOfS0B48>\
+%<tlcEnableFcnOfS0B64>\
+%<tlcEnableFcnOfS0B81>\
+%<tlcEnableFcnOfS0B82>\
+%<tlcEnableFcnOfS0B83>\
+%<tlcEnableFcnOfS0B84>\
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 7, fcnProtoType)>
+%endfunction

@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
    Model version                    : 1.210
-   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
-   TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
+   Simulink Coder version           : 8.9 (R2015b) 13-Aug-2015
+   TLC version                      : 8.9 (Jul 31 2015)
+   C/C++ source code generated on   : Sat May 27 00:58:14 2017
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc

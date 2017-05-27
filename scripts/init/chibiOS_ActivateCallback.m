@@ -1,1 +1,1 @@
-function chibiOS_ActivateCallback(hDlg, hSrc)
+function ChibiOS_ActivateCallback(hDlg, hSrc)

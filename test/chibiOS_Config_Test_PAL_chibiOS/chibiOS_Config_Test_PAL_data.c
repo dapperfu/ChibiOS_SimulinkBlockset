@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PAL.
-   Model version                    : 1.299
-   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
-   TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:06 2013
+   Model version                    : 1.300
+   Simulink Coder version           : 8.9 (R2015b) 13-Aug-2015
+   TLC version                      : 8.9 (Jul 31 2015)
+   C/C++ source code generated on   : Sat May 27 00:55:32 2017
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -48,7 +48,6 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-
 #include "chibiOS_Config_Test_PAL.h"
 #include "chibiOS_Config_Test_PAL_private.h"
 
@@ -62,16 +61,16 @@
 
 /* Block parameters (auto storage) */
 Parameters_chibiOS_Config_Test_ chibiOS_Config_Test_PAL_P = {
-  1000.0,                              /* Expression: CH_FREQUENCY
+  1000.0,                              /* Mask Parameter: chibiOS_Config_CH_FREQUENCY
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  20.0,                                /* Expression: CH_TIME_QUANTUM
+  0.0,                                 /* Mask Parameter: chibiOS_Config_CH_MEMCORE_SIZE
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  0.0,                                 /* Expression: CH_MEMCORE_SIZE
+  0.0,                                 /* Mask Parameter: chibiOS_Config_CH_NO_IDLE_THREA
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
-  0.0,                                 /* Expression: CH_NO_IDLE_THREAD
+  20.0,                                /* Mask Parameter: chibiOS_Config_CH_TIME_QUANTUM
                                         * Referenced by: '<Root>/chibiOS_Config'
                                         */
   1.0,                                 /* Expression: CH_OPTIMIZE_SPEED

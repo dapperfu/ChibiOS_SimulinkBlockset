@@ -1,0 +1,21 @@
+%implements s2_b0_bbqsh_0_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Product: '<S2>/Product' incorporates:
+ *  Constant: '<S2>/Constant3'
+ *  Constant: '<S2>/Constant4'
+ */
+chibiOS_Config_Test_PWM_B.Product = chibiOS_Config_Test_PWM_P.Constant3_Value/*@>94*/ * chibiOS_Config_Test_PWM_P.Constant4_Value;
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void chibiOS_Config__AtomicSubsystem(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction

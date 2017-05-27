@@ -1,250 +1,422 @@
-#------------------------ Macros read by make_rtw ------------------------------
-#
-# The following macros are read by the Real-Time Workshop build procedure:
-#
-#  MAKECMD         - This is the command used to invoke the make utility
-#  HOST            - What platform this template makefile is targeted for
-#                    (i.e. PC or UNIX)
-#  BUILD           - Invoke make from the Real-Time Workshop build procedure
-#                    (yes/no)?
-#  SYS_TARGET_FILE - Name of system target file.
+###########################################################################
+## Makefile generated for Simulink model 'chibiOS_Config_Test_PWM'. 
+## 
+## Makefile     : chibiOS_Config_Test_PWM.mk
+## Generated on : Sat May 27 00:56:12 2017
+## MATLAB Coder version: 3.0 (R2015b)
+## 
+## Build Info:
+## 
+## Final product: $(RELATIVE_PATH_TO_ANCHOR)/chibiOS_Config_Test_PWM.exe
+## Product type : executable
+## Build type   : Top-Level Standalone Executable
+## 
+###########################################################################
 
-MAKECMD         = "%MATLAB%\bin\win32\gmake"
-MODEL           = chibiOS_Config_Test_PWM
-MODULES         = AtomicSubsystem.c chibiOS_Config_Test_PWM_data.c main.c rtGetInf.c rtGetNaN.c rt_nonfinite.c 
-#SHELL           = cmd
-HOST            = PC
-BUILD           = yes
-SYS_TARGET_FILE = ChibiOS.tlc
-MAKEFILE_FILESEP = /
+###########################################################################
+## MACROS
+###########################################################################
 
-##############################################################################
-# Build global options
-# NOTE: Can be overridden externally.
-#
-# Compiler options here.
-ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
-endif
+# Macro Descriptions:
+# PRODUCT_NAME            Name of the system to build
+# MAKEFILE                Name of this makefile
+# COMPUTER                Computer type. See the MATLAB "computer" command.
+# MODELREF_LINK_RSPFILE   Include paths for the model reference build
+# PERL                    PERL Tool
+# GEN_LNK_SCRIPT          Perl script to generate the command file
+# CMD_FILE                Command file
 
-# C specific options here (added to USE_OPT).
-ifeq ($(USE_COPT),)
-  USE_COPT = 
-endif
+PRODUCT_NAME              = chibiOS_Config_Test_PWM
+MAKEFILE                  = chibiOS_Config_Test_PWM.mk
+COMPUTER                  = PCWIN64
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2015b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2015b/bin
+MATLAB_ARCH_BIN           = C:/PROGRA~1/MATLAB/R2015b/bin/win64
+MASTER_ANCHOR_DIR         = 
+START_DIR                 = C:/Projects/ChibiOS_SimulinkBlockset/test
+ARCH                      = win64
+SOLVER                    = 
+SOLVER_OBJ                = 
+CLASSIC_INTERFACE         = 0
+TGT_FCN_LIB               = None
+MODELREF_LINK_RSPFILE_NAME = chibiOS_Config_Test_PWM_ref.rsp
+RELATIVE_PATH_TO_ANCHOR   = ..
+MODELREF_LINK_RSPFILE     = chibiOS_Config_Test_PWM_ref.rsp
+PERL                      = $(MATLAB_ROOT)/sys/perl/win32/bin/perl.exe
+GEN_LNK_SCRIPT            = $(MATLAB_ROOT)/rtw/c/tools/mkvc_lnk.pl
+CMD_FILE                  = $(PRODUCT_NAME).lnk
+ANSI_OPTS                 = -ansi -pedantic -Wno-long-long -fwrapv
+CPP_ANSI_OPTS             = -std=c++98 -pedantic -Wno-long-long -fwrapv
 
-# C++ specific options here (added to USE_OPT).
-ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
-endif
+###########################################################################
+## TOOLCHAIN SPECIFICATIONS
+###########################################################################
 
-# Enable this if you want the linker to remove unused code and data
-ifeq ($(USE_LINK_GC),)
-  USE_LINK_GC = yes
-endif
+# Toolchain Name:          MinGW64 v4.x | gmake (64-bit Windows)
+# Supported Version(s):    4.x
+# ToolchainInfo Version:   R2015b
+# Specification Revision:  1.0
+# 
+#-------------------------------------------
+# Macros assumed to be defined elsewhere
+#-------------------------------------------
 
-# If enabled, this option allows to compile the application in THUMB mode.
-ifeq ($(USE_THUMB),)
-  USE_THUMB = yes
-endif
+# ANSI_OPTS
+# CPP_ANSI_OPTS
+# MINGW_ROOT
 
-# Enable this if you want to see the full log while compiling.
-ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
-endif
-# Build global options
-##############################################################################
+#-----------
+# MACROS
+#-----------
 
-##############################################################################
-# Architecture or project specific options
-#
+WARN_FLAGS         = -Wall -W -Wwrite-strings -Winline -Wstrict-prototypes -Wnested-externs -Wpointer-arith -Wcast-align
+WARN_FLAGS_MAX     = $(WARN_FLAGS) -Wcast-qual -Wshadow
+CPP_WARN_FLAGS     = -Wall -W -Wwrite-strings -Winline -Wpointer-arith -Wcast-align
+CPP_WARN_FLAGS_MAX = $(CPP_WARN_FLAGS) -Wcast-qual -Wshadow
+MEX_OPTS_FILE      = $(MATLAB_ROOT)/bin/win64/mexopts/mingw64.xml
+MW_EXTERNLIB_DIR   = $(MATLAB_ROOT)/extern/lib/win64/mingw64
+SHELL              = %SystemRoot%/system32/cmd.exe
 
-# Enables the use of FPU on Cortex-M4.
-# Enable this if you really want to use the STM FWLib.
-ifeq ($(USE_FPU),)
-  USE_FPU = no
-endif
+TOOLCHAIN_SRCS = 
+TOOLCHAIN_INCS = 
+TOOLCHAIN_LIBS = -lws2_32
 
-# Enable this if you really want to use the STM FWLib.
-ifeq ($(USE_FWLIB),)
-  USE_FWLIB = no
-endif
+#------------------------
+# BUILD TOOL COMMANDS
+#------------------------
 
-#
-# Architecture or project specific options
-##############################################################################
+# C Compiler: GNU C Compiler
+CC_PATH = $(MINGW_ROOT)
+CC = $(CC_PATH)/gcc
 
-##############################################################################
-# Project, sources and paths
-#
+# Linker: GNU Linker
+LD_PATH = $(MINGW_ROOT)
+LD = $(LD_PATH)/gcc
 
-# Define project name here
-PROJECT  = chibiOS_Config_Test_PWM
-#BUILDDIR = $(subst from,to,text)C:\Projects\ChibiOS_SimulinkBlockset\TestModel_chibiOS
+# C++ Compiler: GNU C++ Compiler
+CPP_PATH = $(MINGW_ROOT)
+CPP = $(CPP_PATH)/g++
 
-# Imported source files and paths
-CHIBIOS      = C:\CHIBIS~1\chibios
-BOARD        = ST_STM32F4_DISCOVERY
-PLATFORM     = STM32F4xx
-COMPILER     = GCC
-COMPILER_ROOT= C:\CHIBIS~1\tools\GNUTOO~1\43F2B~1.720
-INSTRUCTION  = ARMCMx
-CHIP         = STM32F4xx
+# C++ Linker: GNU C++ Linker
+CPP_LD_PATH = $(MINGW_ROOT)
+CPP_LD = $(CPP_LD_PATH)/g++
 
-include $(CHIBIOS)/boards/ST_STM32F4_DISCOVERY/board.mk
-include $(CHIBIOS)/os/hal/platforms/STM32F4xx/platform.mk
-include $(CHIBIOS)/os/hal/hal.mk
-include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F4xx/port.mk
-include $(CHIBIOS)/os/kernel/kernel.mk
-#include $(CHIBIOS)/test/test.mk
+# Archiver: GNU Archiver
+AR_PATH = $(MINGW_ROOT)
+AR = $(AR_PATH)/ar
+
+# MEX Tool: MEX Tool
+MEX_PATH = $(MATLAB_BIN)
+MEX = $(MEX_PATH)/mex
+
+# Download: Download
+DOWNLOAD =
+
+# Execute: Execute
+EXECUTE = $(PRODUCT)
+
+# Builder: GMAKE Utility
+MAKE_PATH = %MATLAB%/bin/win64
+MAKE = $(MAKE_PATH)/gmake
 
 
-# Define linker script file here
-LDSCRIPT= $(PORTLD)/STM32F407xG.ld
-#LDSCRIPT= $(PORTLD)/STM32F407xG_CCM.ld
+#-------------------------
+# Directives/Utilities
+#-------------------------
 
-# C sources that can be compiled in ARM or THUMB mode depending on the global
-# setting.
-CSRC = $(PORTSRC) \
-       $(KERNSRC) \
-       $(TESTSRC) \
-       $(HALSRC) \
-       $(PLATFORMSRC) \
-       $(BOARDSRC) \
-       $(CHIBIOS)/os/various/devices_lib/accel/lis302dl.c \
-       $(CHIBIOS)/os/various/chprintf.c \
-       $(MODEL).c AtomicSubsystem.c chibiOS_Config_Test_PWM_data.c main.c rtGetInf.c rtGetNaN.c rt_nonfinite.c 
+CDEBUG              = -g
+C_OUTPUT_FLAG       = -o
+LDDEBUG             = -g
+OUTPUT_FLAG         = -o
+CPPDEBUG            = -g
+CPP_OUTPUT_FLAG     = -o
+CPPLDDEBUG          = -g
+OUTPUT_FLAG         = -o
+ARDEBUG             =
+STATICLIB_OUTPUT_FLAG =
+MEX_DEBUG           = -g
+RM                  = @del
+ECHO                = @echo
+MV                  = @move
+RUN                 =
 
-# C++ sources that can be compiled in ARM or THUMB mode depending on the global
-# setting.
-CPPSRC =
+#----------------------------------------
+# "Faster Builds" Build Configuration
+#----------------------------------------
 
-# C sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACSRC =
+ARFLAGS              = ruvs
+CFLAGS               = -c $(ANSI_OPTS) \
+                       -O0
+CPPFLAGS             = -c $(CPP_ANSI_OPTS) \
+                       -O0
+CPP_LDFLAGS          = -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)"
+CPP_SHAREDLIB_LDFLAGS  = -shared -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)" -Wl,--no-undefined \
+                         -Wl,--out-implib,$(basename $(PRODUCT))$(STATICLIB_EXT)
+DOWNLOAD_FLAGS       =
+EXECUTE_FLAGS        =
+LDFLAGS              = -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)"
+MEX_CFLAGS           = -MATLAB_ARCH=$(ARCH) $(INCLUDES) \
+                         \
+                       COPTIMFLAGS="$(ANSI_OPTS)  \
+                       -O0 \
+                        $(DEFINES)" \
+                         \
+                       -silent
+MEX_LDFLAGS          = LDFLAGS=='$$LDFLAGS'
+MAKE_FLAGS           = -f $(MAKEFILE)
+SHAREDLIB_LDFLAGS    = -shared -Wl,-rpath,"$(MATLAB_ARCH_BIN)",-L"$(MATLAB_ARCH_BIN)" -Wl,--no-undefined \
+                       -Wl,--out-implib,$(basename $(PRODUCT))$(STATICLIB_EXT)
 
-# C++ sources to be compiled in ARM mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-ACPPSRC =
+#--------------------
+# File extensions
+#--------------------
 
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCSRC =
+H_EXT               = .h
+OBJ_EXT             = .obj
+C_EXT               = .c
+EXE_EXT             = .exe
+SHAREDLIB_EXT       = .dll
+HPP_EXT             = .hpp
+OBJ_EXT             = .obj
+CPP_EXT             = .cpp
+EXE_EXT             = .exe
+SHAREDLIB_EXT       = .dll
+STATICLIB_EXT       = .lib
+MEX_EXT             = .mexw64
+MAKE_EXT            = .mk
 
-# C sources to be compiled in THUMB mode regardless of the global setting.
-# NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
-#       option that results in lower performance and larger code size.
-TCPPSRC =
 
-# List ASM source files here
-ASMSRC = $(PORTASM)
+###########################################################################
+## OUTPUT INFO
+###########################################################################
 
-INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
-         $(HALINC) $(PLATFORMINC) $(BOARDINC) \
-         $(CHIBIOS)/os/various/devices_lib/accel \
-         $(CHIBIOS)/os/various
+PRODUCT = $(RELATIVE_PATH_TO_ANCHOR)/chibiOS_Config_Test_PWM.exe
+PRODUCT_TYPE = "executable"
+BUILD_TYPE = "Top-Level Standalone Executable"
 
-#
-# Project, sources and paths
-##############################################################################
+###########################################################################
+## INCLUDE PATHS
+###########################################################################
 
-##############################################################################
-# Compiler settings
-#
+INCLUDES_BUILDINFO = -I$(START_DIR)/chibiOS_Config_Test_PWM_chibiOS -I$(START_DIR) -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
-MCU  = cortex-m4
+INCLUDES = $(INCLUDES_BUILDINFO)
 
-#TRGT = arm-elf-
-TRGT = arm-none-eabi-
-CC   = $(TRGT)gcc
-CPPC = $(TRGT)g++
-# Enable loading with g++ only if you need C++ runtime support.
-# NOTE: You can use C++ even without C++ support if you are careful. C++
-#       runtime support makes code size explode.
-LD   = $(TRGT)gcc
-#LD   = $(TRGT)g++
-CP   = $(TRGT)objcopy
-AS   = $(TRGT)gcc -x assembler-with-cpp
-OD   = $(TRGT)objdump
-HEX  = $(CP) -O ihex
-BIN  = $(CP) -O binary
+###########################################################################
+## DEFINES
+###########################################################################
 
-# ARM-specific options here
-AOPT =
+DEFINES_BUILD_ARGS = -DONESTEPFCN=1 -DTERMFCN=0 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0
+DEFINES_IMPLIED = -DTID01EQ=0
+DEFINES_STANDARD = -DMODEL=chibiOS_Config_Test_PWM -DNUMST=5 -DNCSTATES=0 -DHAVESTDIO
 
-# THUMB-specific options here
-TOPT = -mthumb -DTHUMB
+DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
 
-# Define C warning options here
-CWARN = -Wall -Wextra -Wstrict-prototypes
+###########################################################################
+## SOURCE FILES
+###########################################################################
 
-# Define C++ warning options here
-CPPWARN = -Wall -Wextra
+SRCS = $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/AtomicSubsystem.c $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/chibiOS_Config_Test_PWM.c $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/chibiOS_Config_Test_PWM_data.c $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/main.c rt_nonfinite.c
 
-#
-# Compiler settings
-##############################################################################
+MAIN_SRC = $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
 
-##############################################################################
-# Start of default section
-#
+ALL_SRCS = $(SRCS) $(MAIN_SRC)
 
-# List all default C defines here, like -D_DEBUG=1
-DDEFS =
+###########################################################################
+## OBJECTS
+###########################################################################
 
-# List all default ASM defines here, like -D_DEBUG=1
-DADEFS =
+OBJS = AtomicSubsystem.obj chibiOS_Config_Test_PWM.obj chibiOS_Config_Test_PWM_data.obj main.obj rt_nonfinite.obj
 
-# List all default directories to look for include files here
-DINCDIR =
+MAIN_OBJ = rt_main.obj
 
-# List the default directory to look for the libraries here
-DLIBDIR =
+ALL_OBJS = $(OBJS) $(MAIN_OBJ)
 
-# List all default libraries here
-DLIBS =
+###########################################################################
+## PREBUILT OBJECT FILES
+###########################################################################
 
-#
-# End of default section
-##############################################################################
+PREBUILT_OBJS = 
 
-##############################################################################
-# Start of user section
-#
+###########################################################################
+## LIBRARIES
+###########################################################################
 
-# List all user C define here, like -D_DEBUG=1
-UDEFS =
+LIBS = 
 
-# Define ASM defines here
-UADEFS =
+###########################################################################
+## SYSTEM LIBRARIES
+###########################################################################
 
-# List all user directories here
-UINCDIR =
+SYSTEM_LIBS = 
 
-# List the user directory to look for the libraries here
-ULIBDIR =
+###########################################################################
+## ADDITIONAL TOOLCHAIN FLAGS
+###########################################################################
 
-# List all user libraries here
-ULIBS =
+#---------------
+# C Compiler
+#---------------
 
-#
-# End of user defines
-##############################################################################
+CFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
-ifeq ($(USE_FPU),yes)
-  USE_OPT += -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-  DDEFS += -DCORTEX_USE_FPU=TRUE
-else
-  DDEFS += -DCORTEX_USE_FPU=FALSE
-endif
+CFLAGS += $(CFLAGS_BASIC)
 
-ifeq ($(USE_FWLIB),yes)
-  include $(CHIBIOS)/ext/stm32lib/stm32lib.mk
-  CSRC += $(STM32SRC)
-  INCDIR += $(STM32INC)
-  USE_OPT += -DUSE_STDPERIPH_DRIVER
-endif
+#-----------------
+# C++ Compiler
+#-----------------
 
-include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
+CPPFLAGS_BASIC = $(DEFINES) $(INCLUDES)
+
+CPPFLAGS += $(CPPFLAGS_BASIC)
+
+###########################################################################
+## PHONY TARGETS
+###########################################################################
+
+.PHONY : all build buildobj clean info prebuild download execute
+
+
+all : build
+	@echo "### Successfully generated all binary outputs."
+
+
+build : prebuild $(PRODUCT)
+
+
+buildobj : prebuild $(OBJS) $(PREBUILT_OBJS)
+	@echo "### Successfully generated all binary outputs."
+
+
+prebuild : 
+
+
+download : build
+
+
+execute : download
+	@echo "### Invoking postbuild tool "Execute" ..."
+	$(EXECUTE) $(EXECUTE_FLAGS)
+	@echo "### Done invoking postbuild tool."
+
+
+###########################################################################
+## FINAL TARGET
+###########################################################################
+
+#-------------------------------------------
+# Create a standalone executable            
+#-------------------------------------------
+
+$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
+	$(PERL) $(GEN_LNK_SCRIPT) $(CMD_FILE) $(OBJS)
+	@echo "### Creating standalone executable "$(PRODUCT)" ..."
+	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(MAIN_OBJ) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
+	@echo "### Created: $(PRODUCT)"
+	$(RM) $(CMD_FILE)
+
+
+###########################################################################
+## INTERMEDIATE TARGETS
+###########################################################################
+
+#---------------------
+# SOURCE-TO-OBJECT
+#---------------------
+
+%.obj : %.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : %.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : $(RELATIVE_PATH_TO_ANCHOR)/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : $(RELATIVE_PATH_TO_ANCHOR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : $(START_DIR)/chibiOS_Config_Test_PWM_chibiOS/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : $(START_DIR)/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : $(START_DIR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : $(MATLAB_ROOT)/rtw/c/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : $(MATLAB_ROOT)/rtw/c/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : $(MATLAB_ROOT)/simulink/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : $(MATLAB_ROOT)/simulink/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+rt_main.obj : $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+###########################################################################
+## DEPENDENCIES
+###########################################################################
+
+$(ALL_OBJS) : $(MAKEFILE) rtw_proj.tmw
+
+
+###########################################################################
+## MISCELLANEOUS TARGETS
+###########################################################################
+
+info : 
+	@echo "### PRODUCT = $(PRODUCT)"
+	@echo "### PRODUCT_TYPE = $(PRODUCT_TYPE)"
+	@echo "### BUILD_TYPE = $(BUILD_TYPE)"
+	@echo "### INCLUDES = $(INCLUDES)"
+	@echo "### DEFINES = $(DEFINES)"
+	@echo "### ALL_SRCS = $(ALL_SRCS)"
+	@echo "### ALL_OBJS = $(ALL_OBJS)"
+	@echo "### LIBS = $(LIBS)"
+	@echo "### MODELREF_LIBS = $(MODELREF_LIBS)"
+	@echo "### SYSTEM_LIBS = $(SYSTEM_LIBS)"
+	@echo "### TOOLCHAIN_LIBS = $(TOOLCHAIN_LIBS)"
+	@echo "### CFLAGS = $(CFLAGS)"
+	@echo "### LDFLAGS = $(LDFLAGS)"
+	@echo "### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS)"
+	@echo "### CPPFLAGS = $(CPPFLAGS)"
+	@echo "### CPP_LDFLAGS = $(CPP_LDFLAGS)"
+	@echo "### CPP_SHAREDLIB_LDFLAGS = $(CPP_SHAREDLIB_LDFLAGS)"
+	@echo "### ARFLAGS = $(ARFLAGS)"
+	@echo "### MEX_CFLAGS = $(MEX_CFLAGS)"
+	@echo "### MEX_LDFLAGS = $(MEX_LDFLAGS)"
+	@echo "### DOWNLOAD_FLAGS = $(DOWNLOAD_FLAGS)"
+	@echo "### EXECUTE_FLAGS = $(EXECUTE_FLAGS)"
+	@echo "### MAKE_FLAGS = $(MAKE_FLAGS)"
+
+
+clean : 
+	$(ECHO) "### Deleting all derived files..."
+	$(RM) $(subst /,\,$(PRODUCT))
+	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(ECHO) "### Deleted all derived files."
+
+

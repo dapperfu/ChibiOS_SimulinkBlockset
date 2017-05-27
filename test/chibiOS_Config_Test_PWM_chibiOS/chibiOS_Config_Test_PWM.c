@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
    Model version                    : 1.210
-   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
-   TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
+   Simulink Coder version           : 8.9 (R2015b) 13-Aug-2015
+   TLC version                      : 8.9 (Jul 31 2015)
+   C/C++ source code generated on   : Sat May 27 00:58:14 2017
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -48,8 +48,8 @@
    limitations under the License.
  **************************************************************************/
 /* Includes */
-/* Includes - BlockInstanceSetup (<S1>/pwm_Config3)*/
 
+/* Includes - BlockInstanceSetup (<S1>/pwm_Config3)*/
 #include "chibiOS_Config_Test_PWM.h"
 #include "chibiOS_Config_Test_PWM_private.h"
 
@@ -124,28 +124,23 @@ static void rate_scheduler(void)
    * counter is reset when it reaches its limit (zero means run).
    */
   (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[1])++;
-  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[1]) > 1) {/* Sample time: [0.1s, 0.0s] */
+  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[1]) > 19) {/* Sample time: [1.0s, 0.0s] */
     chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[1] = 0;
   }
 
   (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2])++;
-  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2]) > 19) {/* Sample time: [1.0s, 0.0s] */
+  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2]) > 21) {/* Sample time: [1.1s, 0.0s] */
     chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2] = 0;
   }
 
   (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3])++;
-  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3]) > 21) {/* Sample time: [1.1s, 0.0s] */
+  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3]) > 39) {/* Sample time: [2.0s, 0.0s] */
     chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] = 0;
   }
 
   (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4])++;
-  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4]) > 39) {/* Sample time: [2.0s, 0.0s] */
+  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4]) > 119) {/* Sample time: [6.0s, 0.0s] */
     chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] = 0;
-  }
-
-  (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[5])++;
-  if ((chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[5]) > 119) {/* Sample time: [6.0s, 0.0s] */
-    chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[5] = 0;
   }
 }
 
@@ -184,28 +179,26 @@ void chibiOS_Config_Test_PWM_step(void)
     if (!chibiOS_Config_Test_PWM_DWork.Subsystem_MODE) {
       /* Enable Block: <S1>/pwm_Config3 */
       pwmStart(&PWMD4, &pwmcfg4);
-      chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = TRUE;
+      chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = true;
     }
 
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] == 0) {
-      /* RateTransition: '<S1>/Rate Transition' incorporates:
-       *  Constant: '<S1>/Constant1'
-       */
-      if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] == 0) {
-        chibiOS_Config_Test_PWM_B.RateTransition =
-          chibiOS_Config_Test_PWM_P.Constant1_Value;
-      }
-
-      /* End of RateTransition: '<S1>/Rate Transition' */
+    /* RateTransition: '<S1>/Rate Transition' incorporates:
+     *  Constant: '<S1>/Constant1'
+     */
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] == 0) {
+      chibiOS_Config_Test_PWM_B.RateTransition =
+        chibiOS_Config_Test_PWM_P.Constant1_Value;
 
       /* RateTransition: '<S1>/Rate Transition1' incorporates:
+       *  Constant: '<S1>/Constant1'
        *  Constant: '<S1>/Constant2'
        */
       chibiOS_Config_Test_PWM_B.RateTransition1 =
         chibiOS_Config_Test_PWM_P.Constant2_Value;
     }
 
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] == 0) {
+    /* End of RateTransition: '<S1>/Rate Transition' */
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2] == 0) {
       /* Sum: '<S1>/Sum' incorporates:
        *  Constant: '<S1>/Constant5'
        *  Constant: '<S1>/Constant6'
@@ -215,12 +208,12 @@ void chibiOS_Config_Test_PWM_step(void)
     }
 
     /* RateTransition: '<S1>/Rate Transition2' */
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] == 0) {
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] == 0) {
       chibiOS_Config_Test_PWM_B.RateTransition2 = chibiOS_Config_Test_PWM_B.Sum;
     }
 
     /* End of RateTransition: '<S1>/Rate Transition2' */
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[2] == 0) {
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[1] == 0) {
       /* Outputs for Atomic SubSystem: '<S1>/AtomicSubsystem' */
       chibiOS_Config__AtomicSubsystem();
 
@@ -228,7 +221,7 @@ void chibiOS_Config_Test_PWM_step(void)
     }
 
     /* RateTransition: '<S1>/Rate Transition3' */
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] == 0) {
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] == 0) {
       chibiOS_Config_Test_PWM_B.RateTransition3 =
         chibiOS_Config_Test_PWM_B.Product;
 
@@ -236,7 +229,7 @@ void chibiOS_Config_Test_PWM_step(void)
     }
 
     /* End of RateTransition: '<S1>/Rate Transition3' */
-    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[4] == 0) {
+    if (chibiOS_Config_Test_PWM_M->Timing.TaskCounters.TID[3] == 0) {
       /* Update Block: <S1>/pwm_Config3 */
       pwmEnableChannel(&PWMD4, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD4,
         chibiOS_Config_Test_PWM_B.RateTransition));
@@ -251,7 +244,7 @@ void chibiOS_Config_Test_PWM_step(void)
     if (chibiOS_Config_Test_PWM_DWork.Subsystem_MODE) {
       /* Disable Block: <S1>/pwm_Config3 */
       pwmStop(&PWMD4);
-      chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = FALSE;
+      chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = false;
     }
   }
 
@@ -272,9 +265,6 @@ void chibiOS_Config_Test_PWM_step(void)
 void chibiOS_Config_Test_PWM_initialize(void)
 {
   /* Registration code */
-
-  /* initialize non-finites */
-  rt_InitInfAndNaN(sizeof(real_T));
 
   /* initialize real-time model */
   (void) memset((void *)chibiOS_Config_Test_PWM_M, 0,

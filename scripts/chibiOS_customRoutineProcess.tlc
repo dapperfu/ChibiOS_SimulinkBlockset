@@ -159,4 +159,4 @@
 %endif
 %closefile main_Buf 
 %<LibSetSourceFileSection(cFile, "Functions", main_Buf)>
-%% EOF: chibiOS_customRoutineProcess.tlc
+%% EOF: ChibiOS_customRoutineProcess.tlc

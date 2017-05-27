@@ -1,4 +1,4 @@
-function path=chibiOS_getShortName(path)
+function path=ChibiOS_getShortName(path)
 if iscell(path)
     for i=1:numel(path)
         path{i}=feval(mfilename,path{i});

@@ -1,4 +1,4 @@
-%implements  chibiOS_Config "C"
+%implements  ChibiOS_Config "C"
 
 %function BlockInstanceSetup(block, system) Output
     %assign chconf = LibCreateSourceFile("Header", "Custom", "chconf")

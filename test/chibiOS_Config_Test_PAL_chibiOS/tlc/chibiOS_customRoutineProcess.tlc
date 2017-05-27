@@ -55,9 +55,6 @@
         palSetPad(GPIOD, GPIOD_LED5);
         palSetPad(GPIOD, GPIOD_LED6);
         chThdSleep(MS2ST(500));
-        palTogglePort(GPIOD,GPIOD_LED6);
-        chibiOS_Config_Test_PAL_step();
-        chThdSleep(MS2ST(500));
         %<LibGetMdlSrcBaseName()>_initialize();
         /* Start Static Threads */
         tp0 = chThdCreateStatic(waPeriodicThread0,
@@ -162,4 +159,4 @@
 %endif
 %closefile main_Buf 
 %<LibSetSourceFileSection(cFile, "Functions", main_Buf)>
-%% EOF: chibiOS_customRoutineProcess.tlc
+%% EOF: ChibiOS_customRoutineProcess.tlc

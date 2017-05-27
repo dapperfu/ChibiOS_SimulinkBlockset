@@ -1,0 +1,68 @@
+%implements s2_b0_bbqsh_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcStartFcnOfS1B5 = OpaqueTLCBlockFcn("Start", 1, 5, 1, 2)
+%assign tlcInitializeConditionsFcnOfS1B5 = OpaqueTLCBlockFcn("InitializeConditions", 1, 5, 1, 2)
+%assign tlcEnableFcnOfS2B1 = OpaqueTLCBlockFcn("Enable", 2, 1, 1, 2)
+%assign tlcEnableFcnOfS2B2 = OpaqueTLCBlockFcn("Enable", 2, 2, 1, 2)
+%assign tlcEnableFcnOfS2B3 = OpaqueTLCBlockFcn("Enable", 2, 3, 1, 2)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(2, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(2, "Start", "Body")>\
+%assign   Start_open_Subsystem_2_3 = ""
+%openfile Start_open_Subsystem_2_3
+
+/* Start for Enabled SubSystem: '<Root>/Subsystem' */
+%closefile Start_open_Subsystem_2_3
+
+%assign    Start_body_Subsystem_2_3 = ""
+%openfile  Start_body_Subsystem_2_3
+
+%<tlcStartFcnOfS1B5>\
+%closefile Start_body_Subsystem_2_3
+
+%assign    Start_close_Subsystem_2_3 = ""
+%openfile  Start_close_Subsystem_2_3
+
+/* End of Start for SubSystem: '<Root>/Subsystem' */
+%closefile Start_close_Subsystem_2_3
+%<SLibCG_DumpSSCode(Start_open_Subsystem_2_3, Start_body_Subsystem_2_3, Start_close_Subsystem_2_3)>
+
+
+%assign   InitializeConditions_open_Subsystem_2_3 = ""
+%openfile InitializeConditions_open_Subsystem_2_3
+
+/* InitializeConditions for Enabled SubSystem: '<Root>/Subsystem' */
+%closefile InitializeConditions_open_Subsystem_2_3
+
+%assign    InitializeConditions_body_Subsystem_2_3 = ""
+%openfile  InitializeConditions_body_Subsystem_2_3
+
+%<tlcInitializeConditionsFcnOfS1B5>\
+%closefile InitializeConditions_body_Subsystem_2_3
+
+%assign    InitializeConditions_close_Subsystem_2_3 = ""
+%openfile  InitializeConditions_close_Subsystem_2_3
+
+/* End of InitializeConditions for SubSystem: '<Root>/Subsystem' */
+%closefile InitializeConditions_close_Subsystem_2_3
+%<SLibCG_DumpSSCode(InitializeConditions_open_Subsystem_2_3, InitializeConditions_body_Subsystem_2_3, InitializeConditions_close_Subsystem_2_3)>
+
+%<SLibCGIRDumpSystemUserCode(2, "Start", "Trailer")>\
+%<tlcEnableFcnOfS2B1>\
+%<tlcEnableFcnOfS2B2>\
+%<tlcEnableFcnOfS2B3>\
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 2, fcnProtoType)>
+%endfunction

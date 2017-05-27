@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PWM.
    Model version                    : 1.210
-   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
-   TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:55:04 2013
+   Simulink Coder version           : 8.9 (R2015b) 13-Aug-2015
+   TLC version                      : 8.9 (Jul 31 2015)
+   C/C++ source code generated on   : Sat May 27 00:58:14 2017
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -50,13 +50,12 @@
 /* Includes */
 #ifndef RTW_HEADER_chibiOS_Config_Test_PWM_h_
 #define RTW_HEADER_chibiOS_Config_Test_PWM_h_
+#include <string.h>
 #ifndef chibiOS_Config_Test_PWM_COMMON_INCLUDES_
 # define chibiOS_Config_Test_PWM_COMMON_INCLUDES_
-#include <string.h>
 #include "rtwtypes.h"
 #include "hal.h"
 #include "ch.h"
-#include "rt_nonfinite.h"
 #endif                                 /* chibiOS_Config_Test_PWM_COMMON_INCLUDES_ */
 
 #include "chibiOS_Config_Test_PWM_types.h"
@@ -73,10 +72,6 @@
 
 #ifndef rtmSetErrorStatus
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
-#endif
-
-#ifndef rtmGetStopRequested
-# define rtmGetStopRequested(rtm)      ((void*) 0)
 #endif
 
 /* Types */
@@ -98,6 +93,18 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct Parameters_chibiOS_Config_Test__ {
+  real_T chibiOS_Config_CH_FREQUENCY;  /* Mask Parameter: chibiOS_Config_CH_FREQUENCY
+                                        * Referenced by: '<Root>/chibiOS_Config'
+                                        */
+  real_T chibiOS_Config_CH_MEMCORE_SIZE;/* Mask Parameter: chibiOS_Config_CH_MEMCORE_SIZE
+                                         * Referenced by: '<Root>/chibiOS_Config'
+                                         */
+  real_T chibiOS_Config_CH_NO_IDLE_THREA;/* Mask Parameter: chibiOS_Config_CH_NO_IDLE_THREA
+                                          * Referenced by: '<Root>/chibiOS_Config'
+                                          */
+  real_T chibiOS_Config_CH_TIME_QUANTUM;/* Mask Parameter: chibiOS_Config_CH_TIME_QUANTUM
+                                         * Referenced by: '<Root>/chibiOS_Config'
+                                         */
   real_T Step_Time;                    /* Expression: 5
                                         * Referenced by: '<Root>/Step'
                                         */
@@ -116,18 +123,6 @@ struct Parameters_chibiOS_Config_Test__ {
   real_T Step1_YFinal;                 /* Expression: -1
                                         * Referenced by: '<Root>/Step1'
                                         */
-  real_T chibiOS_Config_MSFcnParameter1;/* Expression: CH_FREQUENCY
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
-  real_T chibiOS_Config_MSFcnParameter2;/* Expression: CH_TIME_QUANTUM
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
-  real_T chibiOS_Config_MSFcnParameter3;/* Expression: CH_MEMCORE_SIZE
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
-  real_T chibiOS_Config_MSFcnParameter4;/* Expression: CH_NO_IDLE_THREAD
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
   real_T chibiOS_Config_MSFcnParameter5;/* Expression: CH_OPTIMIZE_SPEED
                                          * Referenced by: '<Root>/chibiOS_Config'
                                          */
@@ -241,7 +236,7 @@ struct tag_RTM_chibiOS_Config_Test_PWM {
   struct {
     uint32_T clockTick0;
     struct {
-      uint8_T TID[6];
+      uint8_T TID[5];
     } TaskCounters;
   } Timing;
 };

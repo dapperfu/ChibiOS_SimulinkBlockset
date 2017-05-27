@@ -255,7 +255,7 @@
     /* Terminate Block: %<Name> */
 %endfunction
 
-%% [EOF] chibiOS_pwm.tlc
+%% [EOF] ChibiOS_pwm.tlc
 
 
 

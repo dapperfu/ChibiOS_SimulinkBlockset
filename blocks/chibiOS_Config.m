@@ -1,4 +1,4 @@
-function chibiOS_Config(block)
+function ChibiOS_Config(block)
 %MSFUNTMPL_BASIC A Template for a Level-2 MATLAB S-Function
 %   The MATLAB S-function is written as a MATLAB function with the
 %   same name as the S-function. Replace 'msfuntmpl_basic' with the

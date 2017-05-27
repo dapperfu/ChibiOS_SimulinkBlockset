@@ -1,9 +1,9 @@
 /**************************************************************************
    Code generated for Simulink model: chibiOS_Config_Test_PAL.
-   Model version                    : 1.299
-   Simulink Coder version           : 8.3 (R2012b) 20-Jul-2012
-   TLC version                      : 8.3 (Jul 21 2012)
-   C/C++ source code generated on   : Wed Dec 18 00:18:06 2013
+   Model version                    : 1.300
+   Simulink Coder version           : 8.9 (R2015b) 13-Aug-2015
+   TLC version                      : 8.9 (Jul 31 2015)
+   C/C++ source code generated on   : Sat May 27 00:55:32 2017
  ***************************************************************************
  *
  * Target selection: ChibiOS.tlc
@@ -50,13 +50,12 @@
 /* Includes */
 #ifndef RTW_HEADER_chibiOS_Config_Test_PAL_h_
 #define RTW_HEADER_chibiOS_Config_Test_PAL_h_
+#include <string.h>
 #ifndef chibiOS_Config_Test_PAL_COMMON_INCLUDES_
 # define chibiOS_Config_Test_PAL_COMMON_INCLUDES_
-#include <string.h>
 #include "rtwtypes.h"
 #include "ch.h"
 #include "hal.h"
-#include "rt_nonfinite.h"
 #endif                                 /* chibiOS_Config_Test_PAL_COMMON_INCLUDES_ */
 
 #include "chibiOS_Config_Test_PAL_types.h"
@@ -76,10 +75,6 @@
 # define rtmStepTask(rtm, idx)         ((rtm)->Timing.TaskCounters.TID[(idx)] == 0)
 #endif
 
-#ifndef rtmGetStopRequested
-# define rtmGetStopRequested(rtm)      ((void*) 0)
-#endif
-
 #ifndef rtmTaskCounter
 # define rtmTaskCounter(rtm, idx)      ((rtm)->Timing.TaskCounters.TID[(idx)])
 #endif
@@ -95,16 +90,16 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct Parameters_chibiOS_Config_Test__ {
-  real_T chibiOS_Config_MSFcnParameter1;/* Expression: CH_FREQUENCY
+  real_T chibiOS_Config_CH_FREQUENCY;  /* Mask Parameter: chibiOS_Config_CH_FREQUENCY
+                                        * Referenced by: '<Root>/chibiOS_Config'
+                                        */
+  real_T chibiOS_Config_CH_MEMCORE_SIZE;/* Mask Parameter: chibiOS_Config_CH_MEMCORE_SIZE
                                          * Referenced by: '<Root>/chibiOS_Config'
                                          */
-  real_T chibiOS_Config_MSFcnParameter2;/* Expression: CH_TIME_QUANTUM
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
-  real_T chibiOS_Config_MSFcnParameter3;/* Expression: CH_MEMCORE_SIZE
-                                         * Referenced by: '<Root>/chibiOS_Config'
-                                         */
-  real_T chibiOS_Config_MSFcnParameter4;/* Expression: CH_NO_IDLE_THREAD
+  real_T chibiOS_Config_CH_NO_IDLE_THREA;/* Mask Parameter: chibiOS_Config_CH_NO_IDLE_THREA
+                                          * Referenced by: '<Root>/chibiOS_Config'
+                                          */
+  real_T chibiOS_Config_CH_TIME_QUANTUM;/* Mask Parameter: chibiOS_Config_CH_TIME_QUANTUM
                                          * Referenced by: '<Root>/chibiOS_Config'
                                          */
   real_T chibiOS_Config_MSFcnParameter5;/* Expression: CH_OPTIMIZE_SPEED

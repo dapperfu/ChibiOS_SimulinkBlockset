@@ -324,9 +324,9 @@
   rtwgensettings.DerivedFrom = 'ert.tlc';
   rtwgensettings.BuildDirSuffix = '_chibiOS';
   rtwgensettings.Version = '1';
-  rtwgensettings.SelectCallback = ['chibiOS_SelectCallback(hDlg, hSrc)'];
-  rtwgensettings.ActivateCallback = ['chibiOS_ActivateCallback(hDlg, hSrc)'];
-  rtwgensettings.PostApplyCallback = ['chibiOS_PostApplyCallback(hDlg, hSrc)'];
+  rtwgensettings.SelectCallback = ['ChibiOS_SelectCallback(hDlg, hSrc)'];
+  rtwgensettings.ActivateCallback = ['ChibiOS_ActivateCallback(hDlg, hSrc)'];
+  rtwgensettings.PostApplyCallback = ['ChibiOS_PostApplyCallback(hDlg, hSrc)'];
  
 
   END_RTW_OPTIONS 

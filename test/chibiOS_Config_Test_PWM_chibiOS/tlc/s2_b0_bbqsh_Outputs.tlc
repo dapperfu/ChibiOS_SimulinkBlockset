@@ -1,0 +1,124 @@
+%implements s2_b0_bbqsh_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+real_T currentTime;
+real_T rtb_Step;
+real_T rtb_Step1;
+%closefile localVarDecl
+%assign tlcDisableFcnOfS1B5 = OpaqueTLCBlockFcn("Disable", 1, 5, 1, 0)
+%assign tlcEnableFcnOfS1B5 = OpaqueTLCBlockFcn("Enable", 1, 5, 1, 0)
+%assign tlcOutputsFcnOfS1B5 = OpaqueTLCBlockFcn("Outputs", 1, 5, 1, 0)
+%assign tlcUpdateFcnOfS1B5 = OpaqueTLCBlockFcn("Update", 1, 5, 1, 0)
+%assign tlcOutputsFcnOfS2B1 = OpaqueTLCBlockFcn("Outputs", 2, 1, 1, 0)
+%assign tlcOutputsFcnOfS2B2 = OpaqueTLCBlockFcn("Outputs", 2, 2, 1, 0)
+%assign tlcOutputsFcnOfS2B3 = OpaqueTLCBlockFcn("Outputs", 2, 3, 1, 0)
+/* Step: '<Root>/Step' */
+currentTime = %<(SLibCG_SE(LibGetTaskTime(0)))>;
+if (currentTime/*@>99*/ < chibiOS_Config_Test_PWM_P.Step_Time) {
+    rtb_Step = chibiOS_Config_Test_PWM_P.Step_Y0;
+} else {
+    rtb_Step = chibiOS_Config_Test_PWM_P.Step_YFinal;
+}
+/* End of Step: '<Root>/Step' */
+
+/* Step: '<Root>/Step1' */
+currentTime = %<(SLibCG_SE(LibGetTaskTime(0)))>;
+if (currentTime/*@>100*/ < chibiOS_Config_Test_PWM_P.Step1_Time) {
+    rtb_Step1 = chibiOS_Config_Test_PWM_P.Step1_Y0;
+} else {
+    rtb_Step1 = chibiOS_Config_Test_PWM_P.Step1_YFinal;
+}
+/* End of Step: '<Root>/Step1' */
+
+/* Outputs for Enabled SubSystem: '<Root>/Subsystem' incorporates:
+ *  EnablePort: '<S1>/Enable'
+ */
+/* Sum: '<Root>/Sum' */
+if ((rtb_Step/*@>106*/ + rtb_Step1)/*@>98*/ > 0.0) {
+    if (/*@>98*/!chibiOS_Config_Test_PWM_DWork.Subsystem_MODE) {
+%<tlcEnableFcnOfS1B5>\
+        chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = true;
+    }
+    /* RateTransition: '<S1>/Rate Transition' incorporates:
+ *  Constant: '<S1>/Constant1'
+ */
+    if (%<(SLibCGIRIsSampleHit(3, 1))>) {
+        chibiOS_Config_Test_PWM_B.RateTransition = chibiOS_Config_Test_PWM_P.Constant1_Value;
+        /* RateTransition: '<S1>/Rate Transition1' incorporates:
+ *  Constant: '<S1>/Constant1'
+ *  Constant: '<S1>/Constant2'
+ */
+        chibiOS_Config_Test_PWM_B.RateTransition1 = chibiOS_Config_Test_PWM_P.Constant2_Value;
+    }
+    /* End of RateTransition: '<S1>/Rate Transition' */
+    if (%<(SLibCGIRIsSampleHit(2, 1))>) {
+        /* Sum: '<S1>/Sum' incorporates:
+ *  Constant: '<S1>/Constant5'
+ *  Constant: '<S1>/Constant6'
+ */
+        chibiOS_Config_Test_PWM_B.Sum = chibiOS_Config_Test_PWM_P.Constant5_Value/*@>93*/ + chibiOS_Config_Test_PWM_P.Constant6_Value;
+    }
+    /* RateTransition: '<S1>/Rate Transition2' */
+    if (%<(SLibCGIRIsSampleHit(3, 1))>) {
+        chibiOS_Config_Test_PWM_B.RateTransition2 = chibiOS_Config_Test_PWM_B.Sum;
+    }
+    /* End of RateTransition: '<S1>/Rate Transition2' */
+    if (%<(SLibCGIRIsSampleHit(1, 1))>) {
+%assign   Outputs_open_AtomicSubsystem_1_8 = ""
+%openfile Outputs_open_AtomicSubsystem_1_8
+
+        /* Outputs for Atomic SubSystem: '<S1>/AtomicSubsystem' */
+%closefile Outputs_open_AtomicSubsystem_1_8
+
+%assign    Outputs_body_AtomicSubsystem_1_8 = ""
+%openfile  Outputs_body_AtomicSubsystem_1_8
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[0], "Output",0)
+%<SLibCGIRGenReusableSysCall("chibiOS_Config__AtomicSubsystem", [], 0, 0, 7, 0, 7, 2)>\
+
+%endif
+%closefile Outputs_body_AtomicSubsystem_1_8
+
+%assign    Outputs_close_AtomicSubsystem_1_8 = ""
+%openfile  Outputs_close_AtomicSubsystem_1_8
+
+        /* End of Outputs for SubSystem: '<S1>/AtomicSubsystem' */
+%closefile Outputs_close_AtomicSubsystem_1_8
+%<SLibCG_DumpSSCode(Outputs_open_AtomicSubsystem_1_8, Outputs_body_AtomicSubsystem_1_8, Outputs_close_AtomicSubsystem_1_8)>
+
+    }
+    /* RateTransition: '<S1>/Rate Transition3' */
+    if (%<(SLibCGIRIsSampleHit(3, 1))>) {
+        chibiOS_Config_Test_PWM_B.RateTransition3 = chibiOS_Config_Test_PWM_B.Product;
+%<tlcOutputsFcnOfS1B5>\
+    }
+    /* End of RateTransition: '<S1>/Rate Transition3' */
+    if (%<(SLibCGIRIsSampleHit(3, 1))>) {
+%<tlcUpdateFcnOfS1B5>\
+    }
+} else {
+    if (chibiOS_Config_Test_PWM_DWork.Subsystem_MODE) {
+%<tlcDisableFcnOfS1B5>\
+        chibiOS_Config_Test_PWM_DWork.Subsystem_MODE = false;
+    }
+}
+/* End of Sum: '<Root>/Sum' */
+/* End of Outputs for SubSystem: '<Root>/Subsystem' */
+%<tlcOutputsFcnOfS2B1>\
+%<tlcOutputsFcnOfS2B2>\
+%<tlcOutputsFcnOfS2B3>\
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 0, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction

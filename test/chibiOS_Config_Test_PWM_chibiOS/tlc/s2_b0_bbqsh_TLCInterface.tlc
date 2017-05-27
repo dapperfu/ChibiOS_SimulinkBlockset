@@ -1,0 +1,742 @@
+%implements s2_b0_bbqsh_TLCInterface "C"
+
+%function getInputAddr_1_5_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInput_1_5_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInputAddr_1_5_1_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInput_1_5_1_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInputAddr_1_5_1_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInput_1_5_1_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInputAddr_1_5_1_0_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getInput_1_5_1_0_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_FREQUENCY"
+%endfunction
+
+%function getParam_2_1_1_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_FREQUENCY"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_TIME_QUANTUM"
+%endfunction
+
+%function getParam_2_1_1_0_1_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_TIME_QUANTUM"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_MEMCORE_SIZE"
+%endfunction
+
+%function getParam_2_1_1_0_1_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_MEMCORE_SIZE"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_NO_IDLE_THREA"
+%endfunction
+
+%function getParam_2_1_1_0_1_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_NO_IDLE_THREA"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_10(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter5"
+%endfunction
+
+%function getParam_2_1_1_0_1_10(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter5"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_11(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter6"
+%endfunction
+
+%function getParam_2_1_1_0_1_11(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter6"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_12(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter7"
+%endfunction
+
+%function getParam_2_1_1_0_1_12(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter7"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_13(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter8"
+%endfunction
+
+%function getParam_2_1_1_0_1_13(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter8"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_14(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter9"
+%endfunction
+
+%function getParam_2_1_1_0_1_14(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter9"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_15(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter10"
+%endfunction
+
+%function getParam_2_1_1_0_1_15(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter10"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_16(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter11"
+%endfunction
+
+%function getParam_2_1_1_0_1_16(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter11"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_17(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter12"
+%endfunction
+
+%function getParam_2_1_1_0_1_17(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter12"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_18(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter13"
+%endfunction
+
+%function getParam_2_1_1_0_1_18(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter13"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_19(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter14"
+%endfunction
+
+%function getParam_2_1_1_0_1_19(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter14"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_20(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter15"
+%endfunction
+
+%function getParam_2_1_1_0_1_20(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter15"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_21(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter16"
+%endfunction
+
+%function getParam_2_1_1_0_1_21(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter16"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_22(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter17"
+%endfunction
+
+%function getParam_2_1_1_0_1_22(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter17"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_23(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter18"
+%endfunction
+
+%function getParam_2_1_1_0_1_23(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter18"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_24(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter19"
+%endfunction
+
+%function getParam_2_1_1_0_1_24(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter19"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_25(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter20"
+%endfunction
+
+%function getParam_2_1_1_0_1_25(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter20"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_26(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter21"
+%endfunction
+
+%function getParam_2_1_1_0_1_26(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter21"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_27(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter22"
+%endfunction
+
+%function getParam_2_1_1_0_1_27(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter22"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_28(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter23"
+%endfunction
+
+%function getParam_2_1_1_0_1_28(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter23"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_29(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter24"
+%endfunction
+
+%function getParam_2_1_1_0_1_29(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter24"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_30(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter25"
+%endfunction
+
+%function getParam_2_1_1_0_1_30(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter25"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_31(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter26"
+%endfunction
+
+%function getParam_2_1_1_0_1_31(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter26"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_32(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter27"
+%endfunction
+
+%function getParam_2_1_1_0_1_32(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter27"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_33(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter28"
+%endfunction
+
+%function getParam_2_1_1_0_1_33(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter28"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_34(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter29"
+%endfunction
+
+%function getParam_2_1_1_0_1_34(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter29"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_35(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter30"
+%endfunction
+
+%function getParam_2_1_1_0_1_35(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter30"
+%endfunction
+
+%function getParamAddr_2_1_1_0_1_36(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter31"
+%endfunction
+
+%function getParam_2_1_1_0_1_36(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter31"
+%endfunction
+
+%function getInputAddr_1_5_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInput_1_5_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInputAddr_1_5_1_1_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInput_1_5_1_1_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInputAddr_1_5_1_1_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInput_1_5_1_1_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInputAddr_1_5_1_1_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getInput_1_5_1_1_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getInputAddr_1_5_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInput_1_5_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition"
+%endfunction
+
+%function getInputAddr_1_5_1_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInput_1_5_1_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition1"
+%endfunction
+
+%function getInputAddr_1_5_1_2_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInput_1_5_1_2_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition2"
+%endfunction
+
+%function getInputAddr_1_5_1_2_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getInput_1_5_1_2_3_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_B.RateTransition3"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_FREQUENCY"
+%endfunction
+
+%function getParam_2_1_1_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_FREQUENCY"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_TIME_QUANTUM"
+%endfunction
+
+%function getParam_2_1_1_2_1_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_TIME_QUANTUM"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_MEMCORE_SIZE"
+%endfunction
+
+%function getParam_2_1_1_2_1_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_MEMCORE_SIZE"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_NO_IDLE_THREA"
+%endfunction
+
+%function getParam_2_1_1_2_1_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_CH_NO_IDLE_THREA"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_10(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter5"
+%endfunction
+
+%function getParam_2_1_1_2_1_10(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter5"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_11(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter6"
+%endfunction
+
+%function getParam_2_1_1_2_1_11(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter6"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_12(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter7"
+%endfunction
+
+%function getParam_2_1_1_2_1_12(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter7"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_13(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter8"
+%endfunction
+
+%function getParam_2_1_1_2_1_13(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter8"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_14(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter9"
+%endfunction
+
+%function getParam_2_1_1_2_1_14(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter9"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_15(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter10"
+%endfunction
+
+%function getParam_2_1_1_2_1_15(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter10"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_16(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter11"
+%endfunction
+
+%function getParam_2_1_1_2_1_16(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter11"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_17(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter12"
+%endfunction
+
+%function getParam_2_1_1_2_1_17(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter12"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_18(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter13"
+%endfunction
+
+%function getParam_2_1_1_2_1_18(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter13"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_19(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter14"
+%endfunction
+
+%function getParam_2_1_1_2_1_19(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter14"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_20(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter15"
+%endfunction
+
+%function getParam_2_1_1_2_1_20(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter15"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_21(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter16"
+%endfunction
+
+%function getParam_2_1_1_2_1_21(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter16"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_22(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter17"
+%endfunction
+
+%function getParam_2_1_1_2_1_22(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter17"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_23(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter18"
+%endfunction
+
+%function getParam_2_1_1_2_1_23(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter18"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_24(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter19"
+%endfunction
+
+%function getParam_2_1_1_2_1_24(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter19"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_25(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter20"
+%endfunction
+
+%function getParam_2_1_1_2_1_25(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter20"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_26(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter21"
+%endfunction
+
+%function getParam_2_1_1_2_1_26(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter21"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_27(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter22"
+%endfunction
+
+%function getParam_2_1_1_2_1_27(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter22"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_28(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter23"
+%endfunction
+
+%function getParam_2_1_1_2_1_28(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter23"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_29(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter24"
+%endfunction
+
+%function getParam_2_1_1_2_1_29(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter24"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_30(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter25"
+%endfunction
+
+%function getParam_2_1_1_2_1_30(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter25"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_31(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter26"
+%endfunction
+
+%function getParam_2_1_1_2_1_31(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter26"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_32(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter27"
+%endfunction
+
+%function getParam_2_1_1_2_1_32(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter27"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_33(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter28"
+%endfunction
+
+%function getParam_2_1_1_2_1_33(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter28"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_34(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter29"
+%endfunction
+
+%function getParam_2_1_1_2_1_34(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter29"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_35(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter30"
+%endfunction
+
+%function getParam_2_1_1_2_1_35(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter30"
+%endfunction
+
+%function getParamAddr_2_1_1_2_1_36(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter31"
+%endfunction
+
+%function getParam_2_1_1_2_1_36(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "chibiOS_Config_Test_PWM_P.chibiOS_Config_MSFcnParameter31"
+%endfunction
+

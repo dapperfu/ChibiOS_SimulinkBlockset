@@ -1,0 +1,105 @@
+%implements s0_b0_s6psh_Outputs "C"
+
+%function OutputsForTID(block, system, tid) Output
+%if tid == 0
+%assign ::GlobalCurrentTID = 0
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS0B31 = OpaqueTLCBlockFcn("Outputs", 0, 31, 0, 0)
+%assign tlcOutputsFcnOfS0B48 = OpaqueTLCBlockFcn("Outputs", 0, 48, 0, 0)
+%assign tlcOutputsFcnOfS0B82 = OpaqueTLCBlockFcn("Outputs", 0, 82, 0, 0)
+%assign tlcOutputsFcnOfS0B83 = OpaqueTLCBlockFcn("Outputs", 0, 83, 0, 0)
+%assign tlcOutputsFcnOfS0B84 = OpaqueTLCBlockFcn("Outputs", 0, 84, 0, 0)
+%assign tlcUpdateFcnOfS0B31 = OpaqueTLCBlockFcn("Update", 0, 31, 0, 0)
+%assign tlcUpdateFcnOfS0B48 = OpaqueTLCBlockFcn("Update", 0, 48, 0, 0)
+%<tlcOutputsFcnOfS0B31>\
+/* RateTransition: '<Root>/Rate Transition2' */
+if (%<(LibIsSpecialSampleHit(2, 0))>) {
+    chibiOS_Config_Test_PAL_B.RateTransition2 = chibiOS_Config_Test_PAL_B.pal_Config_o1;
+}
+/* End of RateTransition: '<Root>/Rate Transition2' */
+%<tlcOutputsFcnOfS0B48>\
+/* RateTransition: '<Root>/Rate Transition3' */
+if (%<(LibIsSpecialSampleHit(1, 0))>) {
+    chibiOS_Config_Test_PAL_B.RateTransition3 = chibiOS_Config_Test_PAL_B.pal_Config_o1;
+}
+/* End of RateTransition: '<Root>/Rate Transition3' */
+%<tlcOutputsFcnOfS0B82>\
+%<tlcOutputsFcnOfS0B83>\
+%<tlcOutputsFcnOfS0B84>\
+%<tlcUpdateFcnOfS0B31>\
+%<tlcUpdateFcnOfS0B48>\
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutput0LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 1
+%assign ::GlobalCurrentTID = 1
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS0B64 = OpaqueTLCBlockFcn("Outputs", 0, 64, 0, 1)
+%assign tlcUpdateFcnOfS0B64 = OpaqueTLCBlockFcn("Update", 0, 64, 0, 1)
+%<tlcOutputsFcnOfS0B64>\
+%<tlcUpdateFcnOfS0B64>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutput1LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS0B32 = OpaqueTLCBlockFcn("Outputs", 0, 32, 0, 2)
+%assign tlcUpdateFcnOfS0B32 = OpaqueTLCBlockFcn("Update", 0, 32, 0, 2)
+%<tlcOutputsFcnOfS0B32>\
+%<tlcUpdateFcnOfS0B32>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutput2LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 3
+%assign ::GlobalCurrentTID = 3
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS0B81 = OpaqueTLCBlockFcn("Outputs", 0, 81, 0, 3)
+%assign tlcUpdateFcnOfS0B81 = OpaqueTLCBlockFcn("Update", 0, 81, 0, 3)
+%<tlcOutputsFcnOfS0B81>\
+%<tlcUpdateFcnOfS0B81>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutput3LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction
