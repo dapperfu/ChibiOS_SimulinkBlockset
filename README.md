@@ -1,5 +1,9 @@
 # ChibiOS SimulinkBlockset
 
+**Note:** This project is not full featured. It was used proof of concept and for learning Target Language Compiler/Simulink Targets.
+
+
+
 
 Simulink blockset for ChibiOS for use on the STM32F4-Discovery boards.
 
